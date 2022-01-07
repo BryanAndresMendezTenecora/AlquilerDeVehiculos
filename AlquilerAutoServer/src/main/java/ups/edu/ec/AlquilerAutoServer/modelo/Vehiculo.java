@@ -1,4 +1,4 @@
-package ups.edu.ec.AlquilerAutoServer.modeo;
+package ups.edu.ec.AlquilerAutoServer.modelo;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
