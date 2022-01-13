@@ -5,18 +5,18 @@ import javax.persistence.Id;
 
 @Entity
 public class Vehiculo {
+
 	@Id
-	private int placa;
+	private int codigo;
 	private String marca;
 	private String color;
-	private int numPuertas;
 
-	public int getPlaca() {
-		return placa;
+	public int getCodigo() {
+		return codigo;
 	}
 
-	public void setPlaca(int placa) {
-		this.placa = placa;
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 
 	public String getMarca() {
@@ -33,14 +33,6 @@ public class Vehiculo {
 
 	public void setColor(String color) {
 		this.color = color;
-	}
-
-	public int getNumPuertas() {
-		return numPuertas;
-	}
-
-	public void setNumPuertas(int numPuertas) {
-		this.numPuertas = numPuertas;
 	}
 
 }
