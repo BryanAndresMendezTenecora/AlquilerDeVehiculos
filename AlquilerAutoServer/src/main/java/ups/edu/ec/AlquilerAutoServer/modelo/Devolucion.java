@@ -1,8 +1,11 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ public class Devolucion {
 	private int id;
 	private String fecha;
 	private String antecedente;
+	@OneToOne
+	@JoinColumn(name = "fac_id")
 	private Factura factura;
 	public int getId() {
 		return id;

@@ -1,8 +1,11 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,8 @@ public class Detalle {
 	private int id;
 	private int cantidad;
 	private double total;
+	@OneToOne
+	@JoinColumn(name = "veh_id")
 	private Vehiculo vehiculo;
 	public int getId() {
 		return id;
