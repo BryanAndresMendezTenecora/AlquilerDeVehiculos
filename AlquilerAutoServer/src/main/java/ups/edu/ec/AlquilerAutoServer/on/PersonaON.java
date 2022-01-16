@@ -1,13 +1,16 @@
 package ups.edu.ec.AlquilerAutoServer.on;
 
+import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ups.edu.ec.AlquilerAutoServer.dao.PersonaDAO;
+import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 
 @Stateless
-public class PersonaON {
+public class PersonaON implements PersonaONlocal{
 
 	@Inject
 	private PersonaDAO personaDAO;
@@ -27,5 +30,8 @@ public class PersonaON {
 	
 	public void eliminarPersona(String cedula) throws Exception {
 		personaDAO.delete(cedula);
+	}
+	public List<Persona> getPersonas(){
+		return personaDAO.getList();
 	}
 }
