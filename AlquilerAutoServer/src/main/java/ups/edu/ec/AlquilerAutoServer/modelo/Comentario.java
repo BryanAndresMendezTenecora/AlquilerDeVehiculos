@@ -1,8 +1,11 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,8 +16,12 @@ public class Comentario {
 	private int id;
 	private String descripcion;
 	private int calificacion;
+	@OneToOne
+	@JoinColumn(name = "per_cedula")
 	private Persona persona;
-	private Vehiculo vehixulo;
+	@OneToOne
+	@JoinColumn(name = "veh_id")
+	private Vehiculo vehiculo;
 	public int getId() {
 		return id;
 	}
@@ -39,11 +46,11 @@ public class Comentario {
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	public Vehiculo getVehixulo() {
-		return vehixulo;
+	public Vehiculo getVehiculo() {
+		return vehiculo;
 	}
-	public void setVehixulo(Vehiculo vehixulo) {
-		this.vehixulo = vehixulo;
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
 	}
 	
 
