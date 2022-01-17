@@ -7,7 +7,7 @@ import ups.edu.ec.AlquilerAutoServer.dao.PersonaDAO;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 
 @Stateless
-public class PersonaON {
+public class PersonaON implements PersonaONLocal, PersonaONRemote{
 
 	@Inject
 	private PersonaDAO personaDAO;
