@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -8,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 
 @Stateless
 public class PersonaDAO {
@@ -41,5 +43,12 @@ public class PersonaDAO {
 		
 		List<Persona> personas=query.getResultList();
 		return personas;
+	}
+	public List<Persona> getList(){
+		List<Persona> listado=new ArrayList<Persona>();
+		String jpql="SELECT p FROM Persona p";
+		Query query= em.createQuery(jpql,Persona.class);
+		listado = query.getResultList();
+		return listado;
 	}
 }

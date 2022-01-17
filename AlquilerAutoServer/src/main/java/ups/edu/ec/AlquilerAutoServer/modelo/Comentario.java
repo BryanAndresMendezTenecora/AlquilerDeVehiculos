@@ -1,0 +1,57 @@
+package ups.edu.ec.AlquilerAutoServer.modelo;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "TBL_comentario")
+public class Comentario {
+	@Id
+	@Column(name = "com_id")
+	private int id;
+	private String descripcion;
+	private int calificacion;
+	@OneToOne
+	@JoinColumn(name = "per_cedula")
+	private Persona persona;
+	@OneToOne
+	@JoinColumn(name = "veh_id")
+	private Vehiculo vehiculo;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public int getCalificacion() {
+		return calificacion;
+	}
+	public void setCalificacion(int calificacion) {
+		this.calificacion = calificacion;
+	}
+	public Persona getPersona() {
+		return persona;
+	}
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+	public Vehiculo getVehiculo() {
+		return vehiculo;
+	}
+	public void setVehiculo(Vehiculo vehiculo) {
+		this.vehiculo = vehiculo;
+	}
+	
+
+}
