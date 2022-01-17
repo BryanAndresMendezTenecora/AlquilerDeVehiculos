@@ -1,40 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<head>
-<!-- Required meta tags -->
-<meta charset="utf-8" />
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>Skydash Admin</title>
-<!-- plugins:css -->
-<link rel="stylesheet" href="vendors/feather/feather.css" />
-<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
-<link rel="stylesheet" href="vendors/css/vendor.bundle.base.css" />
-<!-- endinject -->
-<!-- Plugin css for this page -->
+<h:head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>Skydash Admin</title>
+	<!-- plugins:css -->
+	<link rel="stylesheet" href="template/vendors/feather/feather.css" />
+	<link rel="stylesheet"
+		href="template/vendors/ti-icons/css/themify-icons.css" />
+	<link rel="stylesheet"
+		href="template/vendors/css/vendor.bundle.base.css" />
+	<!-- endinject -->
+	<!-- Plugin css for this page -->
 
-<link rel="stylesheet"
-	href="vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
-<link rel="stylesheet" href="vendors/ti-icons/css/themify-icons.css" />
-<link rel="stylesheet" type="text/css"
-	href="js/select.dataTables.min.css" />
-<!-- End plugin css for this page -->
-<!-- inject:css -->
-<link rel="stylesheet" href="css/vertical-layout-light/style.css" />
-<!-- endinject -->
-<link rel="shortcut icon" href="images/favicon.png" />
-</head>
-<body>
+	<link rel="stylesheet"
+		href="template/vendors/datatables.net-bs4/dataTables.bootstrap4.css" />
+	<link rel="stylesheet"
+		href="template/vendors/ti-icons/css/themify-icons.css" />
+	<link rel="stylesheet" type="text/css"
+		href="template/js/select.dataTables.min.css" />
+	<!-- End plugin css for this page -->
+	<!-- inject:css -->
+	<link rel="stylesheet"
+		href="template/css/vertical-layout-light/style.css" />
+	<!-- endinject -->
+	<link rel="shortcut icon" href="template/images/favicon.png" />
+</h:head>
+<h:body>
 	<div class="container-scroller">
 		<!-- partial:partials/_navbar.html -->
 		<nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
 			<div
 				class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
 				<a class="navbar-brand brand-logo mr-5" href="index.html"><img
-					src="images/logo.svg" class="mr-2" alt="logo" /></a> <a
+					src="template/images/logo.svg" class="mr-2" alt="logo" /></a> <a
 					class="navbar-brand brand-logo-mini" href="index.html"><img
-					src="images/logo-mini.svg" alt="logo" /></a>
+					src="template/images/logo-mini.svg" alt="logo" /></a>
 			</div>
 			<div
 				class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
@@ -106,8 +113,8 @@
 						</div></li>
 					<li class="nav-item nav-profile dropdown"><a
 						class="nav-link dropdown-toggle" href="#" data-toggle="dropdown"
-						id="profileDropdown"> <img src="images/faces/face28.jpg"
-							alt="profile" />
+						id="profileDropdown"> <img
+							src="template/images/faces/face28.jpg" alt="profile" />
 					</a>
 						<div class="dropdown-menu dropdown-menu-right navbar-dropdown"
 							aria-labelledby="profileDropdown">
@@ -209,15 +216,16 @@
 								<li class="completed">
 									<div class="form-check">
 										<label class="form-check-label"> <input
-											class="checkbox" type="checkbox" checked="checked" /> Schedule meeting
-											for next week
+											class="checkbox" type="checkbox" checked="checked" />
+											Schedule meeting for next week
 										</label>
 									</div> <i class="remove ti-close"></i>
 								</li>
 								<li class="completed">
 									<div class="form-check">
 										<label class="form-check-label"> <input
-											class="checkbox" type="checkbox" checked="checked" /> Project review
+											class="checkbox" type="checkbox" checked="checked" />
+											Project review
 										</label>
 									</div> <i class="remove ti-close"></i>
 								</li>
@@ -256,7 +264,7 @@
 						<ul class="chat-list">
 							<li class="list active">
 								<div class="profile">
-									<img src="images/faces/face1.jpg" alt="image"/><span
+									<img src="template/images/faces/face1.jpg" alt="image" /><span
 										class="online"></span>
 								</div>
 								<div class="info">
@@ -266,7 +274,7 @@
 							</li>
 							<li class="list">
 								<div class="profile">
-									<img src="images/faces/face2.jpg" alt="image"/><span
+									<img src="images/faces/face2.jpg" alt="image" /><span
 										class="offline"></span>
 								</div>
 								<div class="info">
@@ -280,7 +288,7 @@
 							</li>
 							<li class="list">
 								<div class="profile">
-									<img src="images/faces/face3.jpg" alt="image"/><span
+									<img src="images/faces/face3.jpg" alt="image" /><span
 										class="online"></span>
 								</div>
 								<div class="info">
@@ -290,7 +298,7 @@
 							</li>
 							<li class="list">
 								<div class="profile">
-									<img src="images/faces/face4.jpg" alt="image"/><span
+									<img src="images/faces/face4.jpg" alt="image" /><span
 										class="offline"></span>
 								</div>
 								<div class="info">
@@ -300,7 +308,7 @@
 							</li>
 							<li class="list">
 								<div class="profile">
-									<img src="images/faces/face5.jpg" alt="image"/><span
+									<img src="images/faces/face5.jpg" alt="image" /><span
 										class="online"></span>
 								</div>
 								<div class="info">
@@ -310,7 +318,7 @@
 							</li>
 							<li class="list">
 								<div class="profile">
-									<img src="images/faces/face6.jpg" alt="image"/><span
+									<img src="images/faces/face6.jpg" alt="image" /><span
 										class="online"></span>
 								</div>
 								<div class="info">
@@ -376,7 +384,7 @@
 						<div class="collapse" id="tables">
 							<ul class="nav flex-column sub-menu">
 								<li class="nav-item"><a class="nav-link"
-									href="pages/tables/basic-table.html">Basic table</a></li>
+									href="template/pages/tables/basic-table.html">Basic table</a></li>
 							</ul>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
@@ -401,6 +409,10 @@
 									href="pages/samples/login.html"> Login </a></li>
 								<li class="nav-item"><a class="nav-link"
 									href="pages/samples/register.html"> Register </a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="persona.xhtml"> Crear Cliente </a></li>
+								<li class="nav-item"><a class="nav-link"
+									href="listarPersona.xhtml"> listarPersona </a></li>
 							</ul>
 						</div></li>
 					<li class="nav-item"><a class="nav-link"
@@ -429,12 +441,15 @@
 						<div class="col-md-12 grid-margin">
 							<div class="row">
 								<div class="col-12 col-xl-8 mb-4 mb-xl-0">
-									<h3 class="font-weight-bold">Welcome Aamir</h3>
+									<h3 class="font-weight-bold">
+										<ui:insert name="title" />
+									</h3>
 									<h6 class="font-weight-normal mb-0">
 										All systems are running smoothly! You have <span
 											class="text-primary">3 unread alerts!</span>
 									</h6>
 								</div>
+								<!--  
 								<div class="col-12 col-xl-4">
 									<div class="justify-content-end d-flex">
 										<div class="dropdown flex-md-grow-1 flex-xl-grow-0">
@@ -453,9 +468,11 @@
 										</div>
 									</div>
 								</div>
+								-->
 							</div>
 						</div>
 					</div>
+					<!-- 
 					<div class="row">
 						<div class="col-md-6 grid-margin stretch-card">
 							<div class="card tale-bg">
@@ -520,6 +537,10 @@
 							</div>
 						</div>
 					</div>
+					-->
+
+
+					<!--  
 					<div class="row">
 						<div class="col-md-6 grid-margin stretch-card">
 							<div class="card">
@@ -566,6 +587,9 @@
 							</div>
 						</div>
 					</div>
+					-->
+
+					<!-- 
 					<div class="row">
 						<div class="col-md-12 grid-margin stretch-card">
 							<div class="card position-relative">
@@ -793,6 +817,10 @@
 							</div>
 						</div>
 					</div>
+					-->
+
+					<!-- 
+					
 					<div class="row">
 						<div class="col-md-7 grid-margin stretch-card">
 							<div class="card">
@@ -924,6 +952,9 @@
 							</div>
 						</div>
 					</div>
+					-->
+
+					<!--  
 					<div class="row">
 						<div class="col-md-4 stretch-card grid-margin">
 							<div class="card">
@@ -1131,11 +1162,20 @@
 							</div>
 						</div>
 					</div>
+					-->
+
 					<div class="row">
 						<div class="col-md-12 grid-margin stretch-card">
 							<div class="card">
+
 								<div class="card-body">
-									<p class="card-title">Advanced Table</p>
+									<ui:insert name="content">
+										<p class="card-title">Crear Cliente</p>
+										<span>Página en construcción</span>
+									</ui:insert>
+
+
+									<!--  
 									<div class="row">
 										<div class="col-12">
 											<div class="table-responsive">
@@ -1157,6 +1197,8 @@
 											</div>
 										</div>
 									</div>
+									-->
+
 								</div>
 							</div>
 
@@ -1196,27 +1238,28 @@
 	<!-- container-scroller -->
 
 	<!-- plugins:js -->
-	<script src="vendors/js/vendor.bundle.base.js"></script>
+	<script src="template/vendors/js/vendor.bundle.base.js"></script>
 	<!-- endinject -->
 	<!-- Plugin js for this page -->
-	<script src="vendors/chart.js/Chart.min.js"></script>
-	<script src="vendors/datatables.net/jquery.dataTables.js"></script>
-	<script src="vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-	<script src="js/dataTables.select.min.js"></script>
+	<script src="template/vendors/chart.js/Chart.min.js"></script>
+	<script src="template/vendors/datatables.net/jquery.dataTables.js"></script>
+	<script
+		src="template/vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+	<script src="template/js/dataTables.select.min.js"></script>
 
 	<!-- End plugin js for this page -->
 	<!-- inject:js -->
-	<script src="js/off-canvas.js"></script>
-	<script src="js/hoverable-collapse.js"></script>
-	<script src="js/template.js"></script>
-	<script src="js/settings.js"></script>
-	<script src="js/todolist.js"></script>
+	<script src="template/js/off-canvas.js"></script>
+	<script src="template/js/hoverable-collapse.js"></script>
+	<script src="template/js/template.js"></script>
+	<script src="template/js/settings.js"></script>
+	<script src="template/js/todolist.js"></script>
 	<!-- endinject -->
 	<!-- Custom js for this page-->
-	<script src="js/dashboard.js"></script>
-	<script src="js/Chart.roundedBarCharts.js"></script>
+	<script src="template/js/dashboard.js"></script>
+	<script src="template/js/Chart.roundedBarCharts.js"></script>
 	<!-- End custom js for this page-->
-</body>
+</h:body>
 
 </html>
 
