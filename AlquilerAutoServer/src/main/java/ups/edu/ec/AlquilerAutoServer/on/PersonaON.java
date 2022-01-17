@@ -10,7 +10,7 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 
 @Stateless
-public class PersonaON implements PersonaONlocal{
+public class PersonaON implements PersonaONLocal, PersonaONRemote{
 
 	@Inject
 	private PersonaDAO personaDAO;

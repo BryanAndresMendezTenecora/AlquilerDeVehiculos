@@ -6,7 +6,7 @@ import javax.ejb.Local;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 @Local
-public interface PersonaONlocal {
+public interface PersonaONLocal {
 	public void insertarPersona(Persona persona) throws Exception;
 	public void actualizarPersona(Persona persona) throws Exception;
 	public Persona buscarPersona(String cedula) throws Exception;

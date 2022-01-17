@@ -24,7 +24,7 @@ import ups.edu.ec.AlquilerAutoServer.on.ComentarioONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.DevolucionONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
-import ups.edu.ec.AlquilerAutoServer.on.PersonaONlocal;
+import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.TarjetacreditoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
@@ -39,7 +39,7 @@ public class vistaprincipal extends HttpServlet {
 	@Inject
 	private VehiculoONLocal vehiculoONL;
 	@Inject
-	private PersonaONlocal personaONL;
+	private PersonaONLocal personaONL;
 	@Inject
 	private PedidoONLocal pedidoONL;
 	@Inject
