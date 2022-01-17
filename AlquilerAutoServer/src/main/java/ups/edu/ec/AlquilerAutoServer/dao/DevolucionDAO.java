@@ -23,12 +23,12 @@ public class DevolucionDAO {
 	}
 	
 	public Devolucion read(int id) throws Exception {
-		Devolucion p = em.find(Devolucion.class, cedula);
+		Devolucion p = em.find(Devolucion.class, id);
 		return p;
 	}
 	
 	public void delete(int id) throws Exception {
-		Devolucion p = em.find(Devolucion.class, cedula);
+		Devolucion p = em.find(Devolucion.class, id);
 		em.remove(p);
 	}
 
