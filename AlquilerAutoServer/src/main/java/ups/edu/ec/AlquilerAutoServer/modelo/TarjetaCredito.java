@@ -1,12 +1,15 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table(name = "TBL_tarjetacredito")
-public class TarjetaCredito {
+public class TarjetaCredito implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "tar_id")
 	private int id;

@@ -34,7 +34,24 @@ public class VehiculoBean {
 	}
 	
 	
-	
+	public String guardar() {
+
+		System.out.println("Guardando " + this.vehiculo.getMarca());
+
+		/*
+		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
+		 * p.setDireccion(this.direccion);
+		 */
+		try {
+			vehiculoON.insertarVehiculo(this.vehiculo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		//return "listado-personas?faces-redirect=true";
+		return null;
+	}
 	
 
 }
