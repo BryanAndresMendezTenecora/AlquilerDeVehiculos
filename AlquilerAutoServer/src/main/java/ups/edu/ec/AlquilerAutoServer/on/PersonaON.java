@@ -38,4 +38,11 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 	public Persona getCliente(String cedula) throws Exception {
 		return personaDAO.read(cedula);
 	}
+	
+	public void guardar(Persona p) throws Exception {
+		if (personaDAO.read(p.getCedula()) == null)
+			personaDAO.insert(p);
+		else
+			personaDAO.update(p);
+	}
 }

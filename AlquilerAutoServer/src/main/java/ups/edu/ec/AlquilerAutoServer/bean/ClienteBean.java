@@ -69,13 +69,13 @@ public class ClienteBean {
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
-			clientesON.insertarPersona(this.persona);
+			clientesON.guardar(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return "listado-personas?faces-redirect=true";
+		return "listarPersona?faces-redirect=true";
 	}
 
 	public String editar(String cedula) {
@@ -106,14 +106,28 @@ public class ClienteBean {
 		if(cedula==null)
 			return;
 		
-		Persona p= clientesON.getPersonas(cedula);
-		persona=p;
+		Persona p;
+		try {
+			p = clientesON.getCliente(cedula);
+			persona=p;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	
 	public void loadDataEditar() {
-		//Persona p= clientesON.getCliente(persona.getCedula());
-		//persona=p;
+		Persona p;
+		try {
+			p = clientesON.getCliente(persona.getCedula());
+			persona=p;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 }
