@@ -94,7 +94,7 @@ public class ClienteBean {
 
 	private void loadClientes() {
 		try {
-			//this.clientes = clientesON.getClientes();
+			this.clientes = clientesON.getPersonas();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

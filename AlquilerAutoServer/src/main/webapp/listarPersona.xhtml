@@ -58,6 +58,11 @@
 #{per.telefono}
 </h:column>
 
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
+						value="Editar" immediate="true" />
+				</h:column>
 
 
 			</h:dataTable>

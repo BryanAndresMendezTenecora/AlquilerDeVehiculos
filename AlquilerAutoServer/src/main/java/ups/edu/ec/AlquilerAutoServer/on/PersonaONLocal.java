@@ -11,5 +11,5 @@ public interface PersonaONLocal {
 	public void actualizarPersona(Persona persona) throws Exception;
 	public Persona buscarPersona(String cedula) throws Exception;
 	public void eliminarPersona(String cedula) throws Exception;
-	public List<Persona> getPersonas();
+	public List<Persona> getPersonas() throws Exception;
 }
