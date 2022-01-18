@@ -8,13 +8,14 @@ import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoON;
+import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 @Named
 @RequestScoped
 public class VehiculoBean {
 	
 	@Inject
-	private VehiculoON vehiculoON;
+	private VehiculoONLocal vehiculoON;
 	
 	private Vehiculo vehiculo;
 	private List<Vehiculo> vehiculos;
