@@ -106,8 +106,8 @@ public class ClienteBean {
 		if(cedula==null)
 			return;
 		
-		//Persona p= clientesON.getCliente(cedula);
-		//persona=p;
+		Persona p= clientesON.getPersonas(cedula);
+		persona=p;
 	}
 	
 	
