@@ -1,18 +1,28 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.util.List;
+
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaON;
+import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 
 @Named
 @RequestScoped
 public class CategoriaBean {
-
-	private CategoriaON categoriaON;
+	@Inject
+	private CategoriaONLocal categoriaON;
 	private Categoria categoria;
+	private List<Categoria> categorias;
 	
+	@PostConstruct
+	public void init() {
+		this.loadcategorias();
+	}
 	
 	public Categoria getCategoria() {
 		return categoria;
@@ -21,14 +31,19 @@ public class CategoriaBean {
 		this.categoria = categoria;
 	}
 	
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
 	public String guardar() {
 
-		//System.out.println("Guardando " + this.categoria.getMarca());
+		System.out.println("Guardando " + this.categoria.getNombre());
 
-		/*
-		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
-		 * p.setDireccion(this.direccion);
-		 */
 		try {
 			categoriaON.insertarCategoria(this.categoria);
 		} catch (Exception e) {
@@ -37,7 +52,11 @@ public class CategoriaBean {
 		}
 
 		//return "listado-personas?faces-redirect=true";
-		return null;
+		return "listarCategoria?faces-redirect=true";
+	}
+	
+	public void loadcategorias() {
+		this.categorias = categoriaON.getCategorias();
 	}
 	
 }
