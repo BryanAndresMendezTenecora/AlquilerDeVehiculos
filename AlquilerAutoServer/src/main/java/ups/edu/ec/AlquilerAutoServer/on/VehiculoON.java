@@ -21,7 +21,6 @@ public class VehiculoON implements VehiculoONLocal{
 		VehiculoDAO.insert(Vehiculo);
 	}
 	
-	
 	public void actualizarVehiculo(Vehiculo Vehiculo) throws Exception {
 		VehiculoDAO.update(Vehiculo);
 	}
@@ -41,4 +40,8 @@ public class VehiculoON implements VehiculoONLocal{
 		return VehiculoDAO.getCategoria(categoria);
 	}
 
+	public List<Vehiculo> listarDisponibilidad(){
+		String disponibilidad="disponible";
+		return VehiculoDAO.getVehiculosDisponibilidad(disponibilidad);
+	}
 }

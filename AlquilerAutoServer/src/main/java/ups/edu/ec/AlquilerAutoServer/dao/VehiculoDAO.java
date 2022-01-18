@@ -48,4 +48,18 @@ public class VehiculoDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	
+	public List<Vehiculo> getVehiculosDisponibilidad(String nombre){
+		
+		String jpql2="SELECT p FROM Vehiculo p WHERE estado = ?1";
+		
+		//nombre= nombre+"%";
+		Query query= em.createQuery(jpql2, Vehiculo.class);
+		query.setParameter(1, nombre);
+		
+		List<Vehiculo> vehiculos=query.getResultList();
+		return vehiculos;
+		
+	}
 }

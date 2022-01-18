@@ -75,5 +75,10 @@ public class VehiculoBean {
 		
 		return null;
 	}
+	
+	public void listarDisponibilidad() {
+		this.vehiculos=vehiculoON.getvehiculos();
+		
+	}
 
 }
