@@ -30,7 +30,11 @@ public class CategoriaON implements CategoriaONLocal{
 	public void eliminarCategoria(int id) throws Exception {
 		categoriaDAO.delete(id);
 	}
-	public List<Categoria> getCategorias(){
+	public List<Categoria> getCategorias() {
 		return categoriaDAO.getList();
+	}
+	
+	public Categoria buscarNombre(String categoria) throws Exception{
+		return categoriaDAO.buscarNombre(categoria);
 	}
 }

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Listado de clientes
+	</ui:define>
+	<ui:define name="content">
+	<div></div>
+		<h:form>
+			<h:dataTable var="veh" class="table table-striped table-borderless"
+				value="#{vehiculoBean.vehiculos}">
+				<h:column>
+					<f:facet name="header">Marca</f:facet>
+						#{veh.marca}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Modelo</f:facet>
+						#{veh.modelo}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Stock</f:facet>
+						#{veh.stock}
+				</h:column>
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+
+</html>

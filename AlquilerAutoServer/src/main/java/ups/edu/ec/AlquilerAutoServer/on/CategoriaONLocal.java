@@ -12,4 +12,5 @@ public interface CategoriaONLocal {
 	public Categoria buscarCategoria(int id) throws Exception;
 	public void eliminarCategoria(int id) throws Exception;
 	public List<Categoria> getCategorias();
+	public Categoria buscarNombre(String categoria) throws Exception;
 }

@@ -6,10 +6,14 @@ import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import ups.edu.ec.AlquilerAutoServer.dao.VehiculoDAO;
-
+import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
+
+
 @Stateless
 public class VehiculoON implements VehiculoONLocal{
+	
+	
 	@Inject
 	private VehiculoDAO VehiculoDAO;
 	
@@ -32,4 +36,9 @@ public class VehiculoON implements VehiculoONLocal{
 	public List<Vehiculo> getvehiculos(){
 		return VehiculoDAO.getList();
 	}
+	
+	public List<Vehiculo> buscarCategoria(String categoria){
+		return VehiculoDAO.getCategoria(categoria);
+	}
+
 }

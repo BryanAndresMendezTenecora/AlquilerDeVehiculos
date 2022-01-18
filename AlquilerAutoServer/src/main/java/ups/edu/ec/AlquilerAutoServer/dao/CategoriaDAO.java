@@ -15,20 +15,20 @@ public class CategoriaDAO {
 	@PersistenceContext // coge el datasourses que tenemos en el proyecto(persistence.xml)
 	private EntityManager em;
 	
-	public void insert(Categoria p) {
+	public void insert(Categoria p) throws Exception {
 		em.persist(p);
 	}
 	
-	public void update(Categoria p) {
+	public void update(Categoria p) throws Exception {
 		em.merge(p);
 	}
 	
-	public Categoria read(int id) {
+	public Categoria read(int id) throws Exception{
 		Categoria p= em.find(Categoria.class, id);
 		return p;
 	}
 	
-	public void delete(int id) {
+	public void delete(int id) throws Exception {
 		Categoria p= em.find(Categoria.class, id);
 		em.remove(p);
 	}
@@ -39,4 +39,20 @@ public class CategoriaDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	public Categoria buscarNombre(String nombre) throws Exception{
+		List<Categoria> listado=new ArrayList<Categoria>();
+		//String nombre=categoria.getNombre(); 
+		String jpql="SELECT p FROM Categoria p WHERE nombre = ?";
+		Query query= em.createQuery(jpql,Categoria.class);
+		listado = query.getResultList();
+		Categoria c= new Categoria();
+		if(listado.size() == 1) {
+			for(Categoria var : listado) {
+				 c= var;
+			}
+		}
+		return c;
+	}
+	
 }

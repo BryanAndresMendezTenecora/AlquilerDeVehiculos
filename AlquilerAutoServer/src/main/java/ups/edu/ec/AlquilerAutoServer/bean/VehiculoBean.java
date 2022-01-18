@@ -2,11 +2,14 @@ package ups.edu.ec.AlquilerAutoServer.bean;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
+import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoON;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
@@ -16,6 +19,9 @@ public class VehiculoBean {
 	
 	@Inject
 	private VehiculoONLocal vehiculoON;
+	
+	@Inject
+	private CategoriaONLocal categoriaON;
 	
 	private Vehiculo vehiculo;
 	private List<Vehiculo> vehiculos;
@@ -33,6 +39,10 @@ public class VehiculoBean {
 		this.vehiculos = vehiculos;
 	}
 	
+	@PostConstruct
+	public void init() {
+		vehiculos= vehiculoON.getvehiculos();
+	}
 	
 	public String guardar() {
 
@@ -53,5 +63,17 @@ public class VehiculoBean {
 		return null;
 	}
 	
+	
+	public String buscarPorCategoria(String categoria){
+		try {
+			Categoria cate= categoriaON.buscarNombre(categoria);
+			this.vehiculos=vehiculoON.buscarCategoria(categoria);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
 
 }

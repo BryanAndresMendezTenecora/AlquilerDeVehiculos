@@ -40,4 +40,12 @@ public class VehiculoDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	public List<Vehiculo> getCategoria(String nombre){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p WHERE c";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		listado = query.getResultList();
+		return listado;
+	}
 }
