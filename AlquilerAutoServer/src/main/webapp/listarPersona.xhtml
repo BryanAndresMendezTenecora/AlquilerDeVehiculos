@@ -12,7 +12,7 @@
 	<ui:define name="content">
 		<h:form>
 			<h:dataTable var="per" class="table table-bordered"
-				value="">
+				value="#{clienteBean.clientes}">
 				<h:column>
 					<f:facet name="header">Cedula</f:facet>
 #{per.cedula}
@@ -24,15 +24,41 @@
 </h:column>
 
 				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+#{per.apellido}
+</h:column>
+
+				<h:column>
 					<f:facet name="header">Direccion</f:facet>
 #{per.direccion}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Acciones</f:facet>
-					<h:commandButton 
-						value="Editar" immediate="true" />
-				</h:column>
+					<f:facet name="header">Email</f:facet>
+#{per.email}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Estado</f:facet>
+#{per.estado}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Password</f:facet>
+#{per.password}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Rol</f:facet>
+#{per.rol}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Telefono</f:facet>
+#{per.telefono}
+</h:column>
+
+
 
 			</h:dataTable>
 		</h:form>

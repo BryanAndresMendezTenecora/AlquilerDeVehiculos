@@ -33,7 +33,7 @@ public class PersonaDAO {
 		Persona p = em.find(Persona.class, cedula);
 		em.remove(p);
 	}
-
+/*
 	public List<Persona> getPersonas() throws Exception{
 		String jpql2="SELECT p FROM Persona p";
 		
@@ -44,6 +44,7 @@ public class PersonaDAO {
 		List<Persona> personas=query.getResultList();
 		return personas;
 	}
+	*/
 	public List<Persona> getList(){
 		List<Persona> listado=new ArrayList<Persona>();
 		String jpql="SELECT p FROM Persona p";

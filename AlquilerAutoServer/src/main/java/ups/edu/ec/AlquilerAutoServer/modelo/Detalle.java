@@ -1,5 +1,7 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "TBL_detalle")
-public class Detalle {
+public class Detalle implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "det_id")
 	private int id;

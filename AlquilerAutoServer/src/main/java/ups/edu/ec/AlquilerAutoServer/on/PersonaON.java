@@ -31,7 +31,7 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 	public void eliminarPersona(String cedula) throws Exception {
 		personaDAO.delete(cedula);
 	}
-	public List<Persona> getPersonas(){
+	public List<Persona> getPersonas() {
 		return personaDAO.getList();
 	}
 }
