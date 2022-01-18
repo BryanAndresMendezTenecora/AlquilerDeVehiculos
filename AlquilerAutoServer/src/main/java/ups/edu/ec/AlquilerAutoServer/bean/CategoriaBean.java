@@ -16,7 +16,7 @@ import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 public class CategoriaBean {
 	@Inject
 	private CategoriaONLocal categoriaON;
-	private Categoria categoria;
+	private Categoria categoria=new Categoria();
 	private List<Categoria> categorias;
 	
 	@PostConstruct
