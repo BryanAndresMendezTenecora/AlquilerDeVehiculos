@@ -9,7 +9,7 @@
 <h:head>
 	<f:metadata>
 		<f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam>
-		<f:viewAction action="#{clienteBean.loadData()}"/>
+		<f:viewAction action="#{clienteBean.loadData()}" />
 	</f:metadata>
 </h:head>
 
@@ -26,70 +26,95 @@
 			<h:form class="forms-sample">
 				<div class="form-group">
 					<label for="txtCedula">Cedula</label>
-					<h:inputText type="text" class="form-control"
-						id="campoCedula" placeholder="Cedula"
-						value="#{clienteBean.persona.cedula}">
-						<f:ajax execute="txtCedula" render="campoNombre campoApellido campoDireccion campoTelefono campoEstado campoEmail campoPassword campoRol"
-						listener="#{clienteBean.loadDataEditar()}"/>
-						</h:inputText>
+					<h:inputText type="text" class="form-control" id="campoCedula"
+						placeholder="Cedula" value="#{clienteBean.persona.cedula}">
+						<f:ajax execute="txtCedula"
+							render="campoNombre campoApellido campoDireccion campoTelefono campoEstado campoEmail campoPassword campoRol"
+							listener="#{clienteBean.loadDataEditar()}" />
+					</h:inputText>
 
 				</div>
 				<div class="form-group">
 					<label for="txtNombre">Nombre</label>
-					<h:inputText type="email" class="form-control"
-						id="campoNombre" placeholder="Nombre"
-						value="#{clienteBean.persona.nombre}" />
+					<h:inputText type="email" class="form-control" id="campoNombre"
+						placeholder="Nombre" value="#{clienteBean.persona.nombre}" />
 				</div>
-				
+
 				<div class="form-group">
 					<label for="txtApellido">Apellido</label>
-					<h:inputText type="email" class="form-control"
-						id="campoApellido" placeholder="Apellido"
-						value="#{clienteBean.persona.apellido}" />
+					<h:inputText type="email" class="form-control" id="campoApellido"
+						placeholder="Apellido" value="#{clienteBean.persona.apellido}" />
 				</div>
-				
+
 				<div class="form-group">
 					<label for="txtDireccion">Direccion</label>
 					<h:inputText type="password" class="form-control"
 						id="campoDireccion" placeholder="Direccion"
 						value="#{clienteBean.persona.direccion}" />
 				</div>
-				
+
 				<div class="form-group">
 					<label for="txtTelefono">Telefono</label>
 					<h:inputText type="password" class="form-control"
 						id="campoTelefono" placeholder="Direccion"
 						value="#{clienteBean.persona.telefono}" />
 				</div>
-				
+
+ 
 				<div class="form-group">
 					<label for="txtEstado">Estado</label>
-					<h:inputText type="password" class="form-control"
-						id="campoEstado" placeholder="Direccion"
-						value="#{clienteBean.persona.estado}" />
+					<h:inputText type="password" class="form-control" id="campoEstado"
+						placeholder="Direccion" value="#{clienteBean.persona.estado}" />
 				</div>
-				
-				
+
+
+
+<!-- 
+				<div class="form-group row">
+					<label class="col-sm-3 col-form-label">Estado</label>
+					<div class="col-sm-4">
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="membershipRadios"
+								id="membershipRadios1"  value="#{clienteBean.persona.estado}"  /> Activo <i
+								class="input-helper" ></i></label>
+								
+						</div>
+					</div>
+					<div class="col-sm-5">
+						<div class="form-check">
+							<label class="form-check-label"> <input type="radio"
+								class="form-check-input" name="membershipRadios"
+								id="membershipRadios2" value="#{clienteBean.persona.estado}" /> Inactivo <i
+								class="input-helper"></i></label>
+						</div>
+					</div>
+				</div>
+
+-->
+
+
 				<div class="form-group">
 					<label for="txtEmail">Email</label>
-					<h:inputText type="password" class="form-control"
-						id="campoEmail" placeholder="Direccion"
-						value="#{clienteBean.persona.email}" />
+					<h:inputText type="password" class="form-control" id="campoEmail"
+						placeholder="Direccion" value="#{clienteBean.persona.email}" />
 				</div>
-				
+
 				<div class="form-group">
 					<label for="txtPassword">Password</label>
 					<h:inputText type="password" class="form-control"
 						id="campoPassword" placeholder="Direccion"
 						value="#{clienteBean.persona.password}" />
 				</div>
-				
+
 				<div class="form-group">
 					<label for="txtRol">Rol</label>
-					<h:inputText type="password" class="form-control"
-						id="campoRol" placeholder="Direccion"
-						value="#{clienteBean.persona.rol}" />
+					<h:inputText type="password" class="form-control" id="campoRol"
+						placeholder="Direccion" value="#{clienteBean.persona.rol}" />
 				</div>
+
+
+
 
 				<h:commandButton type="submit" class="btn btn-primary mr-2"
 					action="#{clienteBean.guardar()}" value="Guardar" />
