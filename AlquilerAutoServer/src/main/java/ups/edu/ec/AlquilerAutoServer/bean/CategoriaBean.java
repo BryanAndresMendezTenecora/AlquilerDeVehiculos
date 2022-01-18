@@ -12,7 +12,7 @@ public class CategoriaBean {
 	
 	private CategoriaON categoriaON;
 	private Categoria categoria;
-	
+	private int codigo;
 	
 	public Categoria getCategoria() {
 		return categoria;
