@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Listado de Vehiculos
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable var="per" class="table table-bordered"
+				value="#{vehiculoBean.vehiculos}">
+				<h:column>
+					<f:facet name="header">Codigo</f:facet>
+#{per.id}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Modelo</f:facet>
+#{per.modelo}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Marca</f:facet>
+#{per.marca}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Stock</f:facet>
+#{per.stock}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Estado</f:facet>
+#{per.estado}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Categoria</f:facet>
+#{per.categoria.id}
+</h:column>
+
+
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{vehiculoBean.editar(per.id)}"
+						value="Editar" immediate="true" />
+				</h:column>
+
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

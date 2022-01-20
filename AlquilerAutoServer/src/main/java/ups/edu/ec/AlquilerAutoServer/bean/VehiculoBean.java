@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoON;
@@ -27,6 +28,15 @@ public class VehiculoBean {
 	private Categoria categoria= new Categoria();
 	private List<Vehiculo> vehiculos;
 	
+	private int codigo;
+	
+	public int getCodigo() {
+		return codigo;
+	}
+	public void setCodigo(int codigo) {
+		System.out.println("set " + codigo);
+		this.codigo = codigo;
+	}
 	public Vehiculo getVehiculo() {
 		return vehiculo;
 	}
@@ -44,7 +54,14 @@ public class VehiculoBean {
 	public void init() {
 		vehiculo = new Vehiculo();
 		vehiculo.setCategoria(new Categoria());
-		vehiculos= vehiculoON.getvehiculos();
+		try {
+			vehiculos= vehiculoON.getvehiculos();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		this.loadVehiculos();
 	}
 	
 	public String guardar() {
@@ -57,15 +74,15 @@ public class VehiculoBean {
 		 */
 		try {
 			
-		
-			vehiculoON.insertarVehiculo(this.vehiculo);
+			
+			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		//return "listado-personas?faces-redirect=true";
-		return null;
+		return "listarVehiculo?faces-redirect=true";
+		
 	}
 	
 	
@@ -82,7 +99,55 @@ public class VehiculoBean {
 	}
 	
 	public void listarDisponibilidad() {
-		this.vehiculos=vehiculoON.getvehiculos();
+		try {
+			this.vehiculos=vehiculoON.getvehiculos();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public String editar(int codigo) {
+		System.out.println(codigo);
+		return "crear-vehiculo?faces-redirect=true&id=" + codigo;
+	}
+	
+	
+	private void loadVehiculos() {
+		try {
+			this.vehiculos = vehiculoON.getvehiculos();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public void loadData() {
+		if(codigo==0)
+			return;
+		
+		Vehiculo p;
+		try {
+			p = vehiculoON.getVehiculo(codigo);
+			vehiculo=p;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void loadDataEditar() {
+		Vehiculo p;
+		try {
+			p = vehiculoON.getVehiculo(vehiculo.getId());
+			vehiculo=p;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 

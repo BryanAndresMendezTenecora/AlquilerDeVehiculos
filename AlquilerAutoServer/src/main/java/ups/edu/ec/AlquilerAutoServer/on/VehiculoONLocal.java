@@ -13,6 +13,10 @@ public interface VehiculoONLocal {
 	public void actualizarVehiculo(Vehiculo Vehiculo) throws Exception;
 	public Vehiculo buscarVehiculo(int id) throws Exception;
 	public void eliminarVehiculo(int id) throws Exception;
-	public List<Vehiculo> getvehiculos();
+	public List<Vehiculo> getvehiculos() throws Exception;
 	public List<Vehiculo> buscarCategoria(String categoria);
+	public Vehiculo getVehiculo(int codigo) throws Exception;
+	
+	public void guardar(Vehiculo p) throws Exception;
+		
 }
