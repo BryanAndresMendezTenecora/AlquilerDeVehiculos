@@ -10,6 +10,7 @@ import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
+import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 
 @Stateless
 public class PersonaDAO {
@@ -51,5 +52,16 @@ public class PersonaDAO {
 		Query query= em.createQuery(jpql,Persona.class);
 		listado = query.getResultList();
 		return listado;
+	}
+	
+	
+	
+	public List<pedidoCabecera> getContratos(String cedula){
+		List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
+		String jpql="SELECT p FROM pedidoCabecera p WHERE persona= ?1";
+		Query query= em.createQuery(jpql,pedidoCabecera.class);
+		query.setParameter(1, cedula);
+		pedidos=query.getResultList();
+		return pedidos;
 	}
 }

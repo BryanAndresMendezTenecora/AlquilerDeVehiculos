@@ -12,4 +12,5 @@ public interface PedidoONLocal {
 	public pedidoCabecera buscarpedidoCabecera(int id) throws Exception;
 	public void eliminarpedidoCabecera(int id) throws Exception;
 	public List<pedidoCabecera> getpedidoCabeceras();
+	
 }
