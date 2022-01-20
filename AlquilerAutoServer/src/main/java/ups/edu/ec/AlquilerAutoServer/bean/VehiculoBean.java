@@ -83,7 +83,7 @@ public class VehiculoBean {
 		 */
 		try {
 			
-			
+			this.vehiculo.setEstado("Activo");
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -155,6 +155,7 @@ public class VehiculoBean {
 			vehiculo=p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -171,5 +172,5 @@ public class VehiculoBean {
 	}
 	
 	
-
+	//Hola
 }

@@ -60,16 +60,17 @@
 						value="#{clienteBean.persona.telefono}" />
 				</div>
 
- 
+
+				<!--  
 				<div class="form-group">
 					<label for="txtEstado">Estado</label>
 					<h:inputText type="password" class="form-control" id="campoEstado"
 						placeholder="Direccion" value="#{clienteBean.persona.estado}" />
 				</div>
+-->
 
 
-
-<!-- 
+				<!-- 
 				<div class="form-group row">
 					<label class="col-sm-3 col-form-label">Estado</label>
 					<div class="col-sm-4">
@@ -107,12 +108,27 @@
 						value="#{clienteBean.persona.password}" />
 				</div>
 
+				<!--  
 				<div class="form-group">
 					<label for="txtRol">Rol</label>
 					<h:inputText type="password" class="form-control" id="campoRol"
 						placeholder="Direccion" value="#{clienteBean.persona.rol}" />
 				</div>
+				-->
 
+				<div class="form-group">
+					<label for="itemRoles">Rol</label>
+					<h:selectOneMenu value="#{clienteBean.persona.rol}"
+						class="form-control" id="campoRol">
+						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+						<f:selectItem itemValue="Administrador" itemLabel="Administrador"
+							class="dropdown-item" />
+						<f:selectItem itemValue="Cliente" itemLabel="Cliente"
+							class="dropdown-item" />
+					</h:selectOneMenu>
+				</div>
+
+				
 
 
 
