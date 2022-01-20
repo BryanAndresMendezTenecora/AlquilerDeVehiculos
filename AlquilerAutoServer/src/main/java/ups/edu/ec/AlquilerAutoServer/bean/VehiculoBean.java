@@ -83,7 +83,7 @@ public class VehiculoBean {
 		 */
 		try {
 			
-			
+			this.vehiculo.setEstado("Activo");
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

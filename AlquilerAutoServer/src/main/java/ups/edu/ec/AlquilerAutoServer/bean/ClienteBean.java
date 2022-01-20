@@ -142,6 +142,7 @@ public class ClienteBean {
 		try {
 			this.persona.setCedula("0106309297");
 			this.persona.setEstado("a");
+			this.persona.setEstado("a");
 			clientesON.actualizarPersona(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
