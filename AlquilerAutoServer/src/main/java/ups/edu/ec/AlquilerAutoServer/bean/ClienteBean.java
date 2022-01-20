@@ -130,16 +130,17 @@ public class ClienteBean {
 		
 	}
 	
-	
-	public String eliminar(String cedula) {
+	//#String ced=c
+	public String eliminar() {
 
-		System.out.println("Eliminado " + this.persona.getNombre());
+		//System.out.println("Eliminado " + this.persona.getNombre());
 
 		/*
 		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
+			this.persona.setCedula("0106309297");
 			this.persona.setEstado("a");
 			clientesON.actualizarPersona(this.persona);
 		} catch (Exception e) {
