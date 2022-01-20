@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import ups.edu.ec.AlquilerAutoServer.dao.PersonaDAO;
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
+import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 
 @Stateless
 public class PersonaON implements PersonaONLocal, PersonaONRemote{
@@ -44,5 +45,10 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 			personaDAO.insert(p);
 		else
 			personaDAO.update(p);
+	}
+	
+	
+	public List<pedidoCabecera>  consultarContrato(String cedula) throws Exception{
+		return personaDAO.getContratos(cedula);
 	}
 }

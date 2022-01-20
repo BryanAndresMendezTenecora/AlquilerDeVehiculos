@@ -172,6 +172,7 @@ public class VehiculoBean {
 	}
 	
 	
+	
 	public String eliminar(int id,String modelo,String marca,int stock ,int categoriaid) {
 
 		System.out.println("eliminando " + this.vehiculo.getMarca());
@@ -194,4 +195,34 @@ public class VehiculoBean {
 		return "listarVehiculo?faces-redirect=true&id="+id;
 		
 	}
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void probando() {
+		System.out.println("POS:");
+	}
+	
+	//Hola
+>>>>>>> 12df66a3cf13f158a0f6bfc71d102a0726f3ab4a
 }
