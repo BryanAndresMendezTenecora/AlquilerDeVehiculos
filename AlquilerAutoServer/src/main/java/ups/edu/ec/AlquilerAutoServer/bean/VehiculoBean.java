@@ -23,7 +23,8 @@ public class VehiculoBean {
 	@Inject
 	private CategoriaONLocal categoriaON;
 	
-	private Vehiculo vehiculo;
+	private Vehiculo vehiculo = new Vehiculo();
+	private Categoria categoria= new Categoria();
 	private List<Vehiculo> vehiculos;
 	
 	public Vehiculo getVehiculo() {
@@ -41,6 +42,8 @@ public class VehiculoBean {
 	
 	@PostConstruct
 	public void init() {
+		vehiculo = new Vehiculo();
+		vehiculo.setCategoria(new Categoria());
 		vehiculos= vehiculoON.getvehiculos();
 	}
 	
@@ -53,6 +56,8 @@ public class VehiculoBean {
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
+			
+		
 			vehiculoON.insertarVehiculo(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
