@@ -62,4 +62,12 @@ public class VehiculoDAO {
 		return vehiculos;
 		
 	}
+	public List<Categoria> listarcategorias(){
+		List<Categoria> listaCategorias=null;
+		
+		String jpql="SELECT c FROM Categoria c";
+		Query query= em.createQuery(jpql,Categoria.class);
+		listaCategorias = query.getResultList();
+		return listaCategorias;
+	}
 }

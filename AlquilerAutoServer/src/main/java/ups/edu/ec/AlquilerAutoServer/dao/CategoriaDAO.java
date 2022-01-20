@@ -23,6 +23,12 @@ public class CategoriaDAO {
 		em.merge(p);
 	}
 	
+	public void updateestado(String estado) throws Exception {
+		Categoria ca=new Categoria();
+		ca.setEstado(estado);
+		em.merge(ca);
+	}
+	
 	public Categoria read(int id) throws Exception{
 		Categoria p= em.find(Categoria.class, id);
 		return p;
@@ -53,6 +59,15 @@ public class CategoriaDAO {
 			}
 		}
 		return c;
+	}
+	
+	public List<Categoria> listarcategorias(){
+		List<Categoria> listaCategorias=null;
+		
+		String jpql="SELECT c FROM Categoria c";
+		Query query= em.createQuery(jpql,Categoria.class);
+		listaCategorias = query.getResultList();
+		return listaCategorias;
 	}
 	
 }

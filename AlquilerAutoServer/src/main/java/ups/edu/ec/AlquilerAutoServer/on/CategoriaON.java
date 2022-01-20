@@ -46,6 +46,14 @@ public class CategoriaON implements CategoriaONLocal{
 		if (categoriaDAO.read(p.getId()) == null)
 			categoriaDAO.insert(p);
 		else
+			
 			categoriaDAO.update(p);
 	}
+	
+	public List<Categoria> listarcategorias(){
+		
+		return categoriaDAO.listarcategorias();
+	}
+	
+	
 }

@@ -1,9 +1,11 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -27,9 +29,9 @@ public class VehiculoBean {
 	private Vehiculo vehiculo = new Vehiculo();
 	private Categoria categoria= new Categoria();
 	private List<Vehiculo> vehiculos;
-	
+	private List<Categoria> categorias;
 	private int codigo;
-	
+	private List<SelectItem> listCategorias;
 	public int getCodigo() {
 		return codigo;
 	}
@@ -50,6 +52,13 @@ public class VehiculoBean {
 		this.vehiculos = vehiculos;
 	}
 	
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
 	@PostConstruct
 	public void init() {
 		vehiculo = new Vehiculo();
@@ -150,5 +159,17 @@ public class VehiculoBean {
 		}
 		
 	}
+	public List<SelectItem> getListCategorias() {
+		this.listCategorias =new  ArrayList<SelectItem>();
+		List<Categoria> c =categoriaON.listarcategorias();
+		listCategorias.clear();
+		for (Categoria cat:c) {
+			SelectItem categoriaitem =new SelectItem(cat.getId(),cat.getNombre());
+			this.listCategorias.add(categoriaitem);
+		}
+		return listCategorias;
+	}
+	
+	
 
 }

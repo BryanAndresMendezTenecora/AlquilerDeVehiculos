@@ -55,12 +55,19 @@
 					<h:inputText type="password" class="form-control" id="campoEstado"
 						placeholder="Direccion" value="#{vehiculoBean.vehiculo.estado}" />
 				</div>
-
+				<!--  
 				<div class="form-group">
 					<label for="txtCategoria">Categoria</label>
 					<h:inputText type="password" class="form-control" id="campoCategoria"
 						placeholder="Direccion"
 						value="#{vehiculoBean.vehiculo.categoria.id}" />
+				</div>-->
+				<div class="form-group" >
+					<label for="itemCategorias">Categorias</label>
+					<h:selectOneMenu value="#{vehiculoBean.vehiculo.categoria.id}" class="form-control" >
+					<f:selectItem itemLabel="--Slecione--" class="btn btn-light" />
+					<f:selectItems value="#{categoriaBean.listCategorias}" />
+					</h:selectOneMenu>
 				</div>
 
 

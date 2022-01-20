@@ -18,6 +18,7 @@ public class VehiculoON implements VehiculoONLocal{
 	@Inject
 	private VehiculoDAO VehiculoDAO;
 	
+	
 	public void insertarVehiculo(Vehiculo Vehiculo) throws Exception {
 		VehiculoDAO.insert(Vehiculo);
 	}
@@ -55,5 +56,9 @@ public class VehiculoON implements VehiculoONLocal{
 			VehiculoDAO.insert(p);
 		else
 			VehiculoDAO.update(p);
+	}
+	public List<Categoria> listarcategorias(){
+		
+		return VehiculoDAO.listarcategorias();
 	}
 }

@@ -1,9 +1,12 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.model.SelectItem;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -21,7 +24,7 @@ public class CategoriaBean {
 	private List<Categoria> categorias;
 	private int id;
 	private  String nombre;
-	
+	private List<SelectItem> listCategorias;
 	@PostConstruct
 	public void init() {
 		this.loadcategorias();
@@ -76,6 +79,7 @@ public class CategoriaBean {
 		return "listarCategoria?faces-redirect=true";
 	}
 	
+	
 	public void loadcategorias() {
 		this.categorias = categoriaON.getCategorias();
 	}
@@ -83,6 +87,7 @@ public class CategoriaBean {
 		System.out.println(id);
 		return "Categoria?faces-redirect=true&id=" + id;
 	}
+	
 	public void loadData() {
 		if(id==0)
 			return;
@@ -110,5 +115,20 @@ public class CategoriaBean {
 		}
 		
 	}
+
+	public List<SelectItem> getListCategorias() {
+		this.listCategorias =new  ArrayList<SelectItem>();
+		List<Categoria> c =categoriaON.listarcategorias();
+		listCategorias.clear();
+		for (Categoria cat:c) {
+			SelectItem categoriaitem =new SelectItem(cat.getId(),cat.getNombre());
+			this.listCategorias.add(categoriaitem);
+		}
+		return listCategorias;
+	}
+
+	
+	
+	
 	
 }

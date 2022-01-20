@@ -2,6 +2,7 @@ package ups.edu.ec.AlquilerAutoServer.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -64,7 +65,7 @@ public class vistaprincipal extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		//insertando Persona
+		/*//insertando Persona
 		Persona per=new Persona();
 		per.setCedula("0302882725");
 		per.setNombre("Juan");
@@ -188,7 +189,11 @@ public class vistaprincipal extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		
+		*/
+		List<Categoria> categorias=categoriaONL.listarcategorias();
+		for(Categoria cat: categorias) {
+			System.out.println(cat.getId()+" , "+cat.getNombre());	
+		}
 		
 		
 	}

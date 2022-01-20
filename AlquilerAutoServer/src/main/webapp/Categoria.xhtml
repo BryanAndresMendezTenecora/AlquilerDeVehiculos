@@ -48,7 +48,13 @@
 						id="campoEstado" placeholder="Nombre"
 						value="#{categoriaBean.categoria.estado}" />
 				</div>
-				
+				<div class="form-group">
+					<label for="itemCategorias">Categorias</label>
+					<h:selectOneMenu value="#{categoriaBean.categoria.id}">
+					<f:selectItem itemLabel="--Slecione--"/>
+					<f:selectItems value="#{categoriaBean.listCategorias}"/>
+					</h:selectOneMenu>
+				</div>
 
 				<h:commandButton type="submit" class="btn btn-primary mr-2"
 					action="#{categoriaBean.guardar()}" value="Guardar" />

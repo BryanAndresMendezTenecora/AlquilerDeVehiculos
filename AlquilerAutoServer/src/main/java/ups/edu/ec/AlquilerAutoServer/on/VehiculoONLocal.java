@@ -18,5 +18,5 @@ public interface VehiculoONLocal {
 	public Vehiculo getVehiculo(int codigo) throws Exception;
 	
 	public void guardar(Vehiculo p) throws Exception;
-		
+	public List<Categoria> listarcategorias();
 }

@@ -16,4 +16,7 @@ public interface CategoriaONLocal {
 	public Categoria getCategoria(int id) throws Exception;
 	
 	public void guardar(Categoria p) throws Exception;
+	
+	public List<Categoria> listarcategorias();
+	
 }
