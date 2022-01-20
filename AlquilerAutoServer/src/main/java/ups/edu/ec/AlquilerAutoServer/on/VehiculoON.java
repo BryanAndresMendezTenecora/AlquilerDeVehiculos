@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import ups.edu.ec.AlquilerAutoServer.dao.VehiculoDAO;
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 
 
@@ -32,7 +33,7 @@ public class VehiculoON implements VehiculoONLocal{
 	public void eliminarVehiculo(int id) throws Exception {
 		VehiculoDAO.delete(id);
 	}
-	public List<Vehiculo> getvehiculos(){
+	public List<Vehiculo> getvehiculos() throws Exception{
 		return VehiculoDAO.getList();
 	}
 	
@@ -40,8 +41,19 @@ public class VehiculoON implements VehiculoONLocal{
 		return VehiculoDAO.getCategoria(categoria);
 	}
 
-	public List<Vehiculo> listarDisponibilidad(){
+	public List<Vehiculo> listarDisponibilidad() throws Exception{
 		String disponibilidad="disponible";
 		return VehiculoDAO.getVehiculosDisponibilidad(disponibilidad);
+	}
+	
+	public Vehiculo getVehiculo(int codigo) throws Exception {
+		return VehiculoDAO.read(codigo);
+	}
+	
+	public void guardar(Vehiculo p) throws Exception {
+		if (VehiculoDAO.read(p.getId()) == null)
+			VehiculoDAO.insert(p);
+		else
+			VehiculoDAO.update(p);
 	}
 }

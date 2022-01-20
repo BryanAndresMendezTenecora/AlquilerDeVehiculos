@@ -1,10 +1,15 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
 
-<h:head></h:head> 
+<h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{vehiculoBean.codigo}"></f:viewParam>
+		<f:viewAction action="#{vehiculoBean.loadData()}" />
+	</f:metadata>
+</h:head>
 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
@@ -12,46 +17,52 @@
 	</ui:define>
 	<ui:define name="content">
 		<div class="card-body">
-			<h4 class="card-title">Registro Vehiculo </h4>
+			<h4 class="card-title">Registro Vehiculo</h4>
 
 			<h:form class="forms-sample">
-				
+
 				<div class="form-group">
-					<label for="Modelo">Modelo</label>
-					<h:inputText type="text" class="form-control"
-						id="Modelo" placeholder="Cedula"
-						value="#{vehiculoBean.vehiculo.modelo}" />
-						
+					<label for="txtCodigo">Codigo</label>
+					<h:inputText type="text" class="form-control" id="campoid"
+						placeholder="Cedula" value="#{vehiculoBean.vehiculo.id}">
+						<f:ajax execute="txtCodigo"
+							render="campoModelo campoMarca campoStock campoEstado campoCategoria"
+							listener="#{vehiculoBean.loadDataEditar()}" />
+					</h:inputText>
 				</div>
-				
+
 				<div class="form-group">
-					<label for="Marca">Marca</label>
-					<h:inputText type="email" class="form-control"
-						id="Marca" placeholder="Marca"
-						value="#{vehiculoBean.vehiculo.marca}" />
+					<label for="txtModelo">Modelo</label>
+					<h:inputText type="text" class="form-control" id="campoModelo"
+						placeholder="Cedula" value="#{vehiculoBean.vehiculo.modelo}" />
+
 				</div>
-				
+
 				<div class="form-group">
-					<label for="Stock">Stock</label>
-					<h:inputText type="email" class="form-control"
-						id="Stock" placeholder="Stock"
-						value="#{vehiculoBean.vehiculo.stock}" />
+					<label for="txtMarca">Marca</label>
+					<h:inputText type="email" class="form-control" id="campoMarca"
+						placeholder="Marca" value="#{vehiculoBean.vehiculo.marca}" />
 				</div>
-				
+
 				<div class="form-group">
-					<label for="Estado">Estado</label>
-					<h:inputText type="password" class="form-control"
-						id="Estado" placeholder="Direccion"
-						value="#{vehiculoBean.vehiculo.estado}" />
+					<label for="txtStock">Stock</label>
+					<h:inputText type="email" class="form-control" id="campoStock"
+						placeholder="Stock" value="#{vehiculoBean.vehiculo.stock}" />
 				</div>
-				
+
 				<div class="form-group">
-					<label for="Categoria">Categoria</label>
-					<h:inputText type="password" class="form-control"
-						id="Categoria" placeholder="Direccion"
+					<label for="txtEstado">Estado</label>
+					<h:inputText type="password" class="form-control" id="campoEstado"
+						placeholder="Direccion" value="#{vehiculoBean.vehiculo.estado}" />
+				</div>
+
+				<div class="form-group">
+					<label for="txtCategoria">Categoria</label>
+					<h:inputText type="password" class="form-control" id="campoCategoria"
+						placeholder="Direccion"
 						value="#{vehiculoBean.vehiculo.categoria.id}" />
 				</div>
-				
+
 
 				<h:commandButton type="submit" class="btn btn-primary mr-2"
 					action="#{vehiculoBean.guardar()}" value="Guardar" />
