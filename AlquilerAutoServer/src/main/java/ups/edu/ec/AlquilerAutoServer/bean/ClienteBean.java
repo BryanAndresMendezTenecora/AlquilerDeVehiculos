@@ -140,7 +140,7 @@ public class ClienteBean {
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
-			
+			this.persona.setEstado("a");
 			clientesON.actualizarPersona(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
