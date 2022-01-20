@@ -5,7 +5,12 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
 
-
+<h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{categoriaBean.id}"></f:viewParam>
+		<f:viewAction action="#{categoriaBean.loadData()}" />
+	</f:metadata>
+</h:head>
 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
@@ -18,19 +23,22 @@
 			<h4 class="card-title">Formulario de registro</h4>
 
 		<h:form class="forms-sample">
-				<!--  
+				  
 				<div class="form-group">
-					<label for="id">id</label>
-					<h:inputText type="text" class="form-control"
-						id="id" placeholder="Id"
-						value="#{categoriaBean.categoria.id}" />
-
+					<label for="txtid">id</label>
+					<h:inputText type="txtCedula" class="form-control"
+						id="compoid" placeholder="Id"
+						value="#{categoriaBean.categoria.id}" >
+						<f:ajax execute="txtCedula"
+							render="campoNombre "
+							listener="#{categoriaBean.loadDataEditar()}" />
+						</h:inputText>
 				</div>
-				-->
+				
 				<div class="form-group">
-					<label for="nombre">Nombre</label>
+					<label for="txtNombre">Nombre</label>
 					<h:inputText type="email" class="form-control"
-						id="nombre" placeholder="Nombre"
+						id="campoNombre" placeholder="Nombre"
 						value="#{categoriaBean.categoria.nombre}" />
 				</div>
 				

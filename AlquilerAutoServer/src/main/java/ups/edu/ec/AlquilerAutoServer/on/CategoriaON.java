@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import ups.edu.ec.AlquilerAutoServer.dao.CategoriaDAO;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 
 @Stateless
 public class CategoriaON implements CategoriaONLocal{
@@ -36,5 +37,15 @@ public class CategoriaON implements CategoriaONLocal{
 	
 	public Categoria buscarNombre(String categoria) throws Exception{
 		return categoriaDAO.buscarNombre(categoria);
+	}
+	public Categoria getCategoria(int id) throws Exception {
+		return categoriaDAO.read(id);
+	}
+	
+	public void guardar(Categoria p) throws Exception {
+		if (categoriaDAO.read(p.getId()) == null)
+			categoriaDAO.insert(p);
+		else
+			categoriaDAO.update(p);
 	}
 }
