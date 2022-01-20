@@ -18,6 +18,7 @@ public class Categoria implements Serializable {
 	@Column(name = "cat_id")
 	private int id;
 	private String nombre;
+	private String estado;
 	public int getId() {
 		return id;
 	}
@@ -30,6 +31,13 @@ public class Categoria implements Serializable {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 	
 
 }
