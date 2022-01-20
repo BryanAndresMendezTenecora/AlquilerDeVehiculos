@@ -129,5 +129,25 @@ public class ClienteBean {
 		}
 		
 	}
+	
+	
+	public String eliminar(String cedula) {
+
+		System.out.println("Eliminado " + this.persona.getNombre());
+
+		/*
+		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
+		 * p.setDireccion(this.direccion);
+		 */
+		try {
+			
+			clientesON.actualizarPersona(this.persona);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "listarPersona?faces-redirect=true"+ cedula;
+	}
 
 }

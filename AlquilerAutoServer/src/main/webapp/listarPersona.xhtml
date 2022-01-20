@@ -62,6 +62,9 @@
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
 						value="Editar" immediate="true" />
+
+					<h:commandButton action="#{clienteBean.eliminar(per.cedula)}"
+						value="Eliminar" immediate="true" />
 				</h:column>
 
 
