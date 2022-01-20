@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 
 @Stateless
 public class CategoriaDAO {
@@ -23,8 +24,10 @@ public class CategoriaDAO {
 		em.merge(p);
 	}
 	
-	public void updateestado(String estado) throws Exception {
+	public void updateestado(int id ,String nombre,String estado) throws Exception {
 		Categoria ca=new Categoria();
+		ca.setId(id);
+		ca.setNombre(nombre);
 		ca.setEstado(estado);
 		em.merge(ca);
 	}
@@ -69,5 +72,9 @@ public class CategoriaDAO {
 		listaCategorias = query.getResultList();
 		return listaCategorias;
 	}
+	
+	
+	
+	
 	
 }

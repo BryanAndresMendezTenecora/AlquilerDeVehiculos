@@ -53,6 +53,7 @@ public class VehiculoON implements VehiculoONLocal{
 	
 	public void guardar(Vehiculo p) throws Exception {
 		if (VehiculoDAO.read(p.getId()) == null)
+		
 			VehiculoDAO.insert(p);
 		else
 			VehiculoDAO.update(p);
