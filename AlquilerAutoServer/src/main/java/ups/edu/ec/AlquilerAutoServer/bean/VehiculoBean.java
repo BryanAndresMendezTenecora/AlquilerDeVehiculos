@@ -155,6 +155,7 @@ public class VehiculoBean {
 			vehiculo=p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
