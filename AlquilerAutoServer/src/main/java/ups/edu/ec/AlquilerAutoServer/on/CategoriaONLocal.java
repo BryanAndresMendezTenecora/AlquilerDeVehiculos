@@ -19,4 +19,5 @@ public interface CategoriaONLocal {
 	
 	public List<Categoria> listarcategorias();
 	
+	
 }

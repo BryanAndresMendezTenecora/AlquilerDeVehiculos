@@ -63,7 +63,7 @@
 					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
 						value="Editar" immediate="true" />
 
-					<h:commandButton action="#{clienteBean.eliminar()}"
+					<h:commandButton action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
 						value="Eliminar" immediate="true" />
 				</h:column>
 

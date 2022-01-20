@@ -25,6 +25,16 @@ public class CategoriaBean {
 	private int id;
 	private  String nombre;
 	private List<SelectItem> listCategorias;
+	
+	public CategoriaBean() {
+		
+	}
+	public CategoriaBean(int id, String nombre) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+	}
+
 	@PostConstruct
 	public void init() {
 		this.loadcategorias();
@@ -69,6 +79,7 @@ public class CategoriaBean {
 		System.out.println("Guardando " + this.categoria.getNombre());
 
 		try {
+			this.categoria.setEstado("Activo");
 			categoriaON.guardar(this.categoria);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -87,6 +98,7 @@ public class CategoriaBean {
 		System.out.println(id);
 		return "Categoria?faces-redirect=true&id=" + id;
 	}
+	
 	
 	public void loadData() {
 		if(id==0)
@@ -125,6 +137,19 @@ public class CategoriaBean {
 			this.listCategorias.add(categoriaitem);
 		}
 		return listCategorias;
+	}
+	public String eliminarcategoria(int id,String nombre) {
+		this.categoria.setId(id);
+		this.categoria.setNombre(nombre);
+		this.categoria.setEstado("inactivo");
+		try {
+			categoriaON.actualizarCategoria(categoria);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return "listarCategoria?faces-redirect=true&id=" + id;
 	}
 
 	
