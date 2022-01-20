@@ -69,6 +69,7 @@ public class ClienteBean {
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
+			this.persona.setEstado("Activo");
 			clientesON.guardar(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -131,7 +132,7 @@ public class ClienteBean {
 	}
 	
 	//#String ced=c
-	public String eliminar() {
+	public String eliminar(String cedula, String nombre, String apellido, String direccion, String email, String password, String rol, String telefono) {
 
 		//System.out.println("Eliminado " + this.persona.getNombre());
 
@@ -139,10 +140,29 @@ public class ClienteBean {
 		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
 		 * p.setDireccion(this.direccion);
 		 */
+		/*
 		try {
-			this.persona.setCedula("0106309297");
+			loadData();
+			this.persona.setCedula(cedula);
+			this.persona.getApellido();
 			this.persona.setEstado("a");
-			this.persona.setEstado("a");
+			clientesON.actualizarPersona(this.persona);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
+	
+		try {
+			this.persona.setCedula(cedula);
+			this.persona.setNombre(nombre);
+			this.persona.setApellido(apellido);
+			this.persona.setDireccion(direccion);
+			this.persona.setEmail(email);
+			this.persona.setPassword(password);
+			this.persona.setRol(rol);
+			this.persona.setTelefono(telefono);
+			this.persona.setEstado("Inactivo");
 			clientesON.actualizarPersona(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

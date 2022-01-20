@@ -69,6 +69,7 @@ public class CategoriaBean {
 		System.out.println("Guardando " + this.categoria.getNombre());
 
 		try {
+			this.categoria.setEstado("Activo");
 			categoriaON.guardar(this.categoria);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
