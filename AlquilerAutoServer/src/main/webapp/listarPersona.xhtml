@@ -61,10 +61,10 @@
 				<h:column>
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
-						value="Editar" immediate="true" />
+						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw"/>
 
 					<h:commandButton action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
-						value="Eliminar" immediate="true" />
+						value="Eliminar" immediate="true" class="btn btn-danger btn-rounded btn-fw" />
 				</h:column>
 
 
