@@ -15,6 +15,7 @@ public class MetodoDePago implements Serializable{
 	private int id;
 	
 	private String tipo;
+	private String numero;
 	private String nombrepropietario;
 	private String fechavencimiento;
 	private int codigoseguridad;
@@ -69,6 +70,12 @@ public class MetodoDePago implements Serializable{
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
+	}
+	public String getNumero() {
+		return numero;
+	}
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 	
 	

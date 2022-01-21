@@ -136,11 +136,12 @@ public class MetodoDePagoBean {
 	}
 	
 	//#String ced=c
-	public String eliminar(int idTar, String tipo, String propietario, String fechaVen, int codSeg, String direccion, String codPostal) {
+	public String eliminar(int idTar, String tipo, String numero, String propietario, String fechaVen, int codSeg, String direccion, String codPostal) {
 	
 		try {
 			this.pago.setId(idTar);
 			this.pago.setTipo(tipo);
+			this.pago.setNumero(numero);
 			this.pago.setNombrepropietario(propietario);
 			this.pago.setFechavencimiento(fechaVen);
 			this.pago.setCodigoseguridad(codSeg);

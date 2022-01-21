@@ -7,35 +7,40 @@
 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
-		Listado de clientes
+		Listado de Metodos de Pago
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
 			<h:dataTable var="per" class="table table-bordered"
-				value="#{clienteBean.clientes}">
+				value="#{metodoDePagoBean.pagos}">
 				<h:column>
-					<f:facet name="header">Cedula</f:facet>
-#{per.cedula}
+					<f:facet name="header">Codigo</f:facet>
+#{per.id}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Nombre</f:facet>
-#{per.nombre}
+					<f:facet name="header">Tipo</f:facet>
+#{per.tipo}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Apellido</f:facet>
-#{per.apellido}
+					<f:facet name="header">Titular</f:facet>
+#{per.nombrepropietario}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Direccion</f:facet>
-#{per.direccion}
+					<f:facet name="header">Numero</f:facet>
+#{per.numero}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Email</f:facet>
-#{per.email}
+					<f:facet name="header">FechaVen</f:facet>
+#{per.fechavencimiento}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">CVV</f:facet>
+#{per.codigoseguridad}
 </h:column>
 
 				<h:column>
@@ -43,28 +48,29 @@
 #{per.estado}
 </h:column>
 
+
 				<h:column>
-					<f:facet name="header">Password</f:facet>
-#{per.password}
+					<f:facet name="header">Direccion</f:facet>
+#{per.direccion}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Rol</f:facet>
-#{per.rol}
+					<f:facet name="header">CodigoPostal</f:facet>
+#{per.codigoPostal}
 </h:column>
 
-				<h:column>
-					<f:facet name="header">Telefono</f:facet>
-#{per.telefono}
-</h:column>
+
 
 				<h:column>
 					<f:facet name="header">Acciones</f:facet>
-					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
-						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw"/>
+					<h:commandButton action="#{metodoDePagoBean.editar(per.id)}"
+						value="Editar" immediate="true"
+						class="btn btn-success btn-rounded btn-fw" />
 
-					<h:commandButton action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
-						value="Eliminar" immediate="true" class="btn btn-danger btn-rounded btn-fw" />
+					<h:commandButton
+						action="#{metodoDePagoBean.eliminar(per.id, per.tipo, per.numero, per.nombrepropietario, per.fechavencimiento, per.codigoseguridad, per.direccion, per.codigoPostal)}"
+						value="Eliminar" immediate="true"
+						class="btn btn-danger btn-rounded btn-fw" />
 				</h:column>
 
 
