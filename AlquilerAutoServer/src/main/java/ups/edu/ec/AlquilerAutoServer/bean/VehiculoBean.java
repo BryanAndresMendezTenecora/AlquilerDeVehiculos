@@ -224,5 +224,5 @@ public class VehiculoBean {
 	}
 	
 	//Hola
->>>>>>> 12df66a3cf13f158a0f6bfc71d102a0726f3ab4a
+
 }

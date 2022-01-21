@@ -17,7 +17,7 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Detalle;
 import ups.edu.ec.AlquilerAutoServer.modelo.Devolucion;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
-import ups.edu.ec.AlquilerAutoServer.modelo.TarjetaCredito;
+import ups.edu.ec.AlquilerAutoServer.modelo.MetodoDePago;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
@@ -26,7 +26,7 @@ import ups.edu.ec.AlquilerAutoServer.on.DevolucionONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
-import ups.edu.ec.AlquilerAutoServer.on.TarjetacreditoONLocal;
+import ups.edu.ec.AlquilerAutoServer.on.MetodoDePagoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 /**
@@ -44,7 +44,7 @@ public class vistaprincipal extends HttpServlet {
 	@Inject
 	private PedidoONLocal pedidoONL;
 	@Inject
-	private TarjetacreditoONLocal tarjetacreditoONL;
+	private MetodoDePagoONLocal tarjetacreditoONL;
 	@Inject
 	private FacturaONLocal facturaONL;
 	@Inject

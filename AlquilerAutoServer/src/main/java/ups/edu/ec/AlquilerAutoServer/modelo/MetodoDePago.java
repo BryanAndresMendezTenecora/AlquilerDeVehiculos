@@ -7,17 +7,21 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name = "TBL_tarjetacredito")
-public class TarjetaCredito implements Serializable{
+@Table(name = "TBL_MetodoPago")
+public class MetodoDePago implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "tar_id")
 	private int id;
+	
 	private String tipo;
 	private String nombrepropietario;
 	private String fechavencimiento;
 	private int codigoseguridad;
-	private String banco;
+	private String direccion;
+	private String codigoPostal;
+	private String estado;
+	//private String banco;
 	public int getId() {
 		return id;
 	}
@@ -48,12 +52,25 @@ public class TarjetaCredito implements Serializable{
 	public void setCodigoseguridad(int codigoseguridad) {
 		this.codigoseguridad = codigoseguridad;
 	}
-	public String getBanco() {
-		return banco;
+	public String getDireccion() {
+		return direccion;
 	}
-	public void setBanco(String banco) {
-		this.banco = banco;
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
 	}
+	public String getCodigoPostal() {
+		return codigoPostal;
+	}
+	public void setCodigoPostal(String codigoPostal) {
+		this.codigoPostal = codigoPostal;
+	}
+	public String getEstado() {
+		return estado;
+	}
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
 	
 	
 

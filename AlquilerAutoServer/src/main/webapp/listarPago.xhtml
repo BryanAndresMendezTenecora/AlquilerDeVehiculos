@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Listado de clientes
+	</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<h:dataTable var="per" class="table table-bordered"
+				value="#{clienteBean.clientes}">
+				<h:column>
+					<f:facet name="header">Cedula</f:facet>
+#{per.cedula}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Nombre</f:facet>
+#{per.nombre}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Apellido</f:facet>
+#{per.apellido}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Direccion</f:facet>
+#{per.direccion}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Email</f:facet>
+#{per.email}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Estado</f:facet>
+#{per.estado}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Password</f:facet>
+#{per.password}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Rol</f:facet>
+#{per.rol}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Telefono</f:facet>
+#{per.telefono}
+</h:column>
+
+				<h:column>
+					<f:facet name="header">Acciones</f:facet>
+					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
+						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw"/>
+
+					<h:commandButton action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
+						value="Eliminar" immediate="true" class="btn btn-danger btn-rounded btn-fw" />
+				</h:column>
+
+
+			</h:dataTable>
+		</h:form>
+	</ui:define>
+
+</ui:composition>
+</html>

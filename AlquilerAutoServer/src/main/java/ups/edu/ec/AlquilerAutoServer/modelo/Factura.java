@@ -24,7 +24,7 @@ public class Factura implements Serializable{
 	private String estado;
 	@OneToOne
 	@JoinColumn(name = "tar_id")
-	private TarjetaCredito tarjetacredito;
+	private MetodoDePago tarjetacredito;
 	public int getId() {
 		return id;
 	}
@@ -49,10 +49,10 @@ public class Factura implements Serializable{
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	public TarjetaCredito getTarjetacredito() {
+	public MetodoDePago getTarjetacredito() {
 		return tarjetacredito;
 	}
-	public void setTarjetacredito(TarjetaCredito tarjetacredito) {
+	public void setTarjetacredito(MetodoDePago tarjetacredito) {
 		this.tarjetacredito = tarjetacredito;
 	}
 
