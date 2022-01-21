@@ -13,11 +13,13 @@ import ups.edu.ec.AlquilerAutoServer.dao.FacturaDAO;
 import ups.edu.ec.AlquilerAutoServer.dao.PedidoDAO;
 import ups.edu.ec.AlquilerAutoServer.modelo.Devolucion;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 @Stateless
 public class DevolucionON implements DevolucionONLocal {
 	@Inject
 	private DevolucionDAO devolucionDAO;
+	
 	@Inject
 	private FacturaDAO facturaDAO;
 	
@@ -51,7 +53,7 @@ public class DevolucionON implements DevolucionONLocal {
 		
 	}
 	
-	public List<Devolucion> getAntecedentes(String cedula) {
+	public List<Devolucion> getAntecedentes(Persona cedula) {
 		List<Devolucion> devoluciones= new ArrayList<Devolucion>();
 		/*
 		for(Devolucion elemento: devoluciones) {
@@ -64,14 +66,28 @@ public class DevolucionON implements DevolucionONLocal {
 		*/
 		
 		List<pedidoCabecera> pedidos=pedidoDAO.getListaNombre(cedula);
-		for(pedidoCabecera elemento:pedidos) {
-			Factura f= new Factura();
-			Devolucion d= new Devolucion();
-			f=facturaDAO.getPedido(elemento.getId());
-			d=devolucionDAO.getAntecedentes(f.getId());
-			devoluciones.add(d);
-		}
+		System.out.println("Lista pedidos:"+pedidos.size());
 		
+		for(pedidoCabecera elemento:pedidos) {
+			System.out.println(elemento.getId());
+			Factura f= new Factura();
+			f=facturaDAO.getPedido(elemento);
+			List<Devolucion> listado= devolucionDAO.getAntecedentes(f);
+			Devolucion d= new Devolucion();
+			if(listado.size() == 1) {
+				
+			//Devolucion d= new Devolucion();
+			//pedidoCabecera cab= new pedidoCabecera();
+				listado=devolucionDAO.getAntecedentes(f);
+				d=listado.get(0);
+				devoluciones.add(d);
+			}else {
+				for(Devolucion ele: listado) {
+					devoluciones.add(ele);
+				}
+			}
+			
+		}
 		return devoluciones;
 	}
 	

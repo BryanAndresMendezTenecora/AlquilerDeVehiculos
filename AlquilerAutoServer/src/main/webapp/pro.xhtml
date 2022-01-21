@@ -6,13 +6,12 @@
 
 <h:head></h:head> 
 <body> 
-
-	<label for="itemCategorias">Categorias</label>
-		<h:selectOneMenu value="#{vehiculoBean.vehiculo.categoria.id}" class="form-control" >
-			<f:selectItem itemLabel="--Slecione--" class="btn btn-light" />
-			<f:selectItems value="#{categoriaBean.listCategorias}" />
-			<f:ajax event="change" listener="#{vehiculoBean.probando()}"></f:ajax>
-		</h:selectOneMenu>
-
+	<h:form>	
+		<h:commandButton type="submit" action="#{probandoBean.recuperar()}" value="Es" />
+</h:form>
 </body> 
+
+
+
+
 </html>

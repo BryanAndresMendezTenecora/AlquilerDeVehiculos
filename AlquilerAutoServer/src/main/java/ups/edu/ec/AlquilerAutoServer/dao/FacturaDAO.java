@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
+import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 @Stateless
 public class FacturaDAO {
 	@PersistenceContext // coge el datasourses que tenemos en el proyecto(persistence.xml)
@@ -39,9 +40,9 @@ public class FacturaDAO {
 		return listado;
 	}
 
-	public Factura getPedido(int codigo) {
+	public Factura getPedido(pedidoCabecera codigo) {
 		List<Factura> facturas= new ArrayList<Factura>();
-		String jpql="SELECT f FROM Factura f WHERE pedidoCabecera = ?1";
+		String jpql="SELECT f FROM Factura f WHERE pedido LIKE ?1";
 		Query query= em.createQuery(jpql,Factura.class);
 		query.setParameter(1, codigo);
 		facturas=query.getResultList();

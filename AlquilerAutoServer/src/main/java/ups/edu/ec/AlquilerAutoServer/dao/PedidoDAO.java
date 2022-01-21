@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 
 
@@ -41,9 +42,9 @@ public class PedidoDAO {
 		return listado;
 	}
 	
-	public List<pedidoCabecera> getListaNombre(String nombre){
+	public List<pedidoCabecera> getListaNombre(Persona nombre){
 		List<pedidoCabecera> listado=new ArrayList<pedidoCabecera>();
-		String jpql="SELECT p FROM pedidoCabecera p WHERE persona = ?1";
+		String jpql="SELECT p FROM pedidoCabecera p WHERE persona LIKE ?1";
 		Query query= em.createQuery(jpql,pedidoCabecera.class);
 		query.setParameter(1, nombre);
 		listado = query.getResultList();

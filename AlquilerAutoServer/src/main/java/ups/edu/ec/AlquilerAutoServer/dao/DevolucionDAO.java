@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Devolucion;
+import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 @Stateless
 public class DevolucionDAO {
 	@PersistenceContext
@@ -42,16 +43,16 @@ public class DevolucionDAO {
 		List<Devolucion> Devolucions=query.getResultList();
 		return Devolucions;
 	}
-	public Devolucion getAntecedentes(int factura){
+	public List<Devolucion> getAntecedentes(Factura factura){
 		List<Devolucion> listado=new ArrayList<Devolucion>();
-		String jpql="SELECT p FROM Devolucion p WHERE Factura = ?1";
+		String jpql="SELECT p FROM Devolucion p WHERE factura = ?1";
 		Query query= em.createQuery(jpql,Devolucion.class);
 		query.setParameter(1, factura);
 		listado = query.getResultList();
 		Devolucion d= new Devolucion();
-		for(Devolucion elemento: listado) {
-			d=elemento;
-		}
-		return d;
+		//for(Devolucion elemento: listado) {
+			//d=elemento;
+		//}
+		return listado;
 	}
 }
