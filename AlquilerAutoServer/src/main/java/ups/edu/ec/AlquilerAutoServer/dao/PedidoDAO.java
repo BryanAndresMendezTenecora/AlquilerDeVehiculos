@@ -40,4 +40,13 @@ public class PedidoDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	public List<pedidoCabecera> getListaNombre(String nombre){
+		List<pedidoCabecera> listado=new ArrayList<pedidoCabecera>();
+		String jpql="SELECT p FROM pedidoCabecera p WHERE persona = ?1";
+		Query query= em.createQuery(jpql,pedidoCabecera.class);
+		query.setParameter(1, nombre);
+		listado = query.getResultList();
+		return listado;
+	}
 }

@@ -59,6 +59,7 @@ public class VehiculoBean {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	
 	@PostConstruct
 	public void init() {
 		vehiculo = new Vehiculo();
@@ -198,6 +199,7 @@ public class VehiculoBean {
 
 	
 
+
 	
 	
 	
@@ -222,7 +224,8 @@ public class VehiculoBean {
 	public void probando() {
 		System.out.println("POS:");
 	}
-	
+}
 	//Hola
 
-}
+
+	
