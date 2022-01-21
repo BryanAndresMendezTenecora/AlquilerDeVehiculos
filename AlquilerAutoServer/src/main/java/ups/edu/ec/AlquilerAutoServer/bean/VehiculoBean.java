@@ -59,6 +59,7 @@ public class VehiculoBean {
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
+	
 	@PostConstruct
 	public void init() {
 		vehiculo = new Vehiculo();
@@ -173,38 +174,29 @@ public class VehiculoBean {
 	
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	public void probando() {
-		System.out.println();
+	public String eliminar(int id,String modelo,String marca,int stock ,int categoriaid) {
+
+		System.out.println("eliminando " + this.vehiculo.getMarca());
+
+		try {
+			this.vehiculo.setId(id);
+			this.vehiculo.setEstado("eliminado");
+			this.vehiculo.setModelo(modelo);
+			this.vehiculo.setMarca(marca);
+			this.vehiculo.setStock(stock);
+			this.categoria.setId(categoriaid);
+			//this.categoria.setId(categoriaid);
+			this.vehiculo.setCategoria(this.categoria);
+			vehiculoON.actualizarVehiculo(vehiculo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		return "listarVehiculo?faces-redirect=true&id="+id;
+		
 	}
+
 	
-	//Hola
 }
+	

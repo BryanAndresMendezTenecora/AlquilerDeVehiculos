@@ -48,6 +48,8 @@
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton action="#{vehiculoBean.editar(per.id)}"
 						value="Editar" immediate="true" />
+					<h:commandButton action="#{vehiculoBean.eliminar(per.id,per.modelo,per.marca,per.stock,per.categoria.id)}"
+						value="Eliminar" immediate="true" />
 				</h:column>
 
 
