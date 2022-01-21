@@ -203,7 +203,7 @@ public class VehiculoBean {
 	
 	
 	public void probando() {
-		System.out.println("POS:");
+		System.out.println();
 	}
 	
 	//Hola

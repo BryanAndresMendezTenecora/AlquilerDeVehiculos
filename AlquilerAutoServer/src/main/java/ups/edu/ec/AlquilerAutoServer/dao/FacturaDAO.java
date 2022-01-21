@@ -39,4 +39,16 @@ public class FacturaDAO {
 		return listado;
 	}
 
+	public Factura getPedido(int codigo) {
+		List<Factura> facturas= new ArrayList<Factura>();
+		String jpql="SELECT f FROM Factura f WHERE pedidoCabecera = ?1";
+		Query query= em.createQuery(jpql,Factura.class);
+		query.setParameter(1, codigo);
+		facturas=query.getResultList();
+		Factura f = new Factura();
+		for(Factura elemento: facturas) {
+			f=elemento;
+		}
+		return f;
+	}
 }

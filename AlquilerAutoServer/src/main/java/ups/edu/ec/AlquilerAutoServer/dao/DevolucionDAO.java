@@ -32,7 +32,7 @@ public class DevolucionDAO {
 		em.remove(p);
 	}
 
-	public List<Devolucion> getDevolucions() throws Exception{
+	public List<Devolucion> getDevoluciones() throws Exception{
 		String jpql2="SELECT p FROM Devolucion p";
 		
 		//nombre= nombre+"%";
@@ -42,11 +42,16 @@ public class DevolucionDAO {
 		List<Devolucion> Devolucions=query.getResultList();
 		return Devolucions;
 	}
-	public List<Devolucion> getList(){
+	public Devolucion getAntecedentes(int factura){
 		List<Devolucion> listado=new ArrayList<Devolucion>();
-		String jpql="SELECT p FROM Devolucion p";
+		String jpql="SELECT p FROM Devolucion p WHERE Factura = ?1";
 		Query query= em.createQuery(jpql,Devolucion.class);
+		query.setParameter(1, factura);
 		listado = query.getResultList();
-		return listado;
+		Devolucion d= new Devolucion();
+		for(Devolucion elemento: listado) {
+			d=elemento;
+		}
+		return d;
 	}
 }
