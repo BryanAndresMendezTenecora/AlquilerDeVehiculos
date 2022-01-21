@@ -198,5 +198,34 @@ public class VehiculoBean {
 	}
 
 	
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public void probando() {
+		System.out.println("POS:");
+	}
 }
+	//Hola
+
+
 	

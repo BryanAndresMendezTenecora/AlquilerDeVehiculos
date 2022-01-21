@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<f:metadata>
+		<f:viewParam name="id" value="#{metodoDePagoBean.codigo}"></f:viewParam>
+		<f:viewAction action="#{metodoDePagoBean.loadData()}" />
+	</f:metadata>
+</h:head>
+
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Metodo de pago
+	</ui:define>
+	<ui:define name="content">
+		<div class="card-body">
+			<h4 class="card-title">Registro de Pago</h4>
+
+			<h:form class="forms-sample">
+
+				<div class="form-group">
+					<label for="txtCodigo">Codigo</label>
+					<h:inputText type="text" class="form-control" id="campoid"
+						placeholder="Cedula" value="#{metodoDePagoBean.pago.id}">
+						<f:ajax execute="txtCodigo"
+							render="campoTipo campoNumero campoPropietario campoFecha campoCodSeguridad campoDireccion campoCodPostal"
+							listener="#{metodoDePagoBean.loadDataEditar()}" />
+					</h:inputText>
+				</div>
+
+				<div class="form-group">
+					<label for="itemRoles">Tipo de tarjeta</label>
+					<h:selectOneMenu value="#{metodoDePagoBean.pago.tipo}"
+						class="form-control" id="campoTipo">
+						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+						<f:selectItem itemValue="Tarjeta de Credito" itemLabel="Tarjeta de Credito"
+							class="dropdown-item" />
+						<f:selectItem itemValue="Tarjeta de Debito" itemLabel="Tarjeta de Debito"
+							class="dropdown-item" />
+					</h:selectOneMenu>
+				</div>
+
+				
+				<div class="form-group">
+					<label for="txtNumero">Numero la Tarjeta</label>
+					<h:inputText type="text" class="form-control" id="campoNumero"
+						placeholder="Cedula" value="#{metodoDePagoBean.pago.numero}" />
+				</div>
+				
+				<div class="form-group">
+					<label for="txtPropietario">Titular de la Tarjeta</label>
+					<h:inputText type="text" class="form-control" id="campoPropietario"
+						placeholder="Cedula" value="#{metodoDePagoBean.pago.nombrepropietario}" />
+				</div>
+
+				<div class="form-group">
+					<label for="txtFecha">Fecha de vencimiento</label>
+					<h:inputText type="email" class="form-control" id="campoFecha"
+						placeholder="Marca" value="#{metodoDePagoBean.pago.fechavencimiento}" />
+				</div>
+
+				<div class="form-group">
+					<label for="txtCodSeguridad">Codigo CVV</label>
+					<h:inputText type="email" class="form-control" id="campoCodSeguridad"
+						placeholder="Stock" value="#{metodoDePagoBean.pago.codigoseguridad}" />
+				</div>
+				
+				 
+				<div class="form-group">
+					<label for="txtDireccion">Direccion</label>
+					<h:inputText type="password" class="form-control" id="campoDireccion"
+						placeholder="Direccion" value="#{metodoDePagoBean.pago.direccion}" />
+				</div>
+				
+			  
+				<div class="form-group">
+					<label for="txtCodPostal">Codigo Postal</label>
+					<h:inputText type="password" class="form-control" id="campoCodPostal"
+						placeholder="Direccion"
+						value="#{metodoDePagoBean.pago.codigoPostal}" />
+				</div>
+				
+				
+
+
+				<h:commandButton type="submit" class="btn btn-primary mr-2"
+					action="#{metodoDePagoBean.guardar()}" value="Guardar" />
+				<button class="btn btn-light">Cancel</button>
+			</h:form>
+		</div>
+
+
+	</ui:define>
+
+</ui:composition>
+</html>
