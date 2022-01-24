@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -23,6 +24,16 @@ public class MetodoDePagoBean {
 	private List<MetodoDePago> metodosPagos;
 
 	private int codigo;
+	
+	private Date date;
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
 
 	@PostConstruct
 	public void init() {

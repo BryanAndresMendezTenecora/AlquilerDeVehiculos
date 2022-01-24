@@ -96,6 +96,13 @@
 
 	<dependencies>
 
+		<!-- https://mvnrepository.com/artifact/org.primefaces/primefaces -->
+		<dependency>
+			<groupId>org.primefaces</groupId>
+			<artifactId>primefaces</artifactId>
+			<version>11.0.0</version>
+		</dependency>
+
 		<!-- Import the CDI API, we use provided scope as the API is included in 
 			WildFly / JBoss EAP -->
 		<dependency>
