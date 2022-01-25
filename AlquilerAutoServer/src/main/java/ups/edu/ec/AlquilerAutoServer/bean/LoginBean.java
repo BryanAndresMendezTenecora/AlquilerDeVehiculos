@@ -83,11 +83,7 @@ public class LoginBean {
 		System.out.println(cedula);
 		return "persona?faces-redirect=true&id=" + cedula;
 	}
-	public String index() {
-		System.out.println();
-		return "listarPersona?faces-redirect=true";
-	}
-
+	
 	public String getCedula() {
 		return cedula;
 	}
@@ -135,6 +131,43 @@ public class LoginBean {
 		
 	}
 	
+	/*
+	public String Logeo() {
+		System.out.println();
+		try {
+			clientesON.getLogin(this.persona);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "listarPersona?faces-redirect=true";
+	}
+*/
+	
+	public String iniciarSesion() {
+		try {
+			this.persona=clientesON.getLogin(this.persona);
+			if(this.persona.getCedula() != null) {
+				System.out.println("Logeo Exitoso");
+				return "listarPersona?faces-redirect=true";
+			}else {
+				System.out.println("Logeo Fallido");
+				return"";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return"";
+		
+	}
+	
 	
 
+	public String ComprobarSesion() {
+	System.out.println("Correo:"+this.persona.getEmail());
+	System.out.println("Password:"+this.persona.getPassword());
+	return "Existe";
+	}
+	
 }

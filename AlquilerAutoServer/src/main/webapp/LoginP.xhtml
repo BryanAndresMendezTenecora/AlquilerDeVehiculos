@@ -23,19 +23,19 @@
 				<div class="form-group">
 					<label for="txtNombre">Nombre</label>
 					<h:inputText type="email" class="form-control form-control-lg" id="campoNombre"
-						placeholder="Username" value="#{clienteBean.persona.nombre}" />
+						placeholder="Username" value="#{loginBean.persona.email}" />
 				</div>
 
 				<div class="form-group">
 					<label for="txtApellido">Apellido</label>
 					<h:inputText type="Password" class="form-control form-control-lg" id="campoApellido"
-						placeholder="Password" value="#{clienteBean.persona.apellido}" />
+						placeholder="Password" value="#{loginBean.persona.password}" />
 				</div>
 
 				
 			
 				<h:commandButton type="submit" class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
-					action="#{loginBean.index()}" value="Guardar" />
+					action="#{loginBean.iniciarSesion()}" value="Guardar" />
 				<div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="listarPersona.xhtml" class="text-primary">Create</a>
                 </div>
