@@ -2,25 +2,74 @@ package ups.edu.ec.AlquilerAutoServer.bean;
 
 import java.util.List;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
-
-
 @Named
+//@ManagedBean
 @RequestScoped
 public class LoginBean {
 	@Inject
 	private PersonaONLocal clientesON;
 	private Persona persona = new Persona();
 	private List<Persona> clientes;
-
+	private String email;
+	private String password;
 	private String cedula;
+    private String mensajeErrorPassword;
+    private String mensajeSalida = "";
+
+    
+	
+	
+	
+	
+	public PersonaONLocal getClientesON() {
+		return clientesON;
+	}
+
+	public void setClientesON(PersonaONLocal clientesON) {
+		this.clientesON = clientesON;
+	}
+
+	public String getMensajeSalida() {
+		return mensajeSalida;
+	}
+
+	public void setMensajeSalida(String mensajeSalida) {
+		this.mensajeSalida = mensajeSalida;
+	}
+
+	public String getMensajeErrorPassword() {
+		return mensajeErrorPassword;
+	}
+
+	public void setMensajeErrorPassword(String mensajeErrorPassword) {
+		this.mensajeErrorPassword = mensajeErrorPassword;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	@PostConstruct
 	public void init() {
@@ -83,7 +132,7 @@ public class LoginBean {
 		System.out.println(cedula);
 		return "persona?faces-redirect=true&id=" + cedula;
 	}
-	
+
 	public String getCedula() {
 		return cedula;
 	}
@@ -101,73 +150,88 @@ public class LoginBean {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
 	public void loadData() {
-		if(cedula==null)
+		if (cedula == null)
 			return;
-		
+
 		Persona p;
 		try {
 			p = clientesON.getCliente(cedula);
-			persona=p;
+			persona = p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
-	
+
 	public void loadDataEditar() {
 		Persona p;
 		try {
 			p = clientesON.getCliente(persona.getCedula());
-			persona=p;
+			persona = p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 	}
-	
+
 	/*
-	public String Logeo() {
-		System.out.println();
-		try {
-			clientesON.getLogin(this.persona);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "listarPersona?faces-redirect=true";
-	}
-*/
-	
+	 * public String Logeo() { System.out.println(); try {
+	 * clientesON.getLogin(this.persona); } catch (Exception e) { // TODO
+	 * Auto-generated catch block e.printStackTrace(); } return
+	 * "listarPersona?faces-redirect=true"; }
+	 */
+
 	public String iniciarSesion() {
 		try {
-			this.persona=clientesON.getLogin(this.persona);
-			if(this.persona.getCedula() != null) {
+			this.persona = clientesON.getLogin(this.persona);
+			if (this.persona.getCedula() != null) {
+				this.mensajeSalida = "Logeo Exitoso para: " + this.persona.getEmail();
 				System.out.println("Logeo Exitoso");
 				return "listarPersona?faces-redirect=true";
-			}else {
+				
+			} else {
+				this.mensajeSalida = "Email y/o incorrectos";
 				System.out.println("Logeo Fallido");
-				return"";
+				return this.mensajeSalida;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return"";
-		
+		return "";
+
 	}
-	
-	
 
 	public String ComprobarSesion() {
-	System.out.println("Correo:"+this.persona.getEmail());
-	System.out.println("Password:"+this.persona.getPassword());
-	return "Existe";
+		System.out.println("Correo:" + this.persona.getEmail());
+		System.out.println("Password:" + this.persona.getPassword());
+		return "Existe";
+	}
+
+	public void validarPassword(AjaxBehaviorEvent evento) {
+		if (this.persona.getPassword().length() < 6) {
+			mensajeErrorPassword = "La contraseña tiene que tener como minimo 6 caracteres";
+		} else {
+			if (this.persona.getPassword().length() > 15) {
+				mensajeErrorPassword = "La contraseña puede tener como maximo 15 caracteres";
+			} else {
+				mensajeErrorPassword = "";
+			}
+		}
 	}
 	
+	
+	public void mensaje() {
+		if ("".equals(this.persona.getEmail())) {
+			this.mensajeSalida = "";
+		}
+		else {
+			this.mensajeSalida = "Bienvenido " + this.persona.getEmail();
+		}
+	}
+
 }
