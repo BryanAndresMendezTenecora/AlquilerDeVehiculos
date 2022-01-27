@@ -5,17 +5,24 @@ import java.util.List;
 import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
+import java.io.Serializable;
 
 @Named
 //@ManagedBean
-@RequestScoped
-public class LoginBean {
+//@RequestScoped
+@SessionScoped
+
+public class LoginBean implements Serializable {
 	@Inject
 	private PersonaONLocal clientesON;
 	private Persona persona = new Persona();
@@ -233,5 +240,69 @@ public class LoginBean {
 			this.mensajeSalida = "Bienvenido " + this.persona.getEmail();
 		}
 	}
+	
+	public String verificarSesion() {
+		System.out.println("entro a funcion verificar sesion");
+		try {
+			this.persona = clientesON.getLogin(this.persona);
+			if (this.persona.getCedula() != null) {
+				this.mensajeSalida = "---->>>Esta logueado: " + this.persona.getEmail();
+				System.out.println("--------->>>>>>>>>Iniciado sesion<<<<<<<<<<<<----------");
+				return mensajeSalida;
+				
+			} else {
+				
+				System.out.println("--------------->>>>>>>>no esta logueado<<<<<<<<<<<<<");
+				return "LoginP?faces-redirect=true";
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "";
+	  }
+	
+	
+	//do by domenica
+	public String iniciarSesionD() {
+	    String redireccion = null;
+	    try {
+	    	persona = clientesON.readUsuario(persona.getCedula());
+	      if (persona != null) {
+	        if (persona.getRol().equals("Administrador")) {
+	          FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userid", persona);
+	          redireccion = "listarPersona?faces-redirect=true";
+	        } else if (persona.getRol().equals("Cliente")) {
+	          FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userid", persona);
+	          redireccion = "LoginP.xhtml?faces-redirect=true";
+	        } 
+	      } else {
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Aviso", "Credenciales incorrectas"));
+	      } 
+	    } catch (Exception e) {
+	      FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+	    } 
+	    return redireccion;
+	  }
+	
+	public void verificarSesionD() {
+	    try {
+	      Persona us = (Persona)FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userid");
+	      if (us == null) {
+	    	  FacesContext.getCurrentInstance().getExternalContext().redirect("../../permisos-insuficientes.xhtml");  
+	      }
+	        
+	    } catch (Exception exception) {}
+	  }
+	
+	 public String cerrarSesionD() {
+		    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		    return "LoginP?faces-redirect=true";
+		  }
+	 
+	 public static void removeSessionScopedBean(String beanName) 
+	 {
+	     FacesContext.getCurrentInstance().getExternalContext().getSessionMap().remove(beanName);
+	 }
 
 }

@@ -17,4 +17,5 @@ public interface PersonaONLocal {
 	public void guardar(Persona p) throws Exception;
 	public List<pedidoCabecera>  consultarContrato(String cedula) throws Exception;
 	public Persona getLogin(Persona persona) throws Exception;
+	public Persona readUsuario(String usuario) throws Exception;
 }

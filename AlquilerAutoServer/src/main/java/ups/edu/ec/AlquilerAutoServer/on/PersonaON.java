@@ -75,4 +75,9 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 		return respuesta;
 		
 	}
+	//by domenica
+	public Persona readUsuario(String usuario) throws Exception {
+	    Persona per = personaDAO.read(usuario);
+	    return per;
+	  }
 }

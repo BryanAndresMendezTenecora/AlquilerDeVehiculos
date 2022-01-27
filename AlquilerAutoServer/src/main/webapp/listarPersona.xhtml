@@ -4,6 +4,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+<!--<h:head>
+	<f:event type="preRenderView" listener="#{loginBean.verificarSesion()}"  />
+</h:head>-->
+<f:metadata>
+		
+		<f:viewAction action="#{loginBean.verificarSesion()}" />
+</f:metadata>
 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
@@ -18,7 +25,8 @@
 				<f:ajax execute="" render="" />
 				</h:commandButton>
 				
-				
+				<h1>hola mi parse</h1>
+				<h:outputText value="#{loginBean.persona.nombre}" />
 				
 			<h:dataTable var="per" class="table table-bordered"
 				value="#{clienteBean.clientes}">
@@ -81,6 +89,11 @@
 
 
 			</h:dataTable>
+			<h:commandButton
+						action="#{loginBean.cerrarSesionD()}"
+						value="cerrar sesion" immediate="true"
+						class="btn btn-danger btn-rounded btn-fw" />
+			 
 		</h:form>
 	</ui:define>
 
