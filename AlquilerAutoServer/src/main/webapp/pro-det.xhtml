@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<body>
+	<h:form>
+		<h:dataTable value="#{procarroBean.detalles}" var="lista">
+			<h:column>
+				<f:facet name="header">Codigo</f:facet>
+			#{lista.id}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+			#{lista.vehiculo.marca}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Valor</f:facet>
+			#{lista.vehiculo.modelo}
+			</h:column>
+		</h:dataTable>
+		<h:commandButton action="#{procarroBean.agregarPedido()}"
+			value="Confirmar">
+		</h:commandButton>
+	</h:form> 
+</body> 
+</html>
