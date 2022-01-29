@@ -11,6 +11,7 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+		<h:outputText value="#{loginBean.persona.email}" />
 			<h:dataTable var="cat" class="table table-bordered"
 				value="#{categoriaBean.categorias}">
 				<h:column>
@@ -32,9 +33,9 @@
 				<h:column>
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton action="#{categoriaBean.editar(cat.id)}"
-						value="Editar" immediate="true" />
+						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw"/>
 					<h:commandButton action="#{categoriaBean.eliminarcategoria(cat.id,cat.nombre)}"
-						value="Eliminar" immediate="true" />
+						value="Eliminar" immediate="true" class="btn btn-danger btn-rounded btn-fw"/>
 				</h:column>
 				
 

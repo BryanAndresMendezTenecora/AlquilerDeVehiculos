@@ -4,6 +4,13 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:h="http://java.sun.com/jsf/html">
+<!--<h:head>
+	<f:event type="preRenderView" listener="#{loginBean.verificarSesion()}"  />
+</h:head>-->
+<f:metadata>
+		
+		<f:viewAction action="#{loginBean.verificarSesion()}" />
+</f:metadata>
 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
@@ -11,6 +18,16 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+		
+			<h:commandButton action="#{loginBean.ComprobarSesion()}"
+				value="Comprobar" immediate="true"
+				class="btn btn-success btn-rounded btn-fw" >
+				<f:ajax execute="" render="" />
+				</h:commandButton>
+				
+				<h1>hola mi parse</h1>
+				<h:outputText value="#{loginBean.persona.nombre}" />
+				
 			<h:dataTable var="per" class="table table-bordered"
 				value="#{clienteBean.clientes}">
 				<h:column>
@@ -61,14 +78,22 @@
 				<h:column>
 					<f:facet name="header">Acciones</f:facet>
 					<h:commandButton action="#{clienteBean.editar(per.cedula)}"
-						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw"/>
+						value="Editar" immediate="true"
+						class="btn btn-success btn-rounded btn-fw" />
 
-					<h:commandButton action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
-						value="Eliminar" immediate="true" class="btn btn-danger btn-rounded btn-fw" />
+					<h:commandButton
+						action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
+						value="Eliminar" immediate="true"
+						class="btn btn-danger btn-rounded btn-fw" />
 				</h:column>
 
 
 			</h:dataTable>
+			<h:commandButton
+						action="#{loginBean.cerrarSesionD()}"
+						value="cerrar sesion" immediate="true"
+						class="btn btn-danger btn-rounded btn-fw" />
+			 
 		</h:form>
 	</ui:define>
 

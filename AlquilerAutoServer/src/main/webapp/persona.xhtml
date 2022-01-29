@@ -10,6 +10,7 @@
 	<f:metadata>
 		<f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clienteBean.loadData()}" />
+		<f:viewAction action="#{loginBean.verificarSesion()}" />
 	</f:metadata>
 </h:head>
 

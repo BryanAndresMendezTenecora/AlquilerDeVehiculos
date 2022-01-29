@@ -30,6 +30,8 @@ public class PersonaDAO {
 		return p;
 	}
 	
+	
+	
 	public void delete(String cedula) throws Exception {
 		Persona p = em.find(Persona.class, cedula);
 		em.remove(p);
@@ -53,6 +55,29 @@ public class PersonaDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	public List<Persona> getIniciarSesion(Persona persona) {
+		String correo= persona.getEmail();
+		String contrasena=persona.getPassword();
+		String jpql2 = "SELECT p FROM Persona p" + " WHERE email LIKE ?1 AND password LIKE ?2";
+
+		//correo = correo + "%";
+		//contrasena= contrasena+"%";
+		Query query = em.createQuery(jpql2, Persona.class);
+		query.setParameter(1, correo);
+		query.setParameter(2, contrasena);
+		
+
+		//Object usuarios = query.getSingleResult();
+		List<Persona> personas= query.getResultList();
+		//Usuario resultado = (Usuario) usuarios;
+
+		//List<Rol> roles = query.getResultList();
+		return personas;
+	}
+	
+	
+	
 	
 	
 	
