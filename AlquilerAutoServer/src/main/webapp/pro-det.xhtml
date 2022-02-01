@@ -20,9 +20,17 @@
 				<f:facet name="header">Valor</f:facet>
 			#{lista.vehiculo.modelo}
 			</h:column>
+			<h:column>
+				<h:commandButton action="" value="Eliminar">
+					<f:param name="eliminar_detalle" value="#{lista.id}"></f:param>
+				</h:commandButton>
+			</h:column>
 		</h:dataTable>
 		<h:commandButton action="#{procarroBean.agregarPedido()}"
 			value="Confirmar">
+		</h:commandButton>
+		<h:commandButton action="#{procarroBean.paginaInicio()}"
+			value="Regresar">
 		</h:commandButton>
 	</h:form> 
 </body> 

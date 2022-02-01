@@ -21,7 +21,7 @@ import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 @Named
-@ViewScoped
+@SessionScoped
 public class ProcarroBean implements Serializable {
 
 	
@@ -144,6 +144,47 @@ public class ProcarroBean implements Serializable {
 	
 	public String paginaDetalle() {
 		return "pro-det?faces-redirect=true";
+	}
+	
+	
+	public void eliminarBeanCarro() {
+		String beanName="ProcarroBean";
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap());
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("procarroBean"));
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ProcarroBean"));
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("ProcarroBean.java"));
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("procarroBean.java"));
+	    facesContext=FacesContext.getCurrentInstance();
+		Map<String, String> parametros=facesContext.getExternalContext().getRequestParameterMap();
+		String pro = (String) parametros.get("co");
+		//ProcarroBean pr = (ProcarroBean) pro; 
+		System.out.println("Pro: "+pro);
+		//System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap());
+	    System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get(pro));
+	    
+	 }
+	
+	public void comprobarBean() {
+		if(detalles != null) {
+			System.out.println("Detalles T:"+detalles.size());
+		}
+	}
+	
+	public String paginaInicio() {
+		return "pro-carro?faces-redirect=true";
+	}
+	
+	public String eliminarBean() {
+		    FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		    return "pro-carro?faces-redirect=true";
+	}
+	
+	
+	public void eliminarDetalle() {
+		facesContext=FacesContext.getCurrentInstance();
+		Map<String, String> parametros=facesContext.getExternalContext().getRequestParameterMap();
+		int codigo = Integer.parseInt((String) parametros.get("eliminar_detalle"));
+		
 	}
 	
 }

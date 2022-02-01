@@ -30,6 +30,16 @@
 		<h:commandButton action="#{procarroBean.paginaDetalle()}"
 			value="Confirmar">
 		</h:commandButton>
+		<h:commandButton action="#{procarroBean.eliminarBeanCarro()}"
+			value="Eliminar Bean">
+			<f:param name="co" value="#{procarroBean}"></f:param>
+		</h:commandButton>
+		<h:commandButton action="#{procarroBean.comprobarBean()}"
+			value="Comprobar Bean">
+		</h:commandButton>
+		<h:commandButton action="#{procarroBean.eliminarBean()}"
+			value="Invalidate Session">
+		</h:commandButton>
 	</h:form>
 </body> 
 </html>
