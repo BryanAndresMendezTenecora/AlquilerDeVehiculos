@@ -7,11 +7,16 @@ import { CrearpersonaComponent } from './pages/crearpersona/crearpersona.compone
 
 import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+<<<<<<< Updated upstream
     CrearpersonaComponent,
     ListarpersonaComponent
+=======
+   
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
