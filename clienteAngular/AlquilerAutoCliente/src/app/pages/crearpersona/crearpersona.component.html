@@ -2,13 +2,13 @@
 <!--
 [] es un get
 () es un set
-
+-->
 
 <form >
     <label for="">Id</label>
     <input name="textId" type="text" [(ngModel)]="persona.cedula">
     <label for="">Cedula</label>
-    <input name="textCedula" type="text" [(ngModel)]="persona.Nombre">
+    <input name="textCedula" type="text" [(ngModel)]="persona.nombre">
     <label for="">Nombre</label>
     <input name="textNombre" type="text" [(ngModel)]="persona.apellido">
     <label for="">Direccion</label>
@@ -17,4 +17,3 @@
     <input name="textTelefono" type="text"[(ngModel)]="persona.email">
     <button (click)="guardar()">Guardar</button>
 </form>
--->

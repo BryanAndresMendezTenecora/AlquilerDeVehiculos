@@ -5,7 +5,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CrearpersonaComponent } from './pages/crearpersona/crearpersona.component';
-
+import {ReactiveFormsModule,FormsModule} from '@angular/forms';
 import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.component';
 import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.component';
 
@@ -24,6 +24,7 @@ import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.co
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpClientModule
   ],
   providers: [],
