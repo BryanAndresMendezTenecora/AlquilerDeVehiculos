@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { CrearpersonaComponent } from './pages/crearpersona/crearpersona.component';
 
 import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.component';
+import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< Updated upstream
     CrearpersonaComponent,
-    ListarpersonaComponent
-=======
+    ListarpersonaComponent,
+    CrearVehiculoComponent,
+    
+
    
->>>>>>> Stashed changes
+
   ],
   imports: [
     BrowserModule,
