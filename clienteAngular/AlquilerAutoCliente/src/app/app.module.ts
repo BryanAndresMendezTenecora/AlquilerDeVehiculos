@@ -7,6 +7,8 @@ import { CrearpersonaComponent } from './pages/crearpersona/crearpersona.compone
 
 import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.component';
 import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.component';
+import { ListarVehiculoComponent } from './pages/listar-vehiculo/listar-vehiculo.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,6 +17,7 @@ import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.co
     CrearpersonaComponent,
     ListarpersonaComponent,
     CrearVehiculoComponent,
+    ListarVehiculoComponent,
     
 
    
@@ -22,6 +25,7 @@ import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.co
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

@@ -1,1 +1,21 @@
-<p>crear-vehiculo works!</p>
+HOLA {{vehiculo}}
+<form>
+<label>Codigo</label>
+<input name="txtCodigo" type="text" [(ngModel)]="vehiculo">
+
+<label>Modelo</label>
+<input id="txtModelo" type="text">
+
+<label>Marca</label>
+<input id="txtMarca" type="text">
+
+<label>Stock</label>
+<input id="txtStock" type="text">
+
+<label>Estado</label>
+<input id="txtEstado" type="text">
+
+<button (click)="guardar()">Guardar</button>
+
+</form>
+
