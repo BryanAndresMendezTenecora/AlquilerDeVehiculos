@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicepersonaService } from 'src/app/services/servicepersona.service';
 
 @Component({
   selector: 'app-listarpersona',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listarpersona.component.scss']
 })
 export class ListarpersonaComponent implements OnInit {
-
-  constructor() { }
+  personas:any;
+  constructor(private personasService:ServicepersonaService) { }
 
   ngOnInit(): void {
+    this.personas=this.personasService.getPersonas();
   }
 
 }
