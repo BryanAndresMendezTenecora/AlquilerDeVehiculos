@@ -6,9 +6,14 @@ import { Page404Component } from './views/pages/page404/page404.component';
 import { Page500Component } from './views/pages/page500/page500.component';
 import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
+import { CrearpersonaComponent } from './pages/crearpersona/crearpersona.component';
+import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.component';
+import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.component';
+import { ListarVehiculoComponent } from './pages/listar-vehiculo/listar-vehiculo.component';
 
 const routes: Routes = [
   {
+    
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full'
@@ -100,7 +105,12 @@ const routes: Routes = [
       title: 'Register Page'
     }
   },
-  {path: '**', redirectTo: 'dashboard'}
+  {path: '**', redirectTo: 'dashboard'},
+
+  {path:"crearpersona",component:CrearpersonaComponent},
+  {path:"listarpersona",component:ListarpersonaComponent},
+  {path:"crearVehiculo",component:CrearVehiculoComponent},
+  {path:"listarVehiculo",component:ListarVehiculoComponent}
 ];
 
 @NgModule({

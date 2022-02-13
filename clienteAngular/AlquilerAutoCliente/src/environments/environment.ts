@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   WS_PATH: "http://localhost:8080/AlquilerAutoServer/ws"
+  
 };
 
 /*
