@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Vehiculo } from '../../domain/Vehiculo';
+import { VehiculoService } from '../../services/vehiculo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-crear-vehiculo',
@@ -7,15 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearVehiculoComponent implements OnInit {
 
-  vehiculo:string="Mazda"
-  constructor() { }
+  vehiculo:Vehiculo=new Vehiculo();
+  constructor(private router:Router,private VehiculoService:VehiculoService) { }
 
   ngOnInit(): void {
-    
+   
   }
 
   guardar(){
     console.log(this.vehiculo)
+    this.VehiculoService.guardarVehiculo(this.vehiculo).subscribe(data=>{
+      console.log(data);
+    });
+    
   }
   
 

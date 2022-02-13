@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { VehiculoService } from '../../services/vehiculo.service';
 
 @Component({
   selector: 'app-listar-vehiculo',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listar-vehiculo.component.scss']
 })
 export class ListarVehiculoComponent implements OnInit {
-
-  constructor() { }
+vehiculos:any;
+  constructor(private VehiculoService:VehiculoService ) { }
 
   ngOnInit(): void {
+    this.vehiculos=this.VehiculoService.getVehiculo();
   }
 
 }

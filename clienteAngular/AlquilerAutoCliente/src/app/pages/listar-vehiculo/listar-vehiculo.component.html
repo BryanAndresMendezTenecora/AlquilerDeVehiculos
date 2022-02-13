@@ -1,1 +1,14 @@
-<p>listar-vehiculo works!</p>
+
+<p>listarpersona works!</p>
+
+<DIV *ngFor="let vehiculo of vehiculos | async">
+    
+    <H3>{{vehiculo.id}} {{vehiculo.estado}}
+        {{vehiculo.modelo}} {{vehiculo.marca}}
+        {{vehiculo.stock}} {{vehiculo.categoria.nombre}}
+    </H3>
+    
+    <hr>
+
+    
+</DIV>

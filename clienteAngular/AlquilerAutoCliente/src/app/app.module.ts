@@ -9,6 +9,7 @@ import { ListarpersonaComponent } from './pages/listarpersona/listarpersona.comp
 import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.component';
 import { ListarVehiculoComponent } from './pages/listar-vehiculo/listar-vehiculo.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],
