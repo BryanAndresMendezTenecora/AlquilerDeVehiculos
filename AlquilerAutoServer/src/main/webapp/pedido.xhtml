@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Pedido
+	</ui:define>
+	<ui:define name="content"> 
+	<h:form>
+	<h:panelGrid columns="2">
+	<h:outputLabel value="Cedula: " />
+	<h:inputText value="#{loginBean.persona.cedula}" />
+	<h:outputLabel value="Nombre: " />
+	<h:inputText value="#{loginBean.persona.nombre}" />
+	<h:outputLabel value="Fecha: " />
+	<h:inputText value="#{procarroBean.cabecera.fecha}" />
+	<h:outputLabel value="Fecha de Entrega: " />
+	<h:inputText value="#{procarroBean.cabecera.fechaentrega}" />
+	</h:panelGrid>
+	<h:dataTable value="#{procarroBean.detalles}" var="lista" class="table table-striped">
+			<h:column>
+				<f:facet name="header">Nombre</f:facet>
+			#{lista.vehiculo.marca}
+		</h:column>
+			<h:column>
+				<f:facet name="header">Valor</f:facet>
+			#{lista.vehiculo.modelo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Cantidad</f:facet>
+				#{lista.cantidad}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Total</f:facet>
+				#{lista.total}
+			</h:column>
+		</h:dataTable>
+		<h:commandButton action="#{procarroBean.confirmarPedido()}" value="Confirmar Pedido" />
+	</h:form>
+</ui:define>
+</ui:composition>
+</html>

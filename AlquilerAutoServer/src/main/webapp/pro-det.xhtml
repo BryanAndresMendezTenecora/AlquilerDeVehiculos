@@ -5,12 +5,20 @@
       xmlns:h="http://java.sun.com/jsf/html"> 
 
 <h:head></h:head> 
-<body>
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Carrito
+	</ui:define>
+	<ui:define name="content">
+	<div class="col-lg-12 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body"> 
 	<h:form>
-		<h:dataTable value="#{procarroBean.detalles}" var="lista">
-			<h:column>
-				<f:facet name="header">Codigo</f:facet>
-			#{lista.id}
+		<div class="table-responsive">
+		<h:dataTable value="#{procarroBean.detalles}" var="lista" class="table table-striped">
+		<h:column>
+				<f:facet name="header">Nombre</f:facet>
+				<h:inputText value="#{lista.id}" />
 		</h:column>
 			<h:column>
 				<f:facet name="header">Nombre</f:facet>
@@ -21,7 +29,20 @@
 			#{lista.vehiculo.modelo}
 			</h:column>
 			<h:column>
-				<h:commandButton action="" value="Eliminar">
+				<f:facet name="header">Cantidad</f:facet>
+				<h:inputText value="#{lista.cantidad}" >
+					<f:ajax execute="@this" listener="#{procarroBean.calcularTotal()}" event="blur" render="txtTotal" ></f:ajax>
+				</h:inputText>
+			</h:column>
+			<h:column>
+				<f:facet name="header">Total</f:facet>
+				<h:inputText value="#{lista.total}" id="txtTotal"></h:inputText>
+			</h:column>
+			<h:column>
+				<h:commandButton action="#{procarroBean.actualizarDetalle()}" value="Actualizar">
+					<f:param name="actualizar_detalle" value="#{lista.id}"></f:param>
+				</h:commandButton>
+				<h:commandButton action="#{procarroBean.eliminarDetalle()}" value="Eliminar">
 					<f:param name="eliminar_detalle" value="#{lista.id}"></f:param>
 				</h:commandButton>
 			</h:column>
@@ -32,6 +53,11 @@
 		<h:commandButton action="#{procarroBean.paginaInicio()}"
 			value="Regresar">
 		</h:commandButton>
-	</h:form> 
-</body> 
+		</div>
+	</h:form>
+	</div> 
+	</div>
+	</div>
+</ui:define>
+</ui:composition> 
 </html>

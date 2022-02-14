@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Seleccione la Factura a procesar
+	</ui:define>
+	<ui:define name="content"> 
+<h:form>
+	<h:panelGrid columns="3">
+		<h:outputLabel value="Cedula: " />
+		<h:inputText value="#{devolucionBean.persona.cedula}" id="text-cedula"/>
+		<h:commandButton value="Buscar" type="button" >
+			<f:ajax listener="#{devolucionBean.listarFactura()}" execute="text-cedula" render="tabla-factura" ></f:ajax>
+		</h:commandButton>
+		<h:outputLabel value="Codigo Factura: " />
+		<h:inputText value="#{devolucionBean.factura.id}" id="text-codigo"/>
+		<h:commandButton value="Buscar" type="button" >
+			<f:ajax listener="#{devolucionBean.buscarFactura()}" execute="text-codigo"></f:ajax>
+		</h:commandButton>
+	</h:panelGrid>
+	<br></br>
+	<div>
+	<h:dataTable value="#{devolucionBean.facturas}" var="lista" id="tabla-factura" class="table table-striped">
+		<h:column>
+			<f:facet name="header">Codigo</f:facet>
+			#{lista.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">ESTADO</f:facet>
+			#{lista.estado}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Total</f:facet>
+			#{lista.total}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Metodo de pago</f:facet>
+			#{lista.tarjetacredito.tipo}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Cedula</f:facet>
+			#{lista.pedido.persona.cedula}
+		</h:column>
+		<h:column>
+			<h:commandButton value="INGRESAR" action="#{devolucionBean.facturar(lista.id)}">
+				<!--<f:ajax listener="#{devolucionBean.facturar(lista.id)}"></f:ajax>-->
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+	</div>
+</h:form>
+</ui:define>
+</ui:composition> 
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Antecedentes
+	</ui:define>
+	<ui:define name="content"> 
+<h:form>
+	<h:panelGrid columns="3">
+	<h:outputLabel value="Ingrese la cedula del cliente: " />
+	<h:inputText value="#{antecedentesBean.persona.cedula}" id="txtCedula"/>
+	<h:commandButton value="Ver Antecedentes" type="button">
+		<f:ajax listener="#{antecedentesBean.recuperarAntecedentes()}" execute="txtCedula" render="tabla-antecedentes"></f:ajax>
+	</h:commandButton>
+	</h:panelGrid>
+	<h:dataTable value="#{antecedentesBean.devoluciones}" var="lista" id="tabla-antecedentes" class="table table-striped">
+	<h:column>
+		<f:facet name="header">ANTECEDENTE</f:facet>
+		#{lista.antecedente}
+	</h:column>
+	<h:column>
+		<f:facet name="header">CODIGO FACTURA</f:facet>
+		#{lista.factura.id}
+	</h:column>
+	</h:dataTable>
+</h:form>
+</ui:define>
+</ui:composition> 
+</html>

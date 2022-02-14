@@ -5,9 +5,13 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +20,8 @@ public class Factura implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "fac_id")
+	@SequenceGenerator(name = "id_fac_seq", sequenceName = "ID_FAC_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_fac_seq")
 	private int id;
 	private double total;
 	@OneToOne
@@ -25,6 +31,7 @@ public class Factura implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "tar_id")
 	private MetodoDePago tarjetacredito;
+	
 	public int getId() {
 		return id;
 	}

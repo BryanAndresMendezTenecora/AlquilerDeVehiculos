@@ -18,7 +18,27 @@ public class PersonaDAO {
 	private EntityManager em;
 	
 	public void insert(Persona persona) throws Exception {
-		em.persist(persona);
+		String cedula=persona.getCedula();
+		boolean bcedula=verificarCedula(cedula);
+		boolean bcorreo=verificarCorreo(persona.getEmail());
+		boolean blongcontra=longitudContrasena(persona.getPassword());
+		if(bcedula && bcorreo && blongcontra) {
+			String apellido=this.mayuscula(persona.getApellido());
+			String nombre=mayuscula(persona.getNombre());
+			String direccion=mayuscula(persona.getDireccion());
+			String estado=mayuscula(persona.getEstado());
+			persona.setNombre(nombre);
+			persona.setApellido(apellido);
+			persona.setDireccion(direccion);
+			persona.setEstado(estado);
+			em.persist(persona);
+		}else {
+			System.out.println("ERROR NO CUMPLE REQUISITOS PERSONA");
+			System.out.println("Verificacion cedula:"+bcedula);
+			System.out.println("Verificacion correo:"+bcorreo);
+			System.out.println("Verificacion contra:"+blongcontra);
+		}
+		
 	}
 	
 	public void update(Persona persona) throws Exception{
@@ -75,12 +95,7 @@ public class PersonaDAO {
 		//List<Rol> roles = query.getResultList();
 		return personas;
 	}
-	
-	
-	
-	
-	
-	
+		
 	public List<pedidoCabecera> getContratos(String cedula){
 		List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
 		String jpql="SELECT p FROM pedidoCabecera p WHERE persona= ?1";
@@ -89,4 +104,35 @@ public class PersonaDAO {
 		pedidos=query.getResultList();
 		return pedidos;
 	}
+	
+	public boolean verificarCedula(String cedula) {
+		if(cedula.length() == 10) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String mayuscula(String dato) {
+		String mayus=dato.toUpperCase();
+		return mayus;
+	}
+	
+	public boolean verificarCorreo(String correo) {
+		boolean arroba=correo.contains("@");
+		boolean punto=correo.contains(".");
+		if(arroba == true && punto == true) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
+	public boolean longitudContrasena(String contra) {
+		if(contra.length() > 3) {
+			return true;
+		}else {
+			return false;
+		}
+	}
+	
 }

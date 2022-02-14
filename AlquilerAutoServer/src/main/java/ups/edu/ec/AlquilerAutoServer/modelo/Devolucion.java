@@ -5,9 +5,12 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,6 +20,8 @@ public class Devolucion implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "deb_id")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_dev_seq")
+	@SequenceGenerator(name = "id_dev_seq", sequenceName = "ID_DEV_SEQ", initialValue = 1, allocationSize = 1)
 	private int id;
 	private String fecha;
 	private String antecedente;

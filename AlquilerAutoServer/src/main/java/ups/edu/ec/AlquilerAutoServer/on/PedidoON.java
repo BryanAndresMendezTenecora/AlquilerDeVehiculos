@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 
 import ups.edu.ec.AlquilerAutoServer.dao.PedidoDAO;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 @Stateless
 public class PedidoON implements PedidoONLocal{
@@ -31,5 +32,9 @@ public class PedidoON implements PedidoONLocal{
 	}
 	public List<pedidoCabecera> getpedidoCabeceras(){
 		return pedidoDAO.getList();
+	}
+	
+	public List<pedidoCabecera> getPedidosCedula(Persona persona){
+		return pedidoDAO.getPedidosNombre(persona);
 	}
 }

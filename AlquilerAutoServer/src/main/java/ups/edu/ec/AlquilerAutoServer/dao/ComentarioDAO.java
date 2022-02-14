@@ -9,6 +9,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Comentario;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 @Stateless
 public class ComentarioDAO {
 	@PersistenceContext
@@ -46,6 +47,15 @@ public class ComentarioDAO {
 		List<Comentario> listado=new ArrayList<Comentario>();
 		String jpql="SELECT p FROM Comentario p";
 		Query query= em.createQuery(jpql,Comentario.class);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Comentario> getcomentariosVehiculo(Vehiculo vehiculo){
+		List<Comentario> listado=new ArrayList<Comentario>();
+		String jpql="SELECT p FROM Comentario p WHERE vehiculo LIKE ?1";
+		Query query= em.createQuery(jpql,Comentario.class);
+		query.setParameter(1, vehiculo);
 		listado = query.getResultList();
 		return listado;
 	}
