@@ -253,4 +253,8 @@ public class Vehiculo2Bean implements Serializable {
 		comentarios=comentarioON.getComentariosVehiculo(vehiculo);
 		System.out.println("Lista comentarios"+comentarios.size());
 	}
+	
+	public String paginaInicio() {
+		return "pro-carro?faces-redirect=true";
+	}
 }

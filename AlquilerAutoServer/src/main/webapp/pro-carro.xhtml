@@ -11,9 +11,31 @@
 		Productos
 	</ui:define>
 	<ui:define name="content">
+	<h:form>
+	<h:outputLabel value="Ordenar por: " />
+	<h:selectOneMenu value="#{procarroBean.listado}" id="txt-b" >
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+	<f:selectItem itemLabel="Precio: Mayor a Menor" class="btn btn-light" itemValue="1" >
+	</f:selectItem>
+	<f:selectItem itemLabel="Precio: Menor a Mayor" class="btn btn-light"  itemValue="2"/>
+	<f:selectItem itemLabel="Nombre: A-Z" class="btn btn-light" itemValue="3" />
+	<f:selectItem itemLabel="Nombre: Z-A" class="btn btn-light" itemValue="4" />
+	</h:selectOneMenu>
+	<h:commandButton value="ORDENAR" >
+		<f:ajax execute="txt-b" listener="#{procarroBean.listadoVehiculos(procarroBean.listado)}" render="tabla"></f:ajax>
+	</h:commandButton>
+	<h:outputLabel value="CATEGORIA: " />
+	<h:selectOneMenu value="#{procarroBean.categoria.id}" id="txt-ca" >
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+	<f:selectItems value="#{procarroBean.categorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.id}"></f:selectItems>
+	</h:selectOneMenu>
+	<h:commandButton value="FILTRAR" >
+		<f:ajax execute="txt-ca" listener="#{procarroBean.listadoVehiculosCategoria()}" render="tabla"></f:ajax>
+	</h:commandButton>
+	
 	<div class="row">
-		<h:form>
-				<h:dataTable value="#{procarroBean.vehiculos}" var="lista" >
+		
+				<h:dataTable value="#{procarroBean.vehiculos}" var="lista"  id="tabla">
 							<h:column >
 									<f:facet name="header">Codigo</f:facet>
 								#{lista.id}
@@ -22,9 +44,17 @@
 									<f:facet name="header">Modelo</f:facet>
 								#{lista.modelo}
 							</h:column>
-							<h:column class="card-body">
+							<h:column>
 									<f:facet name="header">Marca</f:facet>
 								#{lista.marca}
+							</h:column>
+							<h:column>
+									<f:facet name="header">Marca</f:facet>
+								#{lista.precio}
+							</h:column>
+							<h:column>
+									<f:facet name="header">Categoria</f:facet>
+								#{lista.categoria.nombre}
 							</h:column>
 							<h:column >
 									<h:commandButton value="Agregar" type="button">
@@ -37,6 +67,7 @@
 									</h:commandButton>
 							</h:column>
 				</h:dataTable>
+				</div>
 			<h:commandButton action="#{procarroBean.paginaDetalle()}"
 				value="Confirmar">
 			</h:commandButton>
@@ -47,8 +78,8 @@
 			<h:commandButton action="#{procarroBean.comprobarBean()}"
 				value="Comprobar Bean">
 			</h:commandButton>
+			
 		</h:form>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>

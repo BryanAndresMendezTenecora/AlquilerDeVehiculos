@@ -168,4 +168,8 @@ public class MetodoDePagoBean {
 		return "listarPago?faces-redirect=true"+ codigo;
 	}
 
+	
+	public String paginaInicio() {
+		return "pro-carro?faces-redirect=true";
+	}
 }

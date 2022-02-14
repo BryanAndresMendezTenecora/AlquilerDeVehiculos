@@ -62,7 +62,23 @@ public class VehiculoON implements VehiculoONLocal{
 			VehiculoDAO.update(p);
 	}
 	public List<Categoria> listarcategorias(){
-		
 		return VehiculoDAO.listarcategorias();
+	}
+	
+	public List<Vehiculo> getlistadoVehiculos(int codigo){
+		if(codigo == 1) {
+			return VehiculoDAO.getVehiculosPrecioMayorMenor();
+		}else if(codigo == 2) {
+			return VehiculoDAO.getVehiculosPrecioMenorMayor();
+		}else if(codigo == 3) {
+			return VehiculoDAO.getVehiculosNombreAZ();
+		}else if(codigo == 4) {
+			return VehiculoDAO.getVehiculosModeloZA();
+		}
+		return VehiculoDAO.getList();
+	}
+	
+	public List<Vehiculo> getListaVehiculoCategoria(Categoria categoria){
+		return VehiculoDAO.getVehiculosCategoria(categoria);
 	}
 }

@@ -13,11 +13,13 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Detalle;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.MetodoDePago;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
+import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.MetodoDePagoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
@@ -42,6 +44,9 @@ public class ProcarroBean implements Serializable {
 	private MetodoDePagoONLocal metodoON;
 	
 	@Inject
+	private CategoriaONLocal categoriaON;
+	
+	@Inject
 	private LoginBean loginBean;
 	
 	private int cont=1;
@@ -52,12 +57,15 @@ public class ProcarroBean implements Serializable {
 	
 	private MetodoDePago metodo= new MetodoDePago();
 	
+	private Categoria categoria=new Categoria();
+	
 	private Detalle detalle;
 	
 	private List<Detalle> detalles= new ArrayList<Detalle>();
 	private List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
 	private List<MetodoDePago> metodos= new ArrayList<MetodoDePago>();
-	
+	private List<Categoria> categorias= new ArrayList<Categoria>();
+	private int listado=0;
 	
 	
 	private FacesContext facesContext;
@@ -143,11 +151,45 @@ public class ProcarroBean implements Serializable {
 		this.metodos = metodos;
 	}
 
+	
+
+	public int getListado() {
+		return listado;
+	}
+
+
+	public void setListado(int listado) {
+		this.listado = listado;
+	}
+	
+	
+
+
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 
 	@PostConstruct
 	public void init() {
 		//System.out.println("Hello");
 		try {
+			categorias=categoriaON.getCategorias();
 			vehiculos=vehiculoON.getvehiculos();
 			metodos=metodoON.getMetodoPagos();
 			System.out.println("----------------------");
@@ -392,5 +434,30 @@ public class ProcarroBean implements Serializable {
 		return "visualizacion?faces-redirect=true&id="+codigo;
 	}
 	
-
+	public String paginaPedido() {
+		return "pedido?faces-redirect=true";
+	}
+	
+	public void listadoVehiculos(int codigo) {
+		System.out.println("Entro a los LISTADOS");
+		System.out.println("LISTA C: "+codigo);
+		vehiculos=vehiculoON.getlistadoVehiculos(codigo);
+		for(Vehiculo elemento: vehiculos) {
+			System.out.println("CV: "+elemento.getId()+" PRECIO: "+elemento.getPrecio()+" MODELO: "+elemento.getModelo());
+		}
+	}
+	
+	public void listadoVehiculosCategoria() {
+		try {
+			categoria=categoriaON.buscarCategoria(categoria.getId());
+			vehiculos=vehiculoON.getListaVehiculoCategoria(categoria);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		for(Vehiculo elemento: vehiculos) {
+			System.out.println("V C:"+elemento.getId()+" CATEGORIA: "+elemento.getCategoria().getNombre());
+		}
+	}
+	
 }

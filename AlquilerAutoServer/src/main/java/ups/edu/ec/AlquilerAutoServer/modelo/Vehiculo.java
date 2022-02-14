@@ -18,7 +18,6 @@ import javax.persistence.Table;
 public class Vehiculo implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
-	//@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name = "veh_id")
 	@SequenceGenerator(name = "id_veh_seq", sequenceName = "ID_VEH_SEQ", initialValue = 1, allocationSize = 1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_veh_seq")
