@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PedidoService } from 'src/app/services/pedido.service';
 import { VehiculoService } from '../../services/vehiculo.service';
 
 @Component({
@@ -8,10 +9,16 @@ import { VehiculoService } from '../../services/vehiculo.service';
 })
 export class ListarVehiculoComponent implements OnInit {
 vehiculos:any;
-  constructor(private VehiculoService:VehiculoService ) { }
+  constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService) { }
 
   ngOnInit(): void {
     this.vehiculos=this.VehiculoService.getVehiculo();
+  }
+
+  adicionarCarrito(vehiculo:any){
+    window.alert("persona adicionada ala carrito con el id "+ vehiculo.marca);
+    this.pedidoSERvice.adicionarCarrito(vehiculo)
+  
   }
 
 }

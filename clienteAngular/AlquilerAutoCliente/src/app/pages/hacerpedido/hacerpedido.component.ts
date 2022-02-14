@@ -9,6 +9,7 @@ import { PedidoService } from 'src/app/services/pedido.service';
   styleUrls: ['./hacerpedido.component.scss']
 })
 export class HacerpedidoComponent implements OnInit {
+  select:string;
   items=[]as any;
   detalle:Detalle[];
   
@@ -53,6 +54,7 @@ export class HacerpedidoComponent implements OnInit {
     this.pedidoSERvice.adicionarDetalle(this.detalles=new Detalle())
     //this.pedidoSERvice.adicionarDetalle(det)
       console.log("--->",this.detalles);
+      console.log("select -->"+this.select)
 
      
     
