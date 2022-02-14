@@ -34,16 +34,13 @@
 
 				<div class="form-group">
 					<label for="itemRoles">Tipo de tarjeta</label>
-					<h:selectOneMenu value="#{metodoDePagoBean.pago.tipo}"
+					<h:selectOneMenu value="#{metodoDePagoBean.pago.id}"
 						class="form-control" id="campoTipo">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
-						<f:selectItem itemValue="Tarjeta de Credito" itemLabel="Tarjeta de Credito"
-							class="dropdown-item" />
-						<f:selectItem itemValue="Tarjeta de Debito" itemLabel="Tarjeta de Debito"
+						<f:selectItems value="#{metodoDePagoBean.pagos}" var="lista" itemValue="#{lista.id}" itemLabel="#{lista.tipo}"
 							class="dropdown-item" />
 					</h:selectOneMenu>
 				</div>
-
 				
 				<div class="form-group">
 					<label for="txtNumero">Numero la Tarjeta</label>

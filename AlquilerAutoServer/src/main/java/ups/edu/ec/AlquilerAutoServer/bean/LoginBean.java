@@ -198,7 +198,7 @@ public class LoginBean implements Serializable {
 			if (this.persona.getCedula() != null) {
 				this.mensajeSalida = "Logeo Exitoso para: " + this.persona.getEmail();
 				System.out.println("Logeo Exitoso");
-				return "listarPersona?faces-redirect=true";
+				return "pro-carro?faces-redirect=true";
 				
 			} else {
 				this.mensajeSalida = "Email y/o incorrectos";

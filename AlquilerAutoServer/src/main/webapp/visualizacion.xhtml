@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<f:metadata>
+	<f:viewParam name="id" value="#{vehiculo2Bean.vehiculo.id}"></f:viewParam>
+	<f:viewAction action="#{vehiculo2Bean.cargarVehiculo()}" />
+	<f:viewAction action="#{vehiculo2Bean.listadoComentarios()}" />
+</f:metadata>
+</h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Visualizacion del Producto
+	</ui:define>
+	<ui:define name="content">
+<h:form>
+	<h:panelGrid columns="2">
+		<h:outputLabel value="Codigo: " />
+		<h:outputLabel value="#{vehiculo2Bean.vehiculo.id}" />
+		<h:outputLabel value="Marca: " />
+		<h:outputLabel value="#{vehiculo2Bean.vehiculo.marca}" /> 
+		<h:outputLabel value="Modelo: " />
+		<h:outputLabel value="#{vehiculo2Bean.vehiculo.modelo}" />
+		<h:outputLabel value="Precio: " />
+		<h:outputLabel value="#{vehiculo2Bean.vehiculo.precio}" />
+		<h:outputLabel value="Estado: " />
+		<h:outputLabel value="#{vehiculo2Bean.vehiculo.estado}"/>
+	</h:panelGrid>
+	<br></br>
+	<h:panelGrid columns="2">
+	<h:inputText value="#{vehiculo2Bean.comentario.calificacion}"  id="txtCalificacion"/>
+	<h:inputTextarea value="#{vehiculo2Bean.comentario.descripcion}" id="txtDescripcion" />
+	</h:panelGrid>
+	<h:commandButton  value="INSERTAR COMENTARIO" type="button">
+		<f:ajax listener="#{vehiculo2Bean.insertarComentario()}" execute="txtCalificacion txtDescripcion" render="tabla-comentarios"></f:ajax>
+	</h:commandButton>	
+	<br></br>
+	<br></br>
+	<div class="table-responsive">
+	<h:dataTable value="#{vehiculo2Bean.comentarios}" var="lista" id="tabla-comentarios" class="table table-striped">
+		<h:column>
+			<f:facet name="header">Usuario</f:facet>
+			#{lista.persona.nombre}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Calificacion</f:facet>
+			#{lista.calificacion}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Resena</f:facet>
+			#{lista.descripcion}
+		</h:column>
+	</h:dataTable>
+</div>
+</h:form>
+</ui:define>
+</ui:composition> 
+</html>

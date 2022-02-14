@@ -16,11 +16,22 @@ public class CategoriaON implements CategoriaONLocal{
 	private CategoriaDAO categoriaDAO;
 	
 	public void insertarCategoria(Categoria categoria) throws Exception {
+		/*String estado=categoria.getEstado().toUpperCase();
+		String nombre=categoria.getNombre().toUpperCase();
+		categoria.setNombre(nombre);
+		categoria.setEstado(estado);
+		*/
+		categoria.setEstado(categoria.getEstado().toUpperCase());
+		categoria.setNombre(categoria.getNombre().toUpperCase());
 		categoriaDAO.insert(categoria);
 	}
 	
 	
 	public void actualizarCategoria(Categoria categoria) throws Exception {
+		String estado=categoria.getEstado().toUpperCase();
+		String nombre=categoria.getNombre().toUpperCase();
+		categoria.setNombre(nombre);
+		categoria.setEstado(estado);
 		categoriaDAO.update(categoria);
 	}
 	
@@ -36,6 +47,7 @@ public class CategoriaON implements CategoriaONLocal{
 	}
 	
 	public Categoria buscarNombre(String categoria) throws Exception{
+		categoria.toUpperCase();
 		return categoriaDAO.buscarNombre(categoria);
 	}
 	public Categoria getCategoria(int id) throws Exception {

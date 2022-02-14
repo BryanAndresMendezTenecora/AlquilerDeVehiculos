@@ -6,12 +6,16 @@
 
 <h:head></h:head> 
 <body> 
-	<h:form>	
+
+	<h:form>
+	
+	<h:outputLabel value="Nombre:" />
+	<h:inputText value="#{procarroBean}" />
+	<h:outputLabel value="" />
+	<h:inputText value="" />
+		
 		<h:commandButton type="submit" action="#{probandoBean.recuperar()}" value="Es" />
 </h:form>
 </body> 
-
-
-
 
 </html>

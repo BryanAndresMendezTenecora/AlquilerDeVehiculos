@@ -1,45 +1,54 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://java.sun.com/jsf/composite/primefaces">
 
-<h:head></h:head> 
-<body> 
-	<h:form>
-		<h:dataTable value="#{procarroBean.vehiculos}" var="lista">
-			<h:column>
-				<f:facet name="header">Codigo</f:facet>
-			#{lista.id}
-		</h:column>
-			<h:column>
-				<f:facet name="header">Nombre</f:facet>
-			#{lista.marca}
-		</h:column>
-			<h:column>
-				<f:facet name="header">Valor</f:facet>
-			#{lista.modelo}
-			</h:column>
-			<h:column>
-				<h:commandButton action="#{procarroBean.agregarDetalle()}"
-					value="Agregar">
-					<f:param name="pasar" value="#{lista.id}"></f:param>
-				</h:commandButton>
-			</h:column>
-		</h:dataTable>
-		<h:commandButton action="#{procarroBean.paginaDetalle()}"
-			value="Confirmar">
-		</h:commandButton>
-		<h:commandButton action="#{procarroBean.eliminarBeanCarro()}"
-			value="Eliminar Bean">
-			<f:param name="co" value="#{procarroBean}"></f:param>
-		</h:commandButton>
-		<h:commandButton action="#{procarroBean.comprobarBean()}"
-			value="Comprobar Bean">
-		</h:commandButton>
-		<h:commandButton action="#{procarroBean.eliminarBean()}"
-			value="Invalidate Session">
-		</h:commandButton>
-	</h:form>
-</body> 
+<h:head></h:head>
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Productos
+	</ui:define>
+	<ui:define name="content">
+	<div class="row">
+		<h:form>
+				<h:dataTable value="#{procarroBean.vehiculos}" var="lista" >
+							<h:column >
+									<f:facet name="header">Codigo</f:facet>
+								#{lista.id}
+							</h:column>
+							<h:column>
+									<f:facet name="header">Modelo</f:facet>
+								#{lista.modelo}
+							</h:column>
+							<h:column class="card-body">
+									<f:facet name="header">Marca</f:facet>
+								#{lista.marca}
+							</h:column>
+							<h:column >
+									<h:commandButton value="Agregar" type="button">
+										<!--<f:param name="pasar" value="#{lista.id}"></f:param>-->
+										<f:ajax listener="#{procarroBean.agregarDetalle(lista.id)}"></f:ajax>
+									</h:commandButton>
+							</h:column>
+							<h:column >
+									<h:commandButton value="Visualizar" action="#{procarroBean.visualizarVehiculo(lista.id)}">
+									</h:commandButton>
+							</h:column>
+				</h:dataTable>
+			<h:commandButton action="#{procarroBean.paginaDetalle()}"
+				value="Confirmar">
+			</h:commandButton>
+			<h:commandButton action="#{procarroBean.eliminarBeanCarro()}"
+				value="Eliminar Bean">
+				<f:param name="co" value="#{procarroBean}"></f:param>
+			</h:commandButton>
+			<h:commandButton action="#{procarroBean.comprobarBean()}"
+				value="Comprobar Bean">
+			</h:commandButton>
+		</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
 </html>

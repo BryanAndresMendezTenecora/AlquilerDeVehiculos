@@ -20,6 +20,8 @@ public class VehiculoON implements VehiculoONLocal{
 	
 	
 	public void insertarVehiculo(Vehiculo Vehiculo) throws Exception {
+		Vehiculo.setMarca(Vehiculo.getMarca().toUpperCase());
+		Vehiculo.setModelo(Vehiculo.getModelo().toUpperCase());
 		VehiculoDAO.insert(Vehiculo);
 	}
 	

@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+<f:metadata>
+		<f:viewParam name="id" value="#{devolucionBean.factura.id}"></f:viewParam>
+		<f:viewAction action="#{devolucionBean.recuperarFactura()}" />
+</f:metadata>
+</h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		DEVOLUCION
+	</ui:define>
+	<ui:define name="content">
+<h:form>
+	<h:panelGrid columns="2">
+	<h:outputLabel value="CODIGO FACTURA :" />
+	<h:outputLabel value="#{devolucionBean.factura.id}" />
+	<h:outputLabel value="FECHA" />
+	<h:inputText value="#{devolucionBean.devolucion.fecha}" />
+	<h:outputLabel value="ANTECEDENTES:" />
+	<h:inputTextarea value="#{devolucionBean.devolucion.antecedente}" />
+	<h:commandButton action="#{devolucionBean.insertarDevolucion()}" value="INSETAR DEVOLUCION" />
+	</h:panelGrid>
+</h:form> 
+</ui:define>
+</ui:composition> 
+</html>

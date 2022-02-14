@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import ups.edu.ec.AlquilerAutoServer.dao.ComentarioDAO;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Comentario;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 @Stateless
 public class ComentarioON implements ComentarioONLocal{
 	@Inject
@@ -31,5 +32,9 @@ public class ComentarioON implements ComentarioONLocal{
 	}
 	public List<Comentario> getComentarios(){
 		return comentarioDAO.getList();
+	}
+	
+	public List<Comentario> getComentariosVehiculo(Vehiculo vehiculo){
+		return comentarioDAO.getcomentariosVehiculo(vehiculo);
 	}
 }

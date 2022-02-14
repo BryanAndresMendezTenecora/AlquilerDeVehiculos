@@ -5,9 +5,12 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,8 @@ public class Comentario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "com_id")
+	@SequenceGenerator(name = "id_com_seq", sequenceName = "ID_COM_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_com_seq")
 	private int id;
 	private String descripcion;
 	private int calificacion;

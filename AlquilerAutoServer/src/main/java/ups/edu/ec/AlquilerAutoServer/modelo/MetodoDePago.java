@@ -4,7 +4,10 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 @Entity
 @Table(name = "TBL_MetodoPago")
@@ -12,6 +15,8 @@ public class MetodoDePago implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "tar_id")
+	@SequenceGenerator(name = "id_met_seq", sequenceName = "ID_MET_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_met_seq")
 	private int id;
 	
 	private String tipo;
@@ -78,7 +83,4 @@ public class MetodoDePago implements Serializable{
 		this.numero = numero;
 	}
 	
-	
-	
-
 }

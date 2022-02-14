@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -19,11 +20,14 @@ public class Vehiculo implements Serializable{
 	@Id
 	//@GeneratedValue(strategy = GenerationType.TABLE)
 	@Column(name = "veh_id")
+	@SequenceGenerator(name = "id_veh_seq", sequenceName = "ID_VEH_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_veh_seq")
 	private int id;
 	private String estado;
 	private String modelo;
 	private String marca;
 	private int stock;
+	private double precio;
 	
 	@OneToOne
 	@JoinColumn(name = "cat_id")
@@ -64,5 +68,13 @@ public class Vehiculo implements Serializable{
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	public double getPrecio() {
+		return precio;
+	}
+	public void setPrecio(double precio) {
+		this.precio = precio;
+	}
+	
+	
 	
 }
