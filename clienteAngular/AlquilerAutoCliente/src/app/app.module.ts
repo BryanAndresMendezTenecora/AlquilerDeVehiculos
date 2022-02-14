@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component'
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
