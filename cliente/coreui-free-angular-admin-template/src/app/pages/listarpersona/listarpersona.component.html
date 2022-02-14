@@ -1,0 +1,8 @@
+<p>listarpersona works!</p>
+
+<DIV *ngFor="let persona of personas | async">
+    
+    <H3>{{persona.cedula}} {{persona.nombre}}</H3>
+    <span>{{persona.email}}</span>
+    <hr>
+</DIV>
