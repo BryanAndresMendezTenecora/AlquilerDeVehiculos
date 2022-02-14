@@ -27,9 +27,7 @@ export class ListarpersonaComponent implements OnInit {
   adicionarCarrito(persona:any){
     window.alert("persona adicionada ala carrito con el id "+ persona.nombre);
     this.pedidoSERvice.adicionarCarrito(persona)
-    
-
-
+  
   }
 
   

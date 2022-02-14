@@ -4,8 +4,9 @@
 <p>lista carrito!</p>
 
 <div *ngFor="let item of items">
-    {{item.nombre}}
-    <span>{{item.direccion}}</span>
+    {{item.id}}
+    {{item.modelo}}
+    <span>{{item.marca}}</span>
     
 </div>
 
@@ -45,15 +46,15 @@
   </form>
   <br>
   <h1>------------------</h1>
-  <form>
-    <div class="form-group row">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
         <label for="inputiddet" class="col-sm-2 col-form-label">ID</label>
         <div class="col-sm-10">
           <input type="number" class="form-control" name="inputiddetalle" placeholder="ID" [(ngModel)]="detalles.id">
         </div>
           
       </div>
-      <div class="form-group row">
+      <div class="form-group mx-sm-3 mb-2">
         <label for="inputfechaentrega" class="col-sm-2 col-form-label">Cantidad</label>
         <div class="col-sm-10">
           <input type="number" class="form-control" name="inputcantidad" placeholder="cantidad" [(ngModel)]="detalles.cantidad">
@@ -62,13 +63,14 @@
       </div>
 
 
-    <div class="form-group row">
+    <div class="form-group mx-sm-3 mb-2">
       <label for="inputtotal" class="col-sm-2 col-form-label">Total</label>
       <div class="col-sm-10">
         <input type="number" class="form-control" name="inputtotal" placeholder="total" [(ngModel)]="detalles.total">
       </div>
       
     </div>
+    <!--
     <div class="form-group row">
         <label for="inputvehiculo" class="col-sm-2 col-form-label">Vehiculo</label>
         <div class="col-sm-10">
@@ -76,11 +78,24 @@
         </div>
         
     </div>
+    -->
+    <div class="form-group mx-sm-3 mb-2">
+      <label for="inputvehiculo" class="col-sm-2 col-form-label">Vehiculo</label>
+    <select class="form-select" aria-label="Default select example" name="txtselect" [(ngModel)]="detalles.vehiculo.id">
+      <option selected>Seleccione auto</option>
+      <option  *ngFor="let item of items" [value]="item.id">{{item.marca}}</option>
+      <!--<option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+      -->
+    </select>
+    </div>
       
     
     <button (click)="adicionarDetalle()">+ Detalle</button>
   </form>
 <h1>-------------------</h1>
+
   <div class="container">
       <h1>tabla Detalle</h1>
       <table id="tblDatos"   class="table table-bordered">
