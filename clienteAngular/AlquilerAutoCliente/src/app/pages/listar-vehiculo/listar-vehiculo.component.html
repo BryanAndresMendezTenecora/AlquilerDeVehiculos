@@ -1,22 +1,17 @@
 
 <p>listarpersona works!</p>
-
+<div class="container">
 <DIV *ngFor="let vehiculo of vehiculos | async">
     
-    <H3>{{vehiculo.id}} {{vehiculo.estado}}
-        {{vehiculo.modelo}} {{vehiculo.marca}}
-        {{vehiculo.stock}} {{vehiculo.categoria.nombre}}
-    </H3>
-    
+    <H1> <strong> Categoria: {{vehiculo.categoria.nombre}}</strong>
+    </H1>
+    <!--<img class='imgProducto' src="../assets/productos/{{producto.imagen}}">-->
+
+    <img class='imgProducto' src="../../../assets/ford.jpg">
+    <h3>{{vehiculo.modelo}} {{vehiculo.marca}}</h3>
+    <button class="btn btn-warning" (click)="adicionarCarrito(vehiculo)">Pedir</button>
     <hr>
-
-    
+  
 </DIV>
-
-<div class='producto' *ngFor="let vehiculo of vehiculos">
-    <h2>{{vehiculo.marca}}</h2>
-    <img class='imgProducto' src="../assets/productos/{{producto.imagen}}">
-    <p>{{vehiculo.modelo}}</p>
-    <span class='precio'><strong>Precio</strong>{{vehiculo.categoria.nombre | currency}}</span>
-    <button class='button' (click)="adicionarCarrito(producto)" >Comprar</button>
-    </div>
+<a routerLink="/listarPedido">Mi Pedido</a>
+</div>

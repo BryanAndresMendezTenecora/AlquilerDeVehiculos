@@ -15,8 +15,8 @@ export class PedidoService {
   detalles=[] as any;
   constructor(private http:HttpClient) { }
 
-  adicionarCarrito(persona:any){
-    this.items.push(persona)
+  adicionarCarrito(vehiculo:any){
+    this.items.push(vehiculo)
   }
   LimpiarCarrito(){
     this.items=[];
