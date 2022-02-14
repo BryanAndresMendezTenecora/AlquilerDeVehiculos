@@ -10,6 +10,8 @@ import { CrearVehiculoComponent } from './pages/crear-vehiculo/crear-vehiculo.co
 import { ListarVehiculoComponent } from './pages/listar-vehiculo/listar-vehiculo.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
+import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 
 
 @NgModule({
@@ -19,6 +21,8 @@ import { HttpClientModule } from '@angular/common/http';
     ListarpersonaComponent,
     CrearVehiculoComponent,
     ListarVehiculoComponent,
+    PedidopruebaComponent,
+    HacerpedidoComponent,
     
 
    

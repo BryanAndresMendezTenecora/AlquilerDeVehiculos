@@ -30,6 +30,9 @@ public class PedidoON implements PedidoONLocal{
 		pedidoDAO.delete(id);
 	}
 	public List<pedidoCabecera> getpedidoCabeceras(){
+		List<pedidoCabecera> ped=pedidoDAO.getList(); 
+		
+		System.out.println("tamano d ela lista -------------"+ped.size());
 		return pedidoDAO.getList();
 	}
 }

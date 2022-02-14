@@ -1,0 +1,113 @@
+<p>hacerpedido works!</p>
+<a [routerLink]="['']"><h1>Mi Pedido</h1></a>
+
+<p>lista carrito!</p>
+
+<div *ngFor="let item of items">
+    {{item.nombre}}
+    <span>{{item.direccion}}</span>
+    
+</div>
+
+<h1>Formulario para hacer pedido</h1>
+
+<form>
+    <div class="form-group row">
+        <label for="inputID" class="col-sm-2 col-form-label">ID Pedido</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" name="inputid" placeholder="id" [(ngModel)]="pedido.id">
+        </div>
+          
+      </div>
+    
+    <div class="form-group row">
+        <label for="inputPersona" class="col-sm-2 col-form-label">ID Persona</label>
+        <div class="col-sm-10">
+          <input type="Text" class="form-control" name="inputPersona" placeholder="ID PErsona" [(ngModel)]="pedido.persona.cedula">
+        </div>
+          
+      </div>
+    <div class="form-group row">
+        <label for="inputFecha" class="col-sm-2 col-form-label">Fecha</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="inputFecha" placeholder="Fecha" [(ngModel)]="pedido.fecha">
+        </div>
+          
+      </div>
+    <div class="form-group row">
+      <label for="inputfechaentrega" class="col-sm-2 col-form-label">FechaEntrega</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="inputFechsE" placeholder="Fecha Entrega" [(ngModel)]="pedido.fechaentrega">
+      </div>
+        
+    </div>
+    <button (click)="guardar()">Guardar</button>
+  </form>
+  <br>
+  <h1>------------------</h1>
+  <form>
+    <div class="form-group row">
+        <label for="inputiddet" class="col-sm-2 col-form-label">ID</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" name="inputiddetalle" placeholder="ID" [(ngModel)]="detalles.id">
+        </div>
+          
+      </div>
+      <div class="form-group row">
+        <label for="inputfechaentrega" class="col-sm-2 col-form-label">Cantidad</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" name="inputcantidad" placeholder="cantidad" [(ngModel)]="detalles.cantidad">
+        </div>
+          
+      </div>
+
+
+    <div class="form-group row">
+      <label for="inputtotal" class="col-sm-2 col-form-label">Total</label>
+      <div class="col-sm-10">
+        <input type="number" class="form-control" name="inputtotal" placeholder="total" [(ngModel)]="detalles.total">
+      </div>
+      
+    </div>
+    <div class="form-group row">
+        <label for="inputvehiculo" class="col-sm-2 col-form-label">Vehiculo</label>
+        <div class="col-sm-10">
+          <input type="number" class="form-control" name="inputvehiculo" placeholder="vehiculo" [(ngModel)]="detalles.vehiculo.id">
+        </div>
+        
+    </div>
+      
+    
+    <button (click)="adicionarDetalle()">+ Detalle</button>
+  </form>
+<h1>-------------------</h1>
+  <div class="container">
+      <h1>tabla Detalle</h1>
+      <table id="tblDatos"   class="table table-bordered">
+        <thead class="table-warning">
+          <tr>
+            <th scope="col">det id</th>
+            <th scope="col">cantidad</th>
+            <th scope="col">total</th>
+            <th scope="col">vehiculo</th>
+          </tr>
+        </thead>
+        <tbody>
+            
+          <tr  *ngFor="let item of detalle">
+            <th>{{item.id}}</th>
+            <td>{{item.cantidad}}</td>
+            <td>{{item.total}}</td>
+            <td>{{item.vehiculo.id}}</td>
+            
+        
+          </tr>
+          
+        </tbody>
+      </table>
+      
+
+      
+
+  </div>
+  

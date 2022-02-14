@@ -2,7 +2,7 @@
 <!--
 [] es un get
 () es un set
--->
+
 
 <form >
     <label for="">Id</label>
@@ -17,3 +17,30 @@
     <input name="textTelefono" type="text"[(ngModel)]="persona.email">
     <button (click)="guardar()">Guardar</button>
 </form>
+-->
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      
+  
+      
+      <div class="fadeIn first">
+        <img src="assets/logologin.png" id="icon" alt="User Icon" />
+      </div>
+  
+      
+      <form  >
+        <input type="text" name="textId" class="fadeIn second"  placeholder="ID" [(ngModel)]="persona.cedula">
+        <input type="text" name="textcedula" class="fadeIn third"  placeholder="cedula" [(ngModel)]="persona.nombre" required>
+        <input type="text" name="textnombres" class="fadeIn second"  placeholder="Nombres" [(ngModel)]="persona.email" required="ingrese nombres">
+        
+        
+        
+        <button (click)="guardar()">Guardar</button>
+      </form>
+  
+      <div id="formFooter">
+        <a class="underlineHover" href="login">Iniciar Sesion</a>
+      </div>
+  
+    </div>
+  </div>
