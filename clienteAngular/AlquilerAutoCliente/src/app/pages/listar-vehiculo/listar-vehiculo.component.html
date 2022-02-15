@@ -9,6 +9,8 @@
 
     <img class='imgProducto' src="../../../assets/ford.jpg">
     <h3>{{vehiculo.modelo}} {{vehiculo.marca}}</h3>
+    <button  class="btn btn-primary">Comentar</button>
+    <a class="btn btn-sucess btn-sm" routerLink="/crearComentario/{{vehiculo.id}}">Comen</a>
     <button class="btn btn-warning" (click)="adicionarCarrito(vehiculo)">Pedir</button>
     <hr>
   

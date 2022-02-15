@@ -1,0 +1,28 @@
+
+
+<div class="container">
+    <h3>Listado de Comentarios </h3>
+  <table class="table table-bordered">
+      <thead class="table-warning">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">DESCRIPCION</th>
+          <th scope="col">CALIFICACION</th>
+          <th scope="col">PERSONA</th>
+          <th scope="col">VEHICULO</th>
+          
+
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let comentorio of comentarios | async">
+          <th scope="row">{{comentorio.id}}</th>
+          <th scope="row">{{comentorio.descripcion}}</th>
+          <th scope="row">{{comentorio.calificacion}}</th>
+          <th scope="row">{{comentorio.persona.cedula}}</th>
+          <th scope="row">{{comentorio.vehiculo.id}}</th>
+        </tr>
+      </tbody>
+    </table>
+  </div>

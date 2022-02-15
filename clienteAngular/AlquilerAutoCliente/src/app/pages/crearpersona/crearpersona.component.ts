@@ -29,4 +29,6 @@ export class CrearpersonaComponent implements OnInit {
     this.router.navigate(['listarpersona'],params);
   }
 
+  
+
 }

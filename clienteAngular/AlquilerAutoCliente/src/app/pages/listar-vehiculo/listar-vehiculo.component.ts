@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { PedidoService } from 'src/app/services/pedido.service';
 import { VehiculoService } from '../../services/vehiculo.service';
 
@@ -7,8 +7,15 @@ import { VehiculoService } from '../../services/vehiculo.service';
   templateUrl: './listar-vehiculo.component.html',
   styleUrls: ['./listar-vehiculo.component.scss']
 })
+
+
 export class ListarVehiculoComponent implements OnInit {
 vehiculos:any;
+
+@Input()
+nombre:'DesarrolloWeb';
+
+
   constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService) { }
 
   ngOnInit(): void {
