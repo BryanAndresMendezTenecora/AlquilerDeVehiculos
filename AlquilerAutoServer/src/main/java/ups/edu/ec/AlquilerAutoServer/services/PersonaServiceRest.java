@@ -1,7 +1,9 @@
 package ups.edu.ec.AlquilerAutoServer.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.push.Push;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
@@ -14,6 +16,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
 @Path("personas")
@@ -89,6 +92,92 @@ public class PersonaServiceRest {
 			return null;
 		}
 	}
+	
+	
+	@POST
+	@Path("login")
+	@Produces(MediaType.APPLICATION_JSON)
+	public status login(String nombre){
+		System.out.println("este es nombre q llega ------->="+nombre);
+		List<Persona> listadopersonas=new ArrayList<Persona>();
+		
+		status st=new status();
+		try {
+			listadopersonas=personaON.getPersonas();
+			for (Persona persona : listadopersonas) {
+				if (persona.getEmail().equals(nombre)) {
+					//nuevalistaobtenida.add(vehiculo);
+					System.out.println("persona encontrada");
+					st.setStatus("oK");
+					result re=new result();
+					re.setToken("2345dgsd221342134sfashuy");
+					st.setResult(re);
+					
+					return st;
+				} else {
+					System.out.println("-> ");
+					st.setStatus("error");
+					result re=new result();
+					re.setError_id("200");
+					re.setError_msg("El password es invalido");
+					st.setResult(re);
+					return st;
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return null;
+		
+	}
+	
+	
+	@GET
+	@Path("loginP")
+	@Produces(MediaType.APPLICATION_JSON)
+	public status loginP(@QueryParam("email") String email,@QueryParam("password") String password){
+		System.out.println("este es nombre q llega ------->="+password);
+		List<Persona> listadopersonas=new ArrayList<Persona>();
+		
+		status st=new status();
+		try {
+			listadopersonas=personaON.getPersonas();
+			for (Persona persona : listadopersonas) {
+				if (persona.getEmail().equals(email) && persona.getPassword().equals(password)) {
+					//nuevalistaobtenida.add(vehiculo);
+					System.out.println("persona encontrada");
+					st.setStatus("oK");
+					result re=new result();
+					re.setToken("2345dgsd221342134sfashuy");
+					st.setResult(re);
+					
+					return st;
+				} else {
+					System.out.println("-> ");
+					st.setStatus("error");
+					result re=new result();
+					re.setError_id("200");
+					re.setError_msg("El password es invalido");
+					st.setResult(re);
+					return st;
+				}
+				
+			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		return null;
+		
+	}
+
+
 
 	
 

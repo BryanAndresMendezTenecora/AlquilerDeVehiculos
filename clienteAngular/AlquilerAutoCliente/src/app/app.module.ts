@@ -14,6 +14,9 @@ import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.compone
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehiculos.component';
+import { LoginComponent } from './pages/login/login.component';
+import { HeaderComponent } from './plantillas/header/header.component';
+import { FooterComponent } from './plantillas/footer/footer.component';
 
 
 @NgModule({
@@ -26,6 +29,9 @@ import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehic
     PedidopruebaComponent,
     HacerpedidoComponent,
     FiltrarvehiculosComponent,
+    LoginComponent,
+    HeaderComponent,
+    FooterComponent,
     
 
    

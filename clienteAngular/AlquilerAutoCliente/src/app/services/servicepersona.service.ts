@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Persona } from '../domain/persona';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { ResponseI } from '../modelos/response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,18 @@ export class ServicepersonaService {
     const url = environment.WS_PATH +"/personas";
     return this.http.get<any>(url)
 
+  }
+
+  getPersonasall():Observable<Persona>{
+    const url = environment.WS_PATH +"/personas";
+    return this.http.get<Persona>(url)
+
+  }
+
+  loginByEmail(email:string,password:string):Observable<ResponseI>{
+      console.log("serves->",email)
+    //const url = environment.WS_PATH +"/personas/login";
+    const url = environment.WS_PATH +"/personas/loginP?email="+email+"&password="+password;
+    return this.http.get<ResponseI>(url);
   }
 }

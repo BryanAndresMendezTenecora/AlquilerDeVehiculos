@@ -7,6 +7,7 @@ import { ListarVehiculoComponent } from './pages/listar-vehiculo/listar-vehiculo
 import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehiculos.component';
+import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
   {path:"crearpersona",component:CrearpersonaComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path:"pedido/:cedula",component:PedidopruebaComponent},
   //{path:'',component:HacerpedidoComponent}
   {path:"listarPedido",component:HacerpedidoComponent},
-  {path:"listarporcategoria",component:FiltrarvehiculosComponent}
+  {path:"listarporcategoria",component:FiltrarvehiculosComponent},
+  {path:"login",component:LoginComponent}
 ];
 
 @NgModule({

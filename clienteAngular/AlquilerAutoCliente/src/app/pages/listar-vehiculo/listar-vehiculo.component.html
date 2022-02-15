@@ -1,17 +1,27 @@
 
-<p>listarpersona works!</p>
+
+<app-header></app-header>
+<div>
+    <br>
+</div>
 <div class="container">
 <DIV *ngFor="let vehiculo of vehiculos | async">
     
-    <H1> <strong> Categoria: {{vehiculo.categoria.nombre}}</strong>
+    <H1>Modelo: <strong>{{vehiculo.modelo}}</strong>
     </H1>
     <!--<img class='imgProducto' src="../assets/productos/{{producto.imagen}}">-->
 
-    <img class='imgProducto' src="../../../assets/ford.jpg">
-    <h3>{{vehiculo.modelo}} {{vehiculo.marca}}</h3>
+    <img class='imgProducto' src="../../../assets/{{vehiculo.modelo}}.jpg">
+    <h3><strong> Marca:</strong> {{vehiculo.marca}} </h3>
+    <h3><strong>Categoria: </strong> {{vehiculo.categoria.nombre}}</h3>
     <button class="btn btn-warning" (click)="adicionarCarrito(vehiculo)">Pedir</button>
     <hr>
   
 </DIV>
 <a routerLink="/listarPedido">Mi Pedido</a>
+<button class="btn btn-warning" (click)="salir()">Log Out</button>
 </div>
+
+<app-footer></app-footer>
+
+

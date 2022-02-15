@@ -7,10 +7,13 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +22,8 @@ public class pedidoCabecera implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "ped_id")
+	@SequenceGenerator(name = "id_ped_seq", sequenceName = "ID_PED_SEQ", initialValue = 1, allocationSize = 1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_ped_seq")
 	private int id;
 	@OneToOne
 	@JoinColumn(name = "per_cedula")
