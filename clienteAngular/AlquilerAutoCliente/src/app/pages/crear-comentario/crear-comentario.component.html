@@ -1,0 +1,24 @@
+<H1><p>crearComentario works!</p></H1>
+<form>
+<div class="container">
+
+<div class="form-group">  
+<label>Descripcion</label>
+<textarea  name="txtdescripcion" type="text" class="form-control" [(ngModel)]="comentario.descripcion"></textarea>
+<label>Calificacion</label>
+<input name="txtCalificacion" type="text" class="form-control" [(ngModel)]="comentario.calificacion">
+</div>
+
+<div class="form-group"> 
+<label>Persona</label>
+<input name="txtCedula" type="text" class="form-control" [(ngModel)]="comentario.persona.cedula">
+</div>
+
+
+
+<br/>
+<button (click)="guardar()" class="btn btn-primary">Guardar</button>
+
+</div>
+
+</form>
