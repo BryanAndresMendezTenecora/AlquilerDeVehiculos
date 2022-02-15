@@ -18,15 +18,15 @@ const routes: Routes = [
   {path:"listarVehiculo",component:ListarVehiculoComponent},
   {path:"pedido",component:PedidopruebaComponent},
   {path:"pedido/:cedula",component:PedidopruebaComponent},
-<<<<<<< Updated upstream
+
   //{path:'',component:HacerpedidoComponent}
   {path:"listarPedido",component:HacerpedidoComponent},
-  {path:"listarporcategoria",component:FiltrarvehiculosComponent}
-=======
+  {path:"listarporcategoria",component:FiltrarvehiculosComponent},
+
   {path:"listarPedido",component:HacerpedidoComponent},
   {path:"crearComentario/:id",component:CrearComentarioComponent},
   {path:"listarComentario",component:ListarComentarioComponent}
->>>>>>> Stashed changes
+
 ];
 
 @NgModule({

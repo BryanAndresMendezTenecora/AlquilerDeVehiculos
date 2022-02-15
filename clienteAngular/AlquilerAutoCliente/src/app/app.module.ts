@@ -13,12 +13,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-<<<<<<< Updated upstream
+
 import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehiculos.component';
-=======
+
 import { CrearComentarioComponent } from './pages/crear-comentario/crear-comentario.component';
 import { ListarComentarioComponent } from './pages/listar-comentario/listar-comentario.component';
->>>>>>> Stashed changes
+
 
 
 @NgModule({
@@ -30,12 +30,12 @@ import { ListarComentarioComponent } from './pages/listar-comentario/listar-come
     ListarVehiculoComponent,
     PedidopruebaComponent,
     HacerpedidoComponent,
-<<<<<<< Updated upstream
+
     FiltrarvehiculosComponent,
-=======
+
     CrearComentarioComponent,
     ListarComentarioComponent,
->>>>>>> Stashed changes
+
     
 
    
