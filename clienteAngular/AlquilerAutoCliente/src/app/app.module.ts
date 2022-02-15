@@ -13,10 +13,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehiculos.component';
 import { LoginComponent } from './pages/login/login.component';
 import { HeaderComponent } from './plantillas/header/header.component';
 import { FooterComponent } from './plantillas/footer/footer.component';
+
+import { CrearComentarioComponent } from './pages/crear-comentario/crear-comentario.component';
+import { ListarComentarioComponent } from './pages/listar-comentario/listar-comentario.component';
+
 
 
 @NgModule({
@@ -28,10 +33,18 @@ import { FooterComponent } from './plantillas/footer/footer.component';
     ListarVehiculoComponent,
     PedidopruebaComponent,
     HacerpedidoComponent,
+
     FiltrarvehiculosComponent,
+<<<<<<< HEAD
     LoginComponent,
     HeaderComponent,
     FooterComponent,
+=======
+
+    CrearComentarioComponent,
+    ListarComentarioComponent,
+
+>>>>>>> 0d28f0e9c5353b61c4acce6c15435c16c82687c0
     
 
    
