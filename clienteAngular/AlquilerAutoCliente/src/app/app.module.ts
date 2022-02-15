@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PedidopruebaComponent } from './pages/pedidoprueba/pedidoprueba.component';
 import { HacerpedidoComponent } from './pages/hacerpedido/hacerpedido.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FiltrarvehiculosComponent } from './pages/filtrarvehiculos/filtrarvehiculos.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ListarVehiculoComponent,
     PedidopruebaComponent,
     HacerpedidoComponent,
+    FiltrarvehiculosComponent,
     
 
    

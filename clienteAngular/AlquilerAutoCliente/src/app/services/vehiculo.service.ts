@@ -21,4 +21,10 @@ export class VehiculoService {
     return this.http.get<any>(url)
 
   }
+  buscarvehiculo(nombre:string):Observable<any>{
+    console.log("service->",nombre)
+    const url = environment.WS_PATH +"/vehiculos/buscarC";
+    return this.http.post<any>(url,nombre)
+
+  }
 }
