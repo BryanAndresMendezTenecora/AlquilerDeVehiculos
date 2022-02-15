@@ -1,11 +1,11 @@
-<<<<<<< HEAD
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-=======
-import { Component, OnInit, Input } from '@angular/core';
->>>>>>> 0d28f0e9c5353b61c4acce6c15435c16c82687c0
-import { PedidoService } from 'src/app/services/pedido.service';
 import { VehiculoService } from '../../services/vehiculo.service';
+import { PedidoService } from '../../services/pedido.service';
+
+
+
 
 @Component({
   selector: 'app-listar-vehiculo',
@@ -16,16 +16,9 @@ import { VehiculoService } from '../../services/vehiculo.service';
 
 export class ListarVehiculoComponent implements OnInit {
 vehiculos:any;
-<<<<<<< HEAD
+
   constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService,private router:Router) { }
-=======
 
-@Input()
-nombre:'DesarrolloWeb';
-
-
-  constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService) { }
->>>>>>> 0d28f0e9c5353b61c4acce6c15435c16c82687c0
 
   ngOnInit(): void {
     this.vehiculos=this.VehiculoService.getVehiculo();

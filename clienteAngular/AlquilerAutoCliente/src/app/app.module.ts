@@ -35,16 +35,16 @@ import { ListarComentarioComponent } from './pages/listar-comentario/listar-come
     HacerpedidoComponent,
 
     FiltrarvehiculosComponent,
-<<<<<<< HEAD
+
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-=======
+
 
     CrearComentarioComponent,
     ListarComentarioComponent,
 
->>>>>>> 0d28f0e9c5353b61c4acce6c15435c16c82687c0
+
     
 
    

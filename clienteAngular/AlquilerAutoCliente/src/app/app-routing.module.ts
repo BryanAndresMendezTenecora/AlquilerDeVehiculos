@@ -23,15 +23,15 @@ const routes: Routes = [
   //{path:'',component:HacerpedidoComponent}
   {path:"listarPedido",component:HacerpedidoComponent},
   {path:"listarporcategoria",component:FiltrarvehiculosComponent},
-<<<<<<< HEAD
-  {path:"login",component:LoginComponent}
-=======
+
+  {path:"login",component:LoginComponent},
+
 
   {path:"listarPedido",component:HacerpedidoComponent},
   {path:"crearComentario/:id",component:CrearComentarioComponent},
   {path:"listarComentario",component:ListarComentarioComponent}
 
->>>>>>> 0d28f0e9c5353b61c4acce6c15435c16c82687c0
+
 ];
 
 @NgModule({
