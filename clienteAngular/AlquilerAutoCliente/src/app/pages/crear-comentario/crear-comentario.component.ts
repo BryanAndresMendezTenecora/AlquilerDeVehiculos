@@ -11,6 +11,7 @@ import { ComentarioService } from '../../services/comentario.service';
 export class CrearComentarioComponent implements OnInit {
   id:any;
   cedula:any;
+  comentarios:any;
   comentario:Comentario=new Comentario();
   constructor(private activatedRoute:ActivatedRoute,private ComentarioService:ComentarioService) { 
     this.id=this.activatedRoute.snapshot.params['id'];
@@ -20,6 +21,7 @@ export class CrearComentarioComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.buscar(this.id);
   }
 
   guardar(){
@@ -27,7 +29,17 @@ export class CrearComentarioComponent implements OnInit {
     this.ComentarioService.guardarComentario(this.comentario).subscribe(data=>{
       console.log("Poni=>",data);
     });
-    
+    this.buscar(this.id);
+    window.location.reload();
+
+
+  }
+
+  buscar(numero:number){
+    console.log("ingreseos-->>>",numero)
+    this.comentarios=this.ComentarioService.getAutoCoemntario(numero);
+    console.log("estos son los vehiculos-->",this.comentarios)
+
   }
 
 }

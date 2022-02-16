@@ -23,4 +23,12 @@ comentarios:Comentario;
     return this.http.get<any>(url)
 
   }
+
+
+
+  getAutoCoemntario(n:number):Observable<any>{
+    const url = environment.WS_PATH +"/comentario/buscarComentario";
+    return this.http.post<any>(url,n)
+
+  }
 }
