@@ -116,7 +116,14 @@
 						placeholder="Direccion" value="#{clienteBean.persona.rol}" />
 				</div>
 				-->
-
+				<div class="form-group">
+					<label for="txtEstado">Estado</label>
+					<h:selectOneMenu value="#{clienteBean.persona.estado}" id="txtEstado" class="btn btn-light dropdown-toggle">
+						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+						<f:selectItem itemLabel="ACTIVO" class="btn btn-light" itemValue="ACTIVO" />
+						<f:selectItem itemLabel="INACTIVO" class="btn btn-light"  itemValue="INACTIVO"/>
+					</h:selectOneMenu>
+				</div>
 				<div class="form-group">
 					<label for="itemRoles">Rol</label>
 					<h:selectOneMenu value="#{clienteBean.persona.rol}"

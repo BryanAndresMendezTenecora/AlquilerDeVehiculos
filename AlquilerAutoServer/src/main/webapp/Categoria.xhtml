@@ -45,9 +45,11 @@
 				  
 				<div class="form-group">
 					<label for="txtEstado">Estado</label>
-					<h:inputText type="email" class="form-control"
-						id="campoEstado" placeholder="Nombre"
-						value="#{categoriaBean.categoria.estado}" />
+					<h:selectOneMenu value="#{categoriaBean.categoria.estado}" id="txtEstado" class="btn btn-light dropdown-toggle">
+						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+						<f:selectItem itemLabel="ACTIVO" class="btn btn-light" itemValue="ACTIVO" />
+						<f:selectItem itemLabel="INACTIVO" class="btn btn-light"  itemValue="INACTIVO"/>
+					</h:selectOneMenu>
 				</div>
 				
 
