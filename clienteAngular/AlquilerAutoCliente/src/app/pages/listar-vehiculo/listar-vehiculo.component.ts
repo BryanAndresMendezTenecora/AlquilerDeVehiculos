@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ComentarioService } from 'src/app/services/comentario.service';
 
 import { PedidoService } from 'src/app/services/pedido.service';
 import { VehiculoService } from '../../services/vehiculo.service';
@@ -14,11 +15,13 @@ import { VehiculoService } from '../../services/vehiculo.service';
 
 export class ListarVehiculoComponent implements OnInit {
 vehiculos:any;
+comentarios:any;
 
-  constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService,private router:Router) { }
+  constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService,private router:Router, private ComentarioService:ComentarioService) { }
 
 
   ngOnInit(): void {
+    this.comentarios=this.ComentarioService.getComentario();
     this.vehiculos=this.VehiculoService.getVehiculo();
     this.checkLocalStorage()
   }
