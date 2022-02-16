@@ -28,7 +28,12 @@
 				<h1>hola mi parse</h1>
 				<h:outputText value="#{loginBean.persona.nombre}" />
 				
-			<h:dataTable var="per" class="table table-bordered"
+		<div class="row">
+		<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
+			<h:dataTable var="per" class="table table-striped"
 				value="#{clienteBean.clientes}">
 				<h:column>
 					<f:facet name="header">Cedula</f:facet>
@@ -82,13 +87,18 @@
 						class="btn btn-success btn-rounded btn-fw" />
 
 					<h:commandButton
-						action="#{clienteBean.eliminar(per.cedula, per.nombre, per.apellido, per.direccion, per.email, per.password, per.rol, per.telefono)}"
+						action="#{clienteBean.eliminar(per.cedula)}"
 						value="Eliminar" immediate="true"
 						class="btn btn-danger btn-rounded btn-fw" />
 				</h:column>
 
 
 			</h:dataTable>
+			</div>
+			</div>
+			</div>
+			</div>
+			</div>
 			<h:commandButton
 						action="#{loginBean.cerrarSesionD()}"
 						value="cerrar sesion" immediate="true"

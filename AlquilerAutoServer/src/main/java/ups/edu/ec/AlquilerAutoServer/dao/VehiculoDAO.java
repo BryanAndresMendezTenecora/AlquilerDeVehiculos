@@ -70,4 +70,57 @@ public class VehiculoDAO {
 		listaCategorias = query.getResultList();
 		return listaCategorias;
 	}
+<<<<<<< HEAD
+	
+	public List<Vehiculo> getVehiculosPrecioMayorMenor(){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p ORDER BY precio DESC";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Vehiculo> getVehiculosPrecioMenorMayor(){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p ORDER BY precio";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Vehiculo> getVehiculosNombreAZ(){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p ORDER BY modelo";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Vehiculo> getVehiculosModeloZA(){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p ORDER BY modelo DESC";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Vehiculo> getVehiculosCategoria(Categoria categoria){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p WHERE categoria LIKE ?1";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		query.setParameter(1, categoria);
+		listado = query.getResultList();
+		return listado;
+	}
+	
+	public List<Vehiculo> getVehiculosEstado(String estado){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p WHERE estado LIKE ?1";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		query.setParameter(1, estado);
+		listado = query.getResultList();
+		return listado;
+	}
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 }

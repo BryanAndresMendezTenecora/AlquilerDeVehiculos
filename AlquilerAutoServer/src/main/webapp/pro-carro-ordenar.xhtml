@@ -1,25 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/composite/primefaces">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head>
+<h:head>
+	<f:viewParam name="id" value="#{procarroBean.listado}"></f:viewParam>
+	<f:viewAction action="#{procarroBean.listadoVehiculos()}" />
+</h:head> 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
 		Productos
 	</ui:define>
 	<ui:define name="content">
-<<<<<<< HEAD
 	<h:form>
 	<div class="content-wrapper">
 	<div class="row">
-	
-	<div class="col-md-6">
-	<div class="dropdown">
 	<h:outputLabel value="Ordenar por: " />
-	<h:selectOneMenu value="#{procarroBean.listado}" id="txt-b" class="btn btn-light dropdown-toggle">
+	<h:selectOneMenu value="#{procarroBean.listado}" id="txt-b" >
 	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 	<f:selectItem itemLabel="Precio: Mayor a Menor" class="btn btn-light" itemValue="1" >
 	</f:selectItem>
@@ -27,26 +25,18 @@
 	<f:selectItem itemLabel="Nombre: A-Z" class="btn btn-light" itemValue="3" />
 	<f:selectItem itemLabel="Nombre: Z-A" class="btn btn-light" itemValue="4" />
 	</h:selectOneMenu>
-	<h:commandButton value="ORDENAR" class="btn btn-outline-primary btn-fw">
-		<f:ajax execute="txt-b" listener="#{procarroBean.listadoVehiculos()}" render="@all" ></f:ajax>
+	<h:commandButton value="ORDENAR" >
+		<f:ajax execute="txt-b" listener="#{procarroBean.listadoVehiculos(procarroBean.listado)}" render="tabla"></f:ajax>
 	</h:commandButton>
-	</div>
-	</div>
-	<div class="col-md-6">
-	<div class="dropdown">
 	<h:outputLabel value="CATEGORIA: " />
-	<h:selectOneMenu value="#{procarroBean.categoria.id}" id="txt-ca" class="btn btn-light dropdown-toggle">
-	<f:selectItem itemLabel="--Seleccione--"  />
+	<h:selectOneMenu value="#{procarroBean.categoria.id}" id="txt-ca" >
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 	<f:selectItems value="#{procarroBean.categorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.id}"></f:selectItems>
 	</h:selectOneMenu>
-	<h:commandButton value="FILTRAR"  class="btn btn-outline-primary btn-fw">
-		 <f:ajax execute="txt-ca" listener="#{procarroBean.listadoVehiculosCategoria()}" render="@all"></f:ajax>
+	<h:commandButton value="FILTRAR" >
+		<f:ajax execute="txt-ca" listener="#{procarroBean.listadoVehiculosCategoria()}" render="tabla"></f:ajax>
 	</h:commandButton>
-	</div>
-	</div>
-	</div>
-	<br></br>
-	<div class="row">
+	
 	<ui:repeat  value="#{procarroBean.vehiculos}" var="lista" id="tabla">
 		<div class="col-md-6 grid-margin stretch-card">
 		<div class="card">
@@ -65,7 +55,7 @@
 			</div>
 			<div class="col-md-6">
 			<h:panelGrid columns="1">
-			<h:commandButton value="VISUALIZAR" action="#{procarroBean.visualizarVehiculo(lista.id)}" class="btn btn-primary">
+			<h:commandButton value="Visualizar" action="#{procarroBean.visualizarVehiculo(lista.id)}" class="btn btn-primary">
 									</h:commandButton>
 			<h:commandButton value="AGREGAR +" type="button" class="btn btn-primary">
 										<!--<f:param name="pasar" value="#{lista.id}"></f:param>-->
@@ -81,57 +71,19 @@
 		</div>
 		</div>
 		</ui:repeat>
-	</div>
-	<div class="row">
-	<div class="card-body">
-	<div class="template-demo mt-2">
-=======
-	<div class="row">
-		<h:form>
-				<h:dataTable value="#{procarroBean.vehiculos}" var="lista" >
-							<h:column >
-									<f:facet name="header">Codigo</f:facet>
-								#{lista.id}
-							</h:column>
-							<h:column>
-									<f:facet name="header">Modelo</f:facet>
-								#{lista.modelo}
-							</h:column>
-							<h:column class="card-body">
-									<f:facet name="header">Marca</f:facet>
-								#{lista.marca}
-							</h:column>
-							<h:column >
-									<h:commandButton value="Agregar" type="button">
-										<!--<f:param name="pasar" value="#{lista.id}"></f:param>-->
-										<f:ajax listener="#{procarroBean.agregarDetalle(lista.id)}"></f:ajax>
-									</h:commandButton>
-							</h:column>
-							<h:column >
-									<h:commandButton value="Visualizar" action="#{procarroBean.visualizarVehiculo(lista.id)}">
-									</h:commandButton>
-							</h:column>
-				</h:dataTable>
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 			<h:commandButton action="#{procarroBean.paginaDetalle()}"
-				value="Confirmar" class="btn btn-primary">
+				value="Confirmar">
 			</h:commandButton>
 			<h:commandButton action="#{procarroBean.eliminarBeanCarro()}"
-				value="Eliminar Bean" class="btn btn-primary">
+				value="Eliminar Bean">
 				<f:param name="co" value="#{procarroBean}"></f:param>
 			</h:commandButton>
 			<h:commandButton action="#{procarroBean.comprobarBean()}"
-				value="Comprobar Bean" class="btn btn-info">
+				value="Comprobar Bean">
 			</h:commandButton>
-<<<<<<< HEAD
 		</div>
 		</div>
-		</div>
-		</div>
-=======
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 		</h:form>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>

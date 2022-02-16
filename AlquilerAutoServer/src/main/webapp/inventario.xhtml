@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		INVENTARIO
+	</ui:define>
+	<ui:define name="content"> 
+	<h:form>
+	<div class="row">
+	<div class="col-md-6">
+	<div class="dropdown">
+	<h:outputLabel value="ESTADO: " />
+	<h:selectOneMenu value="#{vehiculo2Bean.vehiculo.estado}" id="txt-i" class="btn btn-light dropdown-toggle">
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+	<f:selectItem itemLabel="DISPONIBLE" class="btn btn-light" itemValue="DISPONIBLE" />
+	<f:selectItem itemLabel="ALQUILADO" class="btn btn-light"  itemValue="ALQUILADO"/>
+	<f:selectItem itemLabel="MANTENIMIENTO" class="btn btn-light" itemValue="MANTENIMIENTO" />
+	<f:selectItem itemLabel="ELIMINADO" class="btn btn-light" itemValue="ELIMINADO" />
+	</h:selectOneMenu>
+	<h:commandButton value="FILTRAR" >
+		<f:ajax execute="txt-i" listener="#{vehiculo2Bean.listadoEstado()}" render="tabla-inventario"></f:ajax>
+	</h:commandButton>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
+		<h:dataTable value="#{vehiculo2Bean.vehiculos}" var="lista" id="tabla-inventario" class="table table-striped">
+		<h:column>
+			<f:facet name="header">Imagen</f:facet>
+			<h:graphicImage value="images/images42x60/#{lista.marca}42x60.png"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">ESTADO</f:facet>
+			<div class="d-flex align-items-center">
+			<div class="mr-3" style="width:20px; height:20px; border-radius: 50%; background-color: #248AFD"></div>
+			#{lista.estado}
+			</div>
+		</h:column>
+		<h:column>
+			<f:facet name="header">Marca</f:facet>
+			#{lista.marca}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Modelo</f:facet>
+			#{lista.modelo}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Modelo</f:facet>
+			#{lista.precio}
+		</h:column>
+		<h:column>
+			<f:facet name="header">Categoria</f:facet>
+			#{lista.categoria.nombre}
+		</h:column>
+		</h:dataTable>
+		</div>
+		</div>
+		</div>
+		
+		</div>
+		</div>
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</html>

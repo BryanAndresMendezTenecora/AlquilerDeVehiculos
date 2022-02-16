@@ -11,20 +11,31 @@
 	</ui:define>
 	<ui:define name="content"> 
 <h:form>
+	<div class="row">
+	<div class="col-md-8 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body"> 
 	<h:panelGrid columns="3">
-		<h:outputLabel value="Cedula: " />
-		<h:inputText value="#{devolucionBean.persona.cedula}" id="text-cedula"/>
-		<h:commandButton value="Buscar" type="button" >
+		<h:outputLabel value="Cedula: " style="font-weight:bold"/>
+		<h:inputText value="#{devolucionBean.persona.cedula}" id="text-cedula" />
+		<h:commandButton value="Buscar" type="button" class="btn btn-outline-primary btn-fw">
 			<f:ajax listener="#{devolucionBean.listarFactura()}" execute="text-cedula" render="tabla-factura" ></f:ajax>
 		</h:commandButton>
-		<h:outputLabel value="Codigo Factura: " />
+		<h:outputLabel value="Codigo Factura: " style="font-weight:bold" />
 		<h:inputText value="#{devolucionBean.factura.id}" id="text-codigo"/>
-		<h:commandButton value="Buscar" type="button" >
+		<h:commandButton value="Buscar" type="button" class="btn btn-outline-primary btn-fw">
 			<f:ajax listener="#{devolucionBean.buscarFactura()}" execute="text-codigo"></f:ajax>
 		</h:commandButton>
 	</h:panelGrid>
-	<br></br>
-	<div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
 	<h:dataTable value="#{devolucionBean.facturas}" var="lista" id="tabla-factura" class="table table-striped">
 		<h:column>
 			<f:facet name="header">Codigo</f:facet>
@@ -47,12 +58,27 @@
 			#{lista.pedido.persona.cedula}
 		</h:column>
 		<h:column>
-			<h:commandButton value="INGRESAR" action="#{devolucionBean.facturar(lista.id)}">
+			<h:commandButton value="INGRESAR" action="#{devolucionBean.facturar(lista.id)}" class="btn btn-outline-info btn-fw">
 				<!--<f:ajax listener="#{devolucionBean.facturar(lista.id)}"></f:ajax>-->
 			</h:commandButton>
 		</h:column>
 	</h:dataTable>
 	</div>
+<<<<<<< HEAD
+	</div>
+	</div>
+	</div>
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+	<div class="template-demo mt-2">
+	<h:commandButton action="#{antecedentesBean.paginaInicio()}" value="INICIO" class="btn btn-info"></h:commandButton>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 </h:form>
 </ui:define>
 </ui:composition> 

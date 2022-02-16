@@ -1,6 +1,7 @@
 package ups.edu.ec.AlquilerAutoServer.modelo;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -28,8 +29,8 @@ public class pedidoCabecera implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "per_cedula")
 	private Persona persona;
-	private String fecha;
-	private String fechaentrega;
+	private Date fecha;
+	private Date fechaentrega;
 	private String estado;
 	@OneToMany(cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "ped_id")
@@ -46,16 +47,17 @@ public class pedidoCabecera implements Serializable{
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	public String getFecha() {
+	
+	public Date getFecha() {
 		return fecha;
 	}
-	public void setFecha(String fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	public String getFechaentrega() {
+	public Date getFechaentrega() {
 		return fechaentrega;
 	}
-	public void setFechaentrega(String fechaentrega) {
+	public void setFechaentrega(Date fechaentrega) {
 		this.fechaentrega = fechaentrega;
 	}
 	public String getEstado() {

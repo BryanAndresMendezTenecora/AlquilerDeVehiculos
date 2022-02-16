@@ -1,24 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:p="http://java.sun.com/jsf/composite/primefaces">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head>
+<h:head>
+<f:metadata>
+		<f:viewParam name="id" value="#{procarroBean.persona.cedula}"></f:viewParam>
+		<f:viewAction action="#{procarroBean.recuperarPersona()}" />
+</f:metadata>
+</h:head> 
 <ui:composition template="template/plantilla.xhtml">
 	<ui:define name="title">
 		Productos
 	</ui:define>
 	<ui:define name="content">
-<<<<<<< HEAD
 	<h:form>
 	<div class="content-wrapper">
 	<div class="row">
 	
 	<div class="col-md-6">
 	<div class="dropdown">
-	<h:outputLabel value="Ordenar por: " />
+	<h:outputLabel value="Ordenar por: " style="font-weight:bold" />
 	<h:selectOneMenu value="#{procarroBean.listado}" id="txt-b" class="btn btn-light dropdown-toggle">
 	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 	<f:selectItem itemLabel="Precio: Mayor a Menor" class="btn btn-light" itemValue="1" >
@@ -34,7 +37,7 @@
 	</div>
 	<div class="col-md-6">
 	<div class="dropdown">
-	<h:outputLabel value="CATEGORIA: " />
+	<h:outputLabel value="CATEGORIA: " style="font-weight:bold"/>
 	<h:selectOneMenu value="#{procarroBean.categoria.id}" id="txt-ca" class="btn btn-light dropdown-toggle">
 	<f:selectItem itemLabel="--Seleccione--"  />
 	<f:selectItems value="#{procarroBean.categorias}" var="cat" itemLabel="#{cat.nombre}" itemValue="#{cat.id}"></f:selectItems>
@@ -55,11 +58,11 @@
 		<div class="row">
 			<div class="col-md-6">
 			<h:panelGrid columns="2">
-			<h:outputLabel value="Modelo: " />
+			<h:outputLabel value="Modelo: " style="font-weight:bold" />
 			<h:outputLabel value="#{lista.modelo}" />
-			<h:outputLabel value="Marca: " />
+			<h:outputLabel value="Marca: " style="font-weight:bold" />
 			<h:outputLabel value="#{lista.marca}" />
-			<h:outputLabel value="Estado: " />
+			<h:outputLabel value="Estado: " style="font-weight:bold"/>
 			<h:outputLabel value="#{lista.estado}" />
 			</h:panelGrid>
 			</div>
@@ -85,34 +88,6 @@
 	<div class="row">
 	<div class="card-body">
 	<div class="template-demo mt-2">
-=======
-	<div class="row">
-		<h:form>
-				<h:dataTable value="#{procarroBean.vehiculos}" var="lista" >
-							<h:column >
-									<f:facet name="header">Codigo</f:facet>
-								#{lista.id}
-							</h:column>
-							<h:column>
-									<f:facet name="header">Modelo</f:facet>
-								#{lista.modelo}
-							</h:column>
-							<h:column class="card-body">
-									<f:facet name="header">Marca</f:facet>
-								#{lista.marca}
-							</h:column>
-							<h:column >
-									<h:commandButton value="Agregar" type="button">
-										<!--<f:param name="pasar" value="#{lista.id}"></f:param>-->
-										<f:ajax listener="#{procarroBean.agregarDetalle(lista.id)}"></f:ajax>
-									</h:commandButton>
-							</h:column>
-							<h:column >
-									<h:commandButton value="Visualizar" action="#{procarroBean.visualizarVehiculo(lista.id)}">
-									</h:commandButton>
-							</h:column>
-				</h:dataTable>
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 			<h:commandButton action="#{procarroBean.paginaDetalle()}"
 				value="Confirmar" class="btn btn-primary">
 			</h:commandButton>
@@ -123,15 +98,11 @@
 			<h:commandButton action="#{procarroBean.comprobarBean()}"
 				value="Comprobar Bean" class="btn btn-info">
 			</h:commandButton>
-<<<<<<< HEAD
+			</div>
+			</div>
+			</div>
 		</div>
-		</div>
-		</div>
-		</div>
-=======
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 		</h:form>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>

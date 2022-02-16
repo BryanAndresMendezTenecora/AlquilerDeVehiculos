@@ -17,13 +17,13 @@
 	<ui:define name="content">
 <h:form>
 	<h:panelGrid columns="2">
-	<h:outputLabel value="CODIGO FACTURA :" />
+	<h:outputLabel value="CODIGO FACTURA :" style="font-weight:bold"/>
 	<h:outputLabel value="#{devolucionBean.factura.id}" />
-	<h:outputLabel value="FECHA" />
+	<h:outputLabel value="FECHAñ " style="font-weight:bold"/>
 	<h:inputText value="#{devolucionBean.devolucion.fecha}" />
-	<h:outputLabel value="ANTECEDENTES:" />
-	<h:inputTextarea value="#{devolucionBean.devolucion.antecedente}" />
-	<h:commandButton action="#{devolucionBean.insertarDevolucion()}" value="INSETAR DEVOLUCION" />
+	<h:outputLabel value="ANTECEDENTES: " style="font-weight:bold"/>
+	<h:inputTextarea value="#{devolucionBean.devolucion.antecedente}" class="form-control"/>
+	<h:commandButton action="#{devolucionBean.insertarDevolucion()}" value="INSETAR DEVOLUCION" class="btn btn-primary" />
 	</h:panelGrid>
 </h:form> 
 </ui:define>

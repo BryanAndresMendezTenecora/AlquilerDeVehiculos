@@ -2,7 +2,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
 
 <h:head></h:head> 
 <ui:composition template="template/plantilla.xhtml">
@@ -11,16 +12,29 @@
 	</ui:define>
 	<ui:define name="content"> 
 	<h:form>
+	<div class="row">
+	<div class="card">
+	<div class="card-body"> 
 	<h:panelGrid columns="2">
-	<h:outputLabel value="Cedula: " />
-	<h:inputText value="#{loginBean.persona.cedula}" />
-	<h:outputLabel value="Nombre: " />
-	<h:inputText value="#{loginBean.persona.nombre}" />
-	<h:outputLabel value="Fecha: " />
-	<h:inputText value="#{procarroBean.cabecera.fecha}" />
-	<h:outputLabel value="Fecha de Entrega: " />
-	<h:inputText value="#{procarroBean.cabecera.fechaentrega}" />
+	<h:outputLabel value="Cedula: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.persona.cedula}"></h:inputText>
+	<h:outputLabel value="Nombre: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.persona.nombre}"></h:inputText>
+	<h:outputLabel value="Fecha: " style="font-weight:bold" />
+	<h:inputText value="#{procarroBean.fechaActual}" >
+		 <f:convertDateTime pattern = "dd/MM/yyyy" />
+	</h:inputText>
+	<h:outputLabel value="Fecha de Entrega: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.fechaEntrega}" >
+		<f:convertDateTime pattern = "dd/MM/yyyy" />
+	</h:inputText>
 	</h:panelGrid>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+	<div class="card">
 	<h:dataTable value="#{procarroBean.detalles}" var="lista" class="table table-striped">
 			<h:column>
 				<f:facet name="header">Nombre</f:facet>
@@ -39,7 +53,19 @@
 				#{lista.total}
 			</h:column>
 		</h:dataTable>
+<<<<<<< HEAD
+		</div>
+		</div>
+		</div>
+	<div class="template-demo mt-2">
+		<h:commandButton action="#{procarroBean.confirmarPedido()}" value="Confirmar Pedido"  class="btn btn-primary"/>
+		<h:commandButton action="#{procarroBean.paginaDetalle()}" value="Regresar Pagina" class="btn btn-info"/>
+		<h:commandButton action="#{procarroBean.paginaInicio()}" value="Regresar Inicio"  class="btn btn-info"/>
+		</div>
+		
+=======
 		<h:commandButton action="#{procarroBean.confirmarPedido()}" value="Confirmar Pedido" />
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 	</h:form>
 </ui:define>
 </ui:composition>

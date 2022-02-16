@@ -11,13 +11,26 @@
 	</ui:define>
 	<ui:define name="content"> 
 <h:form>
+<div class="row">
+	<div class="col-md-8 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body"> 
 	<h:panelGrid columns="3">
-	<h:outputLabel value="Ingrese la cedula del cliente: " />
+	<h:outputLabel value="Cedula del Cliente: " style="font-weight:bold"/>
 	<h:inputText value="#{antecedentesBean.persona.cedula}" id="txtCedula"/>
-	<h:commandButton value="Ver Antecedentes" type="button">
+	<h:commandButton value="Ver Antecedentes" type="button" class="btn btn-outline-primary btn-fw">
 		<f:ajax listener="#{antecedentesBean.recuperarAntecedentes()}" execute="txtCedula" render="tabla-antecedentes"></f:ajax>
 	</h:commandButton>
 	</h:panelGrid>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
 	<h:dataTable value="#{antecedentesBean.devoluciones}" var="lista" id="tabla-antecedentes" class="table table-striped">
 	<h:column>
 		<f:facet name="header">ANTECEDENTE</f:facet>
@@ -27,7 +40,27 @@
 		<f:facet name="header">CODIGO FACTURA</f:facet>
 		#{lista.factura.id}
 	</h:column>
+	<h:column>
+		<f:facet name="header">CEDULA</f:facet>
+		#{lista.factura.pedido.persona.cedula}
+	</h:column>
 	</h:dataTable>
+<<<<<<< HEAD
+		</div>
+	</div>
+	</div>
+	</div>
+	<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+	<div class="template-demo mt-2">
+		<h:commandButton action="#{antecedentesBean.paginaInicio()}" value="Pagina INICIO" class="btn btn-primary"></h:commandButton>
+		</div>
+		</div>
+		</div>
+	</div>
+	
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 </h:form>
 </ui:define>
 </ui:composition> 
