@@ -51,4 +51,11 @@ export class PedidoService {
   ListarDetalle(){
     return this.detalles
   }
+
+  buscarpedido(nombre:string):Observable<any>{
+    console.log("service->",nombre)
+    const url = environment.WS_PATH +"/pedido/buscarP";
+    return this.http.post<any>(url,nombre)
+
+  }
 }

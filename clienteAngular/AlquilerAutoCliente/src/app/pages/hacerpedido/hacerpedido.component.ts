@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Detalle } from 'src/app/domain/detalle';
 import { Pedido } from 'src/app/domain/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
@@ -15,7 +16,7 @@ export class HacerpedidoComponent implements OnInit {
   itemsd=[]as any;
 
   filas=['1','2','3','4'];
-  constructor(private pedidoService:PedidoService,private pedidoSERvice:PedidoService) { }
+  constructor(private pedidoService:PedidoService,private pedidoSERvice:PedidoService,private router:Router) { }
 
 
   //credo para guardar persona
@@ -32,6 +33,7 @@ export class HacerpedidoComponent implements OnInit {
     //this.pedido.detalles=this.detalle;
    
     console.log('here-->',this.itemsd)
+    this.checkLocalStorage();
   }
 
   guardar():void{
@@ -54,8 +56,15 @@ export class HacerpedidoComponent implements OnInit {
     //this.pedidoSERvice.adicionarDetalle(det)
       console.log("--->",this.detalles);
 
-     
-    
+  }
+
+  checkLocalStorage(){
+    if(localStorage.getItem('token')){
+      this.router.navigate(['listarPedido'])
+    }else{
+      this.router.navigate(['login'])
+    }
+
   }
    
 

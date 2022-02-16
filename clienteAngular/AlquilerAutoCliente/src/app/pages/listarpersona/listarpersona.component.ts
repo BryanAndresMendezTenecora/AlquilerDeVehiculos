@@ -15,7 +15,7 @@ export class ListarpersonaComponent implements OnInit {
   //persona:Persona;
   ///pedido:Pedido;
  
-  constructor(private personasService:ServicepersonaService ,private pedidoSERvice:PedidoService) { }
+  constructor(private personasService:ServicepersonaService ,private pedidoSERvice:PedidoService ) { }
 
   ngOnInit(): void {
     this.personas=this.personasService.getPersonas();

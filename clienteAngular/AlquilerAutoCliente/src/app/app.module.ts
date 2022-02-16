@@ -21,6 +21,7 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 
 import { CrearComentarioComponent } from './pages/crear-comentario/crear-comentario.component';
 import { ListarComentarioComponent } from './pages/listar-comentario/listar-comentario.component';
+import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.component';
 
 
 
@@ -42,6 +43,7 @@ import { ListarComentarioComponent } from './pages/listar-comentario/listar-come
 
     CrearComentarioComponent,
     ListarComentarioComponent,
+    ConsultapedidoComponent,
 
 
     

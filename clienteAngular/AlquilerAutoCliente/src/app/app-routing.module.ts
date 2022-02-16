@@ -11,6 +11,7 @@ import { LoginComponent } from './pages/login/login.component';
 
 import { CrearComentarioComponent } from './pages/crear-comentario/crear-comentario.component';
 import { ListarComentarioComponent } from './pages/listar-comentario/listar-comentario.component';
+import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.component';
 
 const routes: Routes = [
   {path:"crearpersona",component:CrearpersonaComponent},
@@ -26,7 +27,8 @@ const routes: Routes = [
 
   {path:"login",component:LoginComponent},
   {path:"crearComentario/:id",component:CrearComentarioComponent},
-  {path:"listarComentario",component:ListarComentarioComponent}
+  {path:"listarComentario",component:ListarComentarioComponent},
+  {path:"consultapedido",component:ConsultapedidoComponent}
 
 ];
 
