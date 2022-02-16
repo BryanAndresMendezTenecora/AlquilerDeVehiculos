@@ -513,7 +513,7 @@ public class ProcarroBean implements Serializable {
 	}
 	
 	public String cerrarSesion() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		//FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "Login?faces-redirect=true";
 	}
 }
