@@ -1,0 +1,48 @@
+
+
+<!--
+[] es un get
+() es un set
+
+
+<form >
+    <label for="">Id</label>
+    <input name="textId" type="text" [(ngModel)]="persona.cedula">
+    <label for="">Cedula</label>
+    <input name="textCedula" type="text" [(ngModel)]="persona.nombre">
+    <label for="">Nombre</label>
+    <input name="textNombre" type="text" [(ngModel)]="persona.apellido">
+    <label for="">Direccion</label>
+    <input name="textDireccion" type="text"[(ngModel)]="persona.direccion">
+    <label for="">Telfono</label>
+    <input name="textTelefono" type="text"[(ngModel)]="persona.email">
+    <button (click)="guardar()">Guardar</button>
+</form>
+-->
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      
+  
+      
+      <div class="fadeIn first">
+        <img src="../../../assets/logoC.png" id="icon" alt="User Icon" />
+      </div>
+  
+      
+      <form  >
+        <input type="text" name="textemail" class="fadeIn second"  placeholder="Email" [(ngModel)]="email">
+        <input type="password" name="textpassword" class="fadeIn third"  placeholder="Password"  required [(ngModel)]="password">\
+        
+        <div id="formFooter">
+        <button  class="btn btn-primary" (click)="onLogin(email,password)">Iniciar Sesion</button>
+      </div>
+      <a class="btn btn-sucess btn-sm" routerLink="/crearpersona">Registrarse</a>
+      </form>
+  
+     
+      <div class="alert alert-danger" *ngIf="errorStatus">
+          <p>{{errorMsj}}</p>
+      </div>
+  
+    </div>
+  </div>
