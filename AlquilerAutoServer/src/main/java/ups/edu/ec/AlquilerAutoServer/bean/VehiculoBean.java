@@ -83,14 +83,12 @@ public class VehiculoBean {
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
-<<<<<<< HEAD
+
 			categoria=categoriaON.buscarCategoria(categoria.getId());
 			this.vehiculo.setCategoria(categoria);
 			//this.vehiculo.setEstado("DISPONIBLE");
-=======
-			
 			this.vehiculo.setEstado("Activo");
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
+
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

@@ -25,11 +25,6 @@ public class VehiculoServiceRest {
 	private VehiculoONLocal vehiculoON;
 	
 	
-	
-	
-	
-	
-	
 	//los q se pegan a un crud , crear actualizar eliminar no se manjea un path 
 	
 	//enviar tranferiri algo

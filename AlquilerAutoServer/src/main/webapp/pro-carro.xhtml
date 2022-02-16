@@ -11,7 +11,7 @@
 		Productos
 	</ui:define>
 	<ui:define name="content">
-<<<<<<< HEAD
+
 	<h:form>
 	<div class="content-wrapper">
 	<div class="row">
@@ -85,34 +85,7 @@
 	<div class="row">
 	<div class="card-body">
 	<div class="template-demo mt-2">
-=======
-	<div class="row">
-		<h:form>
-				<h:dataTable value="#{procarroBean.vehiculos}" var="lista" >
-							<h:column >
-									<f:facet name="header">Codigo</f:facet>
-								#{lista.id}
-							</h:column>
-							<h:column>
-									<f:facet name="header">Modelo</f:facet>
-								#{lista.modelo}
-							</h:column>
-							<h:column class="card-body">
-									<f:facet name="header">Marca</f:facet>
-								#{lista.marca}
-							</h:column>
-							<h:column >
-									<h:commandButton value="Agregar" type="button">
-										<!--<f:param name="pasar" value="#{lista.id}"></f:param>-->
-										<f:ajax listener="#{procarroBean.agregarDetalle(lista.id)}"></f:ajax>
-									</h:commandButton>
-							</h:column>
-							<h:column >
-									<h:commandButton value="Visualizar" action="#{procarroBean.visualizarVehiculo(lista.id)}">
-									</h:commandButton>
-							</h:column>
-				</h:dataTable>
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
+
 			<h:commandButton action="#{procarroBean.paginaDetalle()}"
 				value="Confirmar" class="btn btn-primary">
 			</h:commandButton>
@@ -123,15 +96,12 @@
 			<h:commandButton action="#{procarroBean.comprobarBean()}"
 				value="Comprobar Bean" class="btn btn-info">
 			</h:commandButton>
-<<<<<<< HEAD
+
 		</div>
 		</div>
 		</div>
 		</div>
-=======
->>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 		</h:form>
-		</div>
 	</ui:define>
 </ui:composition>
 </html>
