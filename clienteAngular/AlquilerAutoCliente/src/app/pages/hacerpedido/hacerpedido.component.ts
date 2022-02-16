@@ -4,12 +4,16 @@ import { Detalle } from 'src/app/domain/detalle';
 import { Pedido } from 'src/app/domain/pedido';
 import { PedidoService } from 'src/app/services/pedido.service';
 
+
 @Component({
   selector: 'app-hacerpedido',
   templateUrl: './hacerpedido.component.html',
   styleUrls: ['./hacerpedido.component.scss']
 })
 export class HacerpedidoComponent implements OnInit {
+  title = 'prueba-datapicker';
+  model: any;
+  
   items=[]as any;
   detalle:Detalle[];
   

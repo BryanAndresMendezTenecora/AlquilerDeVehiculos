@@ -22,6 +22,12 @@ import { FooterComponent } from './plantillas/footer/footer.component';
 import { CrearComentarioComponent } from './pages/crear-comentario/crear-comentario.component';
 import { ListarComentarioComponent } from './pages/listar-comentario/listar-comentario.component';
 import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+
+
+
+
 
 
 
@@ -44,6 +50,8 @@ import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.c
     CrearComentarioComponent,
     ListarComentarioComponent,
     ConsultapedidoComponent,
+    
+    
 
 
     
@@ -56,7 +64,9 @@ import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.c
     FormsModule,
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    MatDatepickerModule,
+    BrowserAnimationsModule,
+    NgbDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
