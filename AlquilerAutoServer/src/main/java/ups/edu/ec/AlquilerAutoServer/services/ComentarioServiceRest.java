@@ -66,7 +66,7 @@ public class ComentarioServiceRest {
 	@POST
 	@Path("buscarComentario")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Comentario> getComentarioVehiculo(int id){
+	public List<Comentario> getComentarioVehiculo( int id){
 		System.out.println("este es nombre q llega ------->="+id);
 		List<Comentario> listComentario=new ArrayList<Comentario>();
 		List<Comentario> nuevalistaobtenida=new ArrayList<Comentario>();

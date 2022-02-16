@@ -6,7 +6,8 @@
     <br>
 </div>
 <div class="container">
-<DIV *ngFor="let vehiculo of vehiculos | async">
+<div class="form-control">
+<div *ngFor="let vehiculo of vehiculos | async">
     
     <H1><strong>{{vehiculo.modelo}}</strong>
     </H1>
@@ -17,43 +18,20 @@
     <h3><strong> Marca:</strong> {{vehiculo.marca}} </h3>
     <h3><strong>Categoria: </strong> {{vehiculo.categoria.nombre}}</h3>
     <h3><strong>Precio: </strong> <h1>{{vehiculo.precio}} $</h1></h3>
-    <button  class="btn btn-primary">Comentar</button>
-    <a class="btn btn-sucess btn-sm" routerLink="/crearComentario/{{vehiculo.id}}">Comen</a>
-
+    <a class="btn btn-primary" routerLink="/crearComentario/{{vehiculo.id}}">Comentar</a>
     <button class="btn btn-warning" (click)="adicionarCarrito(vehiculo)">Pedir</button>
+
     <hr>
-  
-</DIV>
+    
+    
+</div>
+</div>
+
+
 <!--<a routerLink="/listarPedido">Mi Pedido</a>-->
 <!--<button class="btn btn-warning" (click)="salir()">Log Out</button>-->
 </div>
 
-<div class="container">
-    <h3>Listado de Comentarios </h3>
-  <table class="table table-bordered">
-      <thead class="table-warning">
-        <tr>
-          <th scope="col">ID</th>
-          <th scope="col">DESCRIPCION</th>
-          <th scope="col">CALIFICACION</th>
-          <th scope="col">PERSONA</th>
-          <th scope="col">VEHICULO</th>
-          
-
-          
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let comentorio of comentarios | async">
-          <th scope="row">{{comentorio.id}}</th>
-          <th scope="row">{{comentorio.descripcion}}</th>
-          <th scope="row">{{comentorio.calificacion}}</th>
-          <th scope="row">{{comentorio.persona.cedula}}</th>
-          <th scope="row">{{comentorio.vehiculo.id}}</th>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 
 <app-footer></app-footer>
 

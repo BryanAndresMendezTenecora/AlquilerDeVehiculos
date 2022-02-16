@@ -1,4 +1,5 @@
-<H1><p>crearComentario works!</p></H1>
+<app-header></app-header>
+<H1 class="btn btn-primary"><p>Comentarios</p></H1>
 <form>
 <div class="container">
 
@@ -21,4 +22,40 @@
 
 </div>
 
+
+<div class="container">
+    
+    <h3>Listado de Comentarios </h3>
+    
+  <table class="table table-bordered">
+      <thead class="table-warning">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">DESCRIPCION</th>
+          <th scope="col">CALIFICACION</th>
+          <th scope="col">PERSONA</th>
+         
+          
+
+          
+        </tr>
+      </thead>
+      
+      <tbody>
+          
+        <tr *ngFor="let comentorio  of comentarios | async">
+          <th scope="row">{{comentorio.id}}</th>
+          <th scope="row">{{comentorio.descripcion}}</th>
+          <th scope="row">{{comentorio.calificacion}}</th>
+          <th scope="row">{{comentorio.persona.nombre + ' '+comentorio.persona.apellido}}</th>
+            
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
 </form>
+<br>
+<app-footer></app-footer>

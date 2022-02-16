@@ -5,6 +5,7 @@ import { ComentarioService } from 'src/app/services/comentario.service';
 
 import { PedidoService } from 'src/app/services/pedido.service';
 import { VehiculoService } from '../../services/vehiculo.service';
+import { Vehiculo } from '../../domain/Vehiculo';
 
 @Component({
   selector: 'app-listar-vehiculo',
@@ -16,14 +17,18 @@ import { VehiculoService } from '../../services/vehiculo.service';
 export class ListarVehiculoComponent implements OnInit {
 vehiculos:any;
 comentarios:any;
+nombre:number;
+
 
   constructor(private VehiculoService:VehiculoService ,private pedidoSERvice:PedidoService,private router:Router, private ComentarioService:ComentarioService) { }
 
 
   ngOnInit(): void {
-    this.comentarios=this.ComentarioService.getComentario();
+    //this.comentarios=this.ComentarioService.getComentario();
     this.vehiculos=this.VehiculoService.getVehiculo();
+    
     this.checkLocalStorage()
+   
   }
 
   adicionarCarrito(vehiculo: any){
@@ -45,6 +50,9 @@ comentarios:any;
     }
 
   }
+
+
+  
   
 
 }
