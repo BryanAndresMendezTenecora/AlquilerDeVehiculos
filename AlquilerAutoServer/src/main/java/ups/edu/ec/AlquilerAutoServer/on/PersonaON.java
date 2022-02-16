@@ -18,16 +18,28 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 	private PersonaDAO personaDAO;
 	
 	public void insertarPersona(Persona persona) throws Exception {
+		persona.setApellido(persona.getApellido().toUpperCase());
+		persona.setDireccion(persona.getDireccion().toUpperCase());
+		persona.setNombre(persona.getNombre().toUpperCase());
+		persona.setEstado(persona.getEstado().toUpperCase());
 		personaDAO.insert(persona);
 	}
 	
 	
 	public void actualizarPersona(Persona persona) throws Exception {
+		persona.setApellido(persona.getApellido().toUpperCase());
+		persona.setDireccion(persona.getDireccion().toUpperCase());
+		persona.setNombre(persona.getNombre().toUpperCase());
+		persona.setEstado(persona.getEstado().toUpperCase());
 		personaDAO.update(persona);
 	}
 	
 	public Persona buscarPersona(String cedula) throws Exception {
-		return personaDAO.read(cedula);
+		if(cedula.length() == 10) {
+			return personaDAO.read(cedula);
+		}else {
+			return null;
+		}
 	}
 	
 	public void eliminarPersona(String cedula) throws Exception {
@@ -45,6 +57,10 @@ public class PersonaON implements PersonaONLocal, PersonaONRemote{
 	
 	
 	public void guardar(Persona p) throws Exception {
+		p.setApellido(p.getApellido().toUpperCase());
+		p.setDireccion(p.getDireccion().toUpperCase());
+		p.setNombre(p.getNombre().toUpperCase());
+		p.setEstado(p.getEstado().toUpperCase());
 		if (personaDAO.read(p.getCedula()) == null)
 			personaDAO.insert(p);
 		else

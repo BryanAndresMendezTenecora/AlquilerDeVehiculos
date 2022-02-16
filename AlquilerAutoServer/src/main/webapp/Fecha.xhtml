@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head> 
+<body> 
+<h:form>
+	<h:panelGrid columns="1">
+	 <h:inputText id = "dateInput" value = "#{fechaBean.fecha}"
+            label = "Date" >
+            <f:convertDateTime pattern = "dd/MM/yyyy HH:mm" />
+         </h:inputText>
+     <input type="date" id="start" name="trip-start"></input>
+     <p:calendar value="#{fechaBean.fechaEntrega}" size="10" ></p:calendar>
+         <h:commandButton action="#{fechaBean.imprimirFechar()}" value="Imprimir" />
+</h:panelGrid>
+</h:form>
+</body> 
+</html>

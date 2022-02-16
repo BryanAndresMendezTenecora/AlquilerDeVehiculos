@@ -22,10 +22,14 @@ public class VehiculoON implements VehiculoONLocal{
 	public void insertarVehiculo(Vehiculo Vehiculo) throws Exception {
 		Vehiculo.setMarca(Vehiculo.getMarca().toUpperCase());
 		Vehiculo.setModelo(Vehiculo.getModelo().toUpperCase());
+		Vehiculo.setEstado(Vehiculo.getEstado().toUpperCase());
 		VehiculoDAO.insert(Vehiculo);
 	}
 	
 	public void actualizarVehiculo(Vehiculo Vehiculo) throws Exception {
+		Vehiculo.setMarca(Vehiculo.getMarca().toUpperCase());
+		Vehiculo.setModelo(Vehiculo.getModelo().toUpperCase());
+		Vehiculo.setEstado(Vehiculo.getEstado().toUpperCase());
 		VehiculoDAO.update(Vehiculo);
 	}
 	
@@ -54,12 +58,18 @@ public class VehiculoON implements VehiculoONLocal{
 	}
 	
 	
-	public void guardar(Vehiculo p) throws Exception {
-		if (VehiculoDAO.read(p.getId()) == null)
-		
-			VehiculoDAO.insert(p);
-		else
-			VehiculoDAO.update(p);
+	public void guardar(Vehiculo vehiculo) throws Exception {
+		System.out.println("ON: C-VEHI: "+vehiculo.getId());
+		vehiculo.setMarca(vehiculo.getMarca().toUpperCase());
+		vehiculo.setModelo(vehiculo.getModelo().toUpperCase());
+		vehiculo.setEstado(vehiculo.getEstado().toUpperCase());
+		if (VehiculoDAO.read(vehiculo.getId()) == null) {
+			System.out.println(" V:Entro al INSERTAR");
+			VehiculoDAO.insert(vehiculo);
+		}else {
+			VehiculoDAO.update(vehiculo);
+			System.out.println("V:Entro al UPDATE");
+		}
 	}
 	public List<Categoria> listarcategorias(){
 		return VehiculoDAO.listarcategorias();
@@ -80,5 +90,9 @@ public class VehiculoON implements VehiculoONLocal{
 	
 	public List<Vehiculo> getListaVehiculoCategoria(Categoria categoria){
 		return VehiculoDAO.getVehiculosCategoria(categoria);
+	}
+	
+	public List<Vehiculo> getListaVehiculoEstado(String estado){
+		return VehiculoDAO.getVehiculosEstado(estado);
 	}
 }

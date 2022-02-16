@@ -10,14 +10,18 @@
 		Carrito
 	</ui:define>
 	<ui:define name="content">
-	<div class="col-lg-12 grid-margin stretch-card">
-	<div class="card">
-	<div class="card-body"> 
 	<h:form>
-		<div class="table-responsive">
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+
+	<div class="table-responsive">
 		<h:dataTable value="#{procarroBean.detalles}" var="lista" class="table table-striped">
 		<h:column>
-				<f:facet name="header">Nombre</f:facet>
+				<f:facet name="header">Imagen</f:facet>
+				<h:graphicImage value="images/images42x60/#{lista.vehiculo.marca}42x60.png"/>
+		</h:column>
+		<h:column>
+				<f:facet name="header">Codigo</f:facet>
 				<h:inputText value="#{lista.id}" />
 		</h:column>
 			<h:column>
@@ -47,17 +51,22 @@
 				</h:commandButton>
 			</h:column>
 		</h:dataTable>
+		</div>
+		</div>
+		<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+	<div class="template-demo mt-2">
 		<h:commandButton action="#{procarroBean.agregarPedido()}"
-			value="Confirmar">
+			value="Confirmar" class="btn btn-primary">
 		</h:commandButton>
 		<h:commandButton action="#{procarroBean.paginaInicio()}"
-			value="Regresar">
+			value="Regresar" class="btn btn-info">
 		</h:commandButton>
 		</div>
+	</div>
+	</div>
+	</div>
 	</h:form>
-	</div> 
-	</div>
-	</div>
 </ui:define>
 </ui:composition> 
 </html>

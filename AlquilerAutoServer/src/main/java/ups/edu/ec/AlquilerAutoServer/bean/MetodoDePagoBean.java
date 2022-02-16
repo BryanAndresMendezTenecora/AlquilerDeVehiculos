@@ -147,9 +147,9 @@ public class MetodoDePagoBean {
 	}
 	
 	//#String ced=c
-	public String eliminar(int idTar, String tipo, String numero, String propietario, String fechaVen, int codSeg, String direccion, String codPostal) {
+	public String eliminar(int idTar) {
 	
-		try {
+		try {/*
 			this.pago.setId(idTar);
 			this.pago.setTipo(tipo);
 			this.pago.setNumero(numero);
@@ -158,14 +158,16 @@ public class MetodoDePagoBean {
 			this.pago.setCodigoseguridad(codSeg);
 			this.pago.setDireccion(direccion);
 			this.pago.setCodigoPostal(codPostal);
-			this.pago.setEstado("Inactivo");
+			this.pago.setEstado("Inactivo");*/
+			pago=pagosON.buscarMetodoPago(idTar);
+			pago.setEstado("ELIMIANDO");
 			pagosON.actualizarMetodoPago(this.pago);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return "listarPago?faces-redirect=true"+ codigo;
+		return "listarPago?faces-redirect=true";
 	}
 
 	

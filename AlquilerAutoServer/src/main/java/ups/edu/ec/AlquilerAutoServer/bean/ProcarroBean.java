@@ -2,6 +2,7 @@ package ups.edu.ec.AlquilerAutoServer.bean;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -17,12 +18,14 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Detalle;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.MetodoDePago;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.MetodoDePagoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
+import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 
@@ -47,6 +50,9 @@ public class ProcarroBean implements Serializable {
 	private CategoriaONLocal categoriaON;
 	
 	@Inject
+	private PersonaONLocal personaON;
+	
+	@Inject
 	private LoginBean loginBean;
 	
 	private int cont=1;
@@ -59,7 +65,13 @@ public class ProcarroBean implements Serializable {
 	
 	private Categoria categoria=new Categoria();
 	
+	private Persona persona= new Persona();
+	
 	private Detalle detalle;
+	
+	private Date fechaActual= new Date();
+	
+	private Date fechaEntrega= new Date();
 	
 	private List<Detalle> detalles= new ArrayList<Detalle>();
 	private List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
@@ -184,6 +196,38 @@ public class ProcarroBean implements Serializable {
 		this.categoria = categoria;
 	}
 
+	
+	public Date getFechaActual() {
+		return fechaActual;
+	}
+
+
+	public void setFechaActual(Date fechaActual) {
+		this.fechaActual = fechaActual;
+	}
+
+
+	public Date getFechaEntrega() {
+		return fechaEntrega;
+	}
+
+
+	public void setFechaEntrega(Date fechaEntrega) {
+		this.fechaEntrega = fechaEntrega;
+	}
+
+	
+	
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
 
 	@PostConstruct
 	public void init() {
@@ -201,6 +245,15 @@ public class ProcarroBean implements Serializable {
 		
 	}
 	
+	public void recuperarPersona() {
+		try {
+			persona=personaON.buscarPersona(persona.getCedula());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("PERSONA: "+persona.getCedula()+" : "+persona.getNombre());
+	}
 	
 	public void agregarDetalle(int codigo) {
 		//facesContext=FacesContext.getCurrentInstance();
@@ -302,8 +355,12 @@ public class ProcarroBean implements Serializable {
 	public String confirmarPedido() {
 		System.out.println("CABECERA ANTES:"+cabecera.getId());
 		cabecera.setEstado("En Emision");
+		detalles=vehiculoContratado(detalles);
 		cabecera.setDetalles(detalles);
-		cabecera.setPersona(loginBean.getPersona());
+		//cabecera.setPersona(loginBean.getPersona());
+		cabecera.setPersona(persona);
+		cabecera.setFecha(fechaActual);
+		cabecera.setFechaentrega(fechaEntrega);
 		//cabecera.setPersona(null);
 		try {
 			pedidoON.insertarpedidoCabecera(cabecera);
@@ -323,8 +380,8 @@ public class ProcarroBean implements Serializable {
 		return "factura?faces-redirect=true";
 	}
 	
-	public void confirmarFactura() {
-		
+	public String confirmarFactura() {
+		String cedula=persona.getCedula();
 		double total=0.0;
 		for(Detalle elemento: detalles) {
 			double pagar=elemento.getTotal();
@@ -343,10 +400,13 @@ public class ProcarroBean implements Serializable {
 			//System.out.println(factura.getTarjetacredito().getTipo());
 			//System.out.println("CF: "+factura.getId());
 			facturaON.insertarFactura(factura);
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		    return "pro-carro-test?faces-redirect=true&id="+cedula;
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return null;
 		}
 		
 		//System.out.println("Cabecera:"+cabecera.getId());
@@ -355,43 +415,6 @@ public class ProcarroBean implements Serializable {
 		
 	}
 	
-	
-	public void insertarFactura() {
-		
-		//factura.setId(30);
-		Factura f= new Factura();
-		//f.setId(2);
-		
-		pedidoCabecera cabe= new pedidoCabecera();
-		MetodoDePago mt= new MetodoDePago();
-		MetodoDePago mt1= new MetodoDePago();
-		mt1.setId(3);
-		mt1.setTipo("Tarjeta2");
-		//cabe.setId(50);
-		//f.setPedido(cabe);
-		//f.setTarjetacredito(mt1);
-		try {
-			 cabe=pedidoON.buscarpedidoCabecera(5);
-			 mt=metodoON.buscarMetodoPago(1);
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		f.setPedido(cabe);
-		//System.out.println("CP: "+mt.getId()+" TIPO: "+mt.getTipo());
-		//System.out.println("TAMANO: "+cabe.getDetalles().size());
-		System.out.println("CCABEPEDIDO:"+cabe.getId());
-		f.setTarjetacredito(mt);
-		
-		try {
-			//metodoON.insertarMetodoPago(mt1);
-			facturaON.insertarFactura(f);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-	}
 	
 	public void insertarTarjeta() {
 		metodo.setId(1);
@@ -438,13 +461,17 @@ public class ProcarroBean implements Serializable {
 		return "pedido?faces-redirect=true";
 	}
 	
-	public void listadoVehiculos(int codigo) {
+	public void listadoVehiculos() {
 		System.out.println("Entro a los LISTADOS");
-		System.out.println("LISTA C: "+codigo);
-		vehiculos=vehiculoON.getlistadoVehiculos(codigo);
+		System.out.println("LISTA C: "+listado);
+		vehiculos=vehiculoON.getlistadoVehiculos(listado);
 		for(Vehiculo elemento: vehiculos) {
 			System.out.println("CV: "+elemento.getId()+" PRECIO: "+elemento.getPrecio()+" MODELO: "+elemento.getModelo());
 		}
+	}
+	
+	public String paginaOrdenar(int codigo) {
+		return "pro-carro-ordenar?faces-redirect=true?&id="+codigo;
 	}
 	
 	public void listadoVehiculosCategoria() {
@@ -458,6 +485,25 @@ public class ProcarroBean implements Serializable {
 		for(Vehiculo elemento: vehiculos) {
 			System.out.println("V C:"+elemento.getId()+" CATEGORIA: "+elemento.getCategoria().getNombre());
 		}
+	}
+	
+	public List<Detalle> vehiculoContratado(List<Detalle> det) {
+		List<Detalle> actualizado= new ArrayList<Detalle>();
+		for(Detalle elemento: det) {
+			Vehiculo v= new Vehiculo();
+			try {
+				v=vehiculoON.buscarVehiculo(elemento.getVehiculo().getId());
+				v.setEstado("ALQUILADO");
+				vehiculoON.actualizarVehiculo(v);
+				elemento.setVehiculo(v);
+				//actualizado.add(elemento);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		return det;
 	}
 	
 }

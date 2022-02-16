@@ -132,9 +132,10 @@ public class ClienteBean {
 	}
 	
 	//#String ced=c
-	public String eliminar(String cedula, String nombre, String apellido, String direccion, String email, String password, String rol, String telefono) {
+	public String eliminar(String cedula) {
 	
 		try {
+			/*
 			this.persona.setCedula(cedula);
 			this.persona.setNombre(nombre);
 			this.persona.setApellido(apellido);
@@ -144,13 +145,16 @@ public class ClienteBean {
 			this.persona.setRol(rol);
 			this.persona.setTelefono(telefono);
 			this.persona.setEstado("Inactivo");
+			*/
+			persona=clientesON.buscarPersona(cedula);
+			persona.setEstado("ELIMINADO");
 			clientesON.actualizarPersona(this.persona);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return "listarPersona?faces-redirect=true"+ cedula;
+		return "listarPersona?faces-redirect=true";
 	}
 
 }

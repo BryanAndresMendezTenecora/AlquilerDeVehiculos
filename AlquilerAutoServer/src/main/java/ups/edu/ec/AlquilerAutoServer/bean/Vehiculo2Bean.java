@@ -13,6 +13,7 @@ import javax.inject.Named;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Comentario;
+import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.ComentarioONLocal;
@@ -31,8 +32,8 @@ public class Vehiculo2Bean implements Serializable {
 	@Inject
 	private ComentarioONLocal comentarioON;
 	
-	@Inject
-	private LoginBean loginBean;
+	//@Inject
+	//private LoginBean loginBean;
 	
 	private Vehiculo vehiculo = new Vehiculo();
 	private Categoria categoria= new Categoria();
@@ -237,8 +238,9 @@ public class Vehiculo2Bean implements Serializable {
 		}
 	}
 	
-	public void insertarComentario() {
-		comentario.setPersona(loginBean.getPersona());
+	public void insertarComentario(Persona persona) {
+		//comentario.setPersona(loginBean.getPersona());
+		comentario.setPersona(persona);
 		comentario.setVehiculo(vehiculo);
 		try {
 			comentarioON.insertarComentario(comentario);
@@ -256,5 +258,12 @@ public class Vehiculo2Bean implements Serializable {
 	
 	public String paginaInicio() {
 		return "pro-carro?faces-redirect=true";
+	}
+	
+	public void listadoEstado() {
+		vehiculos=vehiculoON.getListaVehiculoEstado(vehiculo.getEstado());
+		for(Vehiculo elemento: vehiculos) {
+			System.out.println("C-V:"+elemento.getId()+" Estado: "+elemento.getEstado());
+		}
 	}
 }

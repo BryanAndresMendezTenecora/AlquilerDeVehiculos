@@ -79,7 +79,7 @@ public class CategoriaBean {
 		System.out.println("Guardando " + this.categoria.getNombre());
 
 		try {
-			this.categoria.setEstado("Activo");
+			//this.categoria.setEstado("Activo");
 			categoriaON.guardar(this.categoria);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -119,8 +119,9 @@ public class CategoriaBean {
 	public void loadDataEditar() {
 		Categoria p;
 		try {
-			p = categoriaON.getCategoria(categoria.getId());
-			categoria=p;
+			categoria = categoriaON.getCategoria(categoria.getId());
+			//categoriaON.actualizarCategoria(categoria);
+			//categoria=p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -138,18 +139,21 @@ public class CategoriaBean {
 		}
 		return listCategorias;
 	}
-	public String eliminarcategoria(int id,String nombre) {
-		this.categoria.setId(id);
-		this.categoria.setNombre(nombre);
-		this.categoria.setEstado("inactivo");
+	public String eliminarcategoria(int id) {
+		//this.categoria.setId(id);
+		//this.categoria.setNombre(nombre);
+		//this.categoria.setEstado("inactivo");
+		
 		try {
+			categoria=categoriaON.buscarCategoria(id);
+			categoria.setEstado("ELIMINADO");
 			categoriaON.actualizarCategoria(categoria);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-		return "listarCategoria?faces-redirect=true&id=" + id;
+		return "listarCategoria?faces-redirect=true";
 	}
 
 	

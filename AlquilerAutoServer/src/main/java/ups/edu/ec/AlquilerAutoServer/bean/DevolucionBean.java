@@ -8,15 +8,18 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import ups.edu.ec.AlquilerAutoServer.modelo.Detalle;
 import ups.edu.ec.AlquilerAutoServer.modelo.Devolucion;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 import ups.edu.ec.AlquilerAutoServer.on.DevolucionONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoON;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
+import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 @Named
 @ViewScoped
@@ -39,6 +42,9 @@ public class DevolucionBean implements Serializable {
 	
 	@Inject
 	private DevolucionONLocal devolucionON;
+	
+	@Inject
+	private VehiculoONLocal vehiculoON;
 	
 	public Devolucion getDevolucion() {
 		return devolucion;
@@ -135,11 +141,27 @@ public class DevolucionBean implements Serializable {
 	
 	public void insertarDevolucion() {
 		devolucion.setFactura(factura);
+		vehiculoDevolver();
 		try {
 			devolucionON.insertarDevolucion(devolucion);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	public void vehiculoDevolver() {
+		List<Detalle> detalles=factura.getPedido().getDetalles();
+		for(Detalle elemento:detalles) {
+			Vehiculo v=elemento.getVehiculo();
+			try {
+				v.setEstado("DISPONIBLE");
+				vehiculoON.actualizarVehiculo(v);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		System.out.println("Finalizo la DEVOLUCION");
 	}
 }

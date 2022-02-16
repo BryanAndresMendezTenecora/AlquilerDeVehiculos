@@ -111,4 +111,13 @@ public class VehiculoDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+	
+	public List<Vehiculo> getVehiculosEstado(String estado){
+		List<Vehiculo> listado=new ArrayList<Vehiculo>();
+		String jpql="SELECT p FROM Vehiculo p WHERE estado LIKE ?1";
+		Query query= em.createQuery(jpql,Vehiculo.class);
+		query.setParameter(1, estado);
+		listado = query.getResultList();
+		return listado;
+	}
 }

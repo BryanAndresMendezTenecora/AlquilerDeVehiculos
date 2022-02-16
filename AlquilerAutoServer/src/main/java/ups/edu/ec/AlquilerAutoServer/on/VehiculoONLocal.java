@@ -21,4 +21,5 @@ public interface VehiculoONLocal {
 	public List<Categoria> listarcategorias();
 	List<Vehiculo> getlistadoVehiculos(int codigo);
 	public List<Vehiculo> getListaVehiculoCategoria(Categoria categoria);
+	public List<Vehiculo> getListaVehiculoEstado(String estado);
 }

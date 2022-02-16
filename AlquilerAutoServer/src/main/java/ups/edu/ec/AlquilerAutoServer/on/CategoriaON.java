@@ -55,11 +55,17 @@ public class CategoriaON implements CategoriaONLocal{
 	}
 	
 	public void guardar(Categoria p) throws Exception {
-		if (categoriaDAO.read(p.getId()) == null)
+		System.out.println("ON: CO-CATE"+p.getId());
+		p.setEstado(p.getEstado().toUpperCase());
+		p.setNombre(p.getNombre().toUpperCase());
+		if (categoriaDAO.read(p.getId()) == null) {
+			System.out.println("Entro al INSERT");
 			categoriaDAO.insert(p);
-		else
-			
+		}else {
+			System.out.println("Entro al UPDATE");
 			categoriaDAO.update(p);
+		}
+			
 	}
 	
 	public List<Categoria> listarcategorias(){

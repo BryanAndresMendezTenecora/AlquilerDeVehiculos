@@ -99,7 +99,7 @@ public class VehiculoBean {
 		try {
 			categoria=categoriaON.buscarCategoria(categoria.getId());
 			this.vehiculo.setCategoria(categoria);
-			this.vehiculo.setEstado("DISPONIBLE");
+			//this.vehiculo.setEstado("DISPONIBLE");
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -156,8 +156,9 @@ public class VehiculoBean {
 		
 		Vehiculo p;
 		try {
-			p = vehiculoON.getVehiculo(codigo);
-			vehiculo=p;
+			vehiculo = vehiculoON.getVehiculo(codigo);
+			categoria=vehiculo.getCategoria();
+			//vehiculo=p;
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -190,26 +191,28 @@ public class VehiculoBean {
 	
 	
 	
-	public String eliminar(int id,String modelo,String marca,int stock ,int categoriaid) {
-
+	//public String eliminar(int id,String modelo,String marca,int stock ,int categoriaid) {
+	public String eliminar(int codigo) {
 		System.out.println("eliminando " + this.vehiculo.getMarca());
 
 		try {
-			this.vehiculo.setId(id);
+			/*this.vehiculo.setId(id);
 			this.vehiculo.setEstado("eliminado");
 			this.vehiculo.setModelo(modelo);
 			this.vehiculo.setMarca(marca);
 			this.vehiculo.setStock(stock);
 			this.categoria.setId(categoriaid);
 			//this.categoria.setId(categoriaid);
-			this.vehiculo.setCategoria(this.categoria);
+			this.vehiculo.setCategoria(this.categoria);*/
+			vehiculo=vehiculoON.buscarVehiculo(codigo);
+			vehiculo.setEstado("ELIMINADO");
 			vehiculoON.actualizarVehiculo(vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		return "listarVehiculo?faces-redirect=true&id="+id;
+		return "listarVehiculo?faces-redirect=true";
 		
 	}
 
