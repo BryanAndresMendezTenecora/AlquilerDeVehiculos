@@ -240,6 +240,7 @@ public class ProcarroBean implements Serializable {
 		try {
 			vehiculos=vehiculoON.getvehiculos();
 			metodos=metodoON.getMetodoPagos();
+			categorias=categoriaON.getCategorias();
 			System.out.println("----------------------");
 			System.out.println(factura.getId());
 		} catch (Exception e) {

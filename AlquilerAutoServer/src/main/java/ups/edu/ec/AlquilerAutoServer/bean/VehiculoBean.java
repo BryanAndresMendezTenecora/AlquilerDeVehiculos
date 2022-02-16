@@ -29,7 +29,7 @@ public class VehiculoBean {
 	private Vehiculo vehiculo = new Vehiculo();
 	private Categoria categoria= new Categoria();
 	private List<Vehiculo> vehiculos;
-	private List<Categoria> categorias;
+	private List<Categoria> categorias = new ArrayList<Categoria>() ;
 	private int codigo;
 	private List<SelectItem> listCategorias;
 	public int getCodigo() {
@@ -60,12 +60,20 @@ public class VehiculoBean {
 		this.categorias = categorias;
 	}
 	
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	@PostConstruct
 	public void init() {
-		vehiculo = new Vehiculo();
-		vehiculo.setCategoria(new Categoria());
+		//vehiculo = new Vehiculo();
+		//vehiculo.setCategoria(new Categoria());
 		try {
 			vehiculos= vehiculoON.getvehiculos();
+			categorias=categoriaON.getCategorias();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,6 +93,7 @@ public class VehiculoBean {
 		try {
 
 			categoria=categoriaON.buscarCategoria(categoria.getId());
+			//System.out.println();
 			this.vehiculo.setCategoria(categoria);
 			//this.vehiculo.setEstado("DISPONIBLE");
 			this.vehiculo.setEstado("Activo");
