@@ -29,8 +29,8 @@ public class pedidoCabecera implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "per_cedula")
 	private Persona persona;
-	private Date fecha;
-	private Date fechaentrega;
+	private String fecha;
+	private String fechaentrega;
 	private String estado;
 	@OneToMany(cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
 	@JoinColumn(name = "ped_id")
@@ -48,16 +48,16 @@ public class pedidoCabecera implements Serializable{
 		this.persona = persona;
 	}
 	
-	public Date getFecha() {
+	public String getFecha() {
 		return fecha;
 	}
-	public void setFecha(Date fecha) {
+	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	public Date getFechaentrega() {
+	public String getFechaentrega() {
 		return fechaentrega;
 	}
-	public void setFechaentrega(Date fechaentrega) {
+	public void setFechaentrega(String fechaentrega) {
 		this.fechaentrega = fechaentrega;
 	}
 	public String getEstado() {
