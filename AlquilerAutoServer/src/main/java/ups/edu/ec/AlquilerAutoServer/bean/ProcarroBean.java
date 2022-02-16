@@ -364,8 +364,8 @@ public class ProcarroBean implements Serializable {
 		cabecera.setDetalles(detalles);
 		//cabecera.setPersona(loginBean.getPersona());
 		cabecera.setPersona(persona);
-		cabecera.setFecha(fechaActual);
-		cabecera.setFechaentrega(fechaEntrega);
+		//cabecera.setFecha(fechaActual);
+		//cabecera.setFechaentrega(fechaEntrega);
 		//cabecera.setPersona(null);
 		try {
 			pedidoON.insertarpedidoCabecera(cabecera);
