@@ -14,16 +14,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import ups.edu.ec.AlquilerAutoServer.modelo.Comentario;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
+import ups.edu.ec.AlquilerAutoServer.on.ComentarioON;
+import ups.edu.ec.AlquilerAutoServer.on.ComentarioONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 @Path("vehiculos")
 public class VehiculoServiceRest {
+	
 	@Inject
 	private VehiculoONLocal vehiculoON;
 	
+
 	
 	//los q se pegan a un crud , crear actualizar eliminar no se manjea un path 
 	
@@ -90,6 +95,11 @@ public class VehiculoServiceRest {
 		}
 		
 	}
+	
+	
+	
+	
+	
 	
 	@GET
 	@Path("buscarM")
