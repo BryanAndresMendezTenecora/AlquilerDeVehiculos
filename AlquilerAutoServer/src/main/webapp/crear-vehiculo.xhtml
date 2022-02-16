@@ -73,9 +73,9 @@
 				</div>-->
 				<div class="form-group" >
 					<label for="itemCategorias">Categorias</label>
-					<h:selectOneMenu value="#{vehiculoBean.vehiculo.categoria.id}" class="form-control" id="campoCategoria" >
+					<h:selectOneMenu value="#{vehiculoBean.categoria.id}" class="form-control" id="campoCategoria" >
 					<f:selectItem itemLabel="--Slecione--" class="btn btn-light" />
-					<f:selectItems value="#{categoriaBean.listCategorias}" />
+					<f:selectItems value="#{categoriaBean.categorias}" var="lista" itemLabel="#{lista.nombre}" itemValue="#{lista.id}" />
 					</h:selectOneMenu>
 				</div>
 
