@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -59,6 +60,33 @@ public class ComentarioServiceRest {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	
+	@POST
+	@Path("buscarComentario")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Comentario> getComentarioVehiculo(int id){
+		System.out.println("este es nombre q llega ------->="+id);
+		List<Comentario> listComentario=new ArrayList<Comentario>();
+		List<Comentario> nuevalistaobtenida=new ArrayList<Comentario>();
+		try {
+			listComentario=comentarioON.getComentarios();
+			for (Comentario comentario : listComentario) {
+				if (comentario.getVehiculo().getId()==id ) {
+					nuevalistaobtenida.add(comentario);
+				} else {
+					System.out.println("-> ");
+				}
+				
+			}
+			return nuevalistaobtenida;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 	
 
