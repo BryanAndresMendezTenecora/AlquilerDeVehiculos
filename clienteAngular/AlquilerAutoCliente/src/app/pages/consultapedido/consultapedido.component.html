@@ -1,0 +1,54 @@
+
+<app-header></app-header>
+<div class="container">
+  <br>
+<form class="container-fluid">
+    <div class="form-group row">
+        <label for="inputiddet" class="col-sm-2 col-form-label">Pedidos</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" name="inputiddetalle" placeholder="Nombre o Cedula" [(ngModel)]="nombre">
+        </div>
+        <div class="col-sm-3">
+          <button class="btn btn-success" (click)="buscar(nombre)">(+) Consultar</button>
+       </div>
+    </div>  
+      <!--
+    <div class="form-group row">
+      <label for="inputvehiculo" class="col-sm-2 col-form-label">Vehiculo</label>
+      <div class="col-sm-10">
+      <select  name="inputvehicuoid" class="form-select" aria-label="Default select example" [(ngModel)]="detalles.vehiculo.id">
+        
+        <option *ngFor="let item of items" [value]="item.id">{{item.marca}}</option>
+      </select>
+      </div>
+    </div>
+        -->
+    
+    
+    
+  </form>
+</div>
+
+<div class="container">
+<DIV *ngFor="let pedido of pedidos | async">
+    
+    
+    <h3><strong> Fecha Inicio :</strong> {{pedido.fecha}} </h3>
+    <h3><strong> Fecha Entrega :</strong> {{pedido.fechaentrega}}</h3>
+    <strong><h2> Estado : </h2></strong> <h1 class="pedido">{{pedido.estado}} </h1>
+    <h3><strong>Cliente :</strong>{{pedido.persona.nombre}} {{pedido.persona.apellido}}</h3>
+
+    <!--<button class="btn btn-warning" >Pedir</button>-->
+    <hr>
+  
+</DIV>
+
+</div>
+<div>
+  <br>
+
+
+  <br>
+</div>
+
+<app-footer></app-footer>
