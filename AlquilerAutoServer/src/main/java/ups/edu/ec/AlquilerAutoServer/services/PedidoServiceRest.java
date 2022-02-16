@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
+import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
@@ -57,6 +59,33 @@ public class PedidoServiceRest {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	
+	@POST
+	@Path("buscarP")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<pedidoCabecera> getPedidosRealizados(String nombre){
+		System.out.println("este es nombre q llega ------->="+nombre);
+		List<pedidoCabecera> listPedido=new ArrayList<pedidoCabecera>();
+		List<pedidoCabecera> nuevalistaobtenida=new ArrayList<pedidoCabecera>();
+		try {
+			listPedido=pedidoON.getpedidoCabeceras();
+			for (pedidoCabecera pedido : listPedido) {
+				if (pedido.getPersona().getNombre().equals(nombre) || pedido.getPersona().getCedula().equals(nombre) ) {
+					nuevalistaobtenida.add(pedido);
+				} else {
+					System.out.println("-> ");
+				}
+				
+			}
+			return nuevalistaobtenida;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	

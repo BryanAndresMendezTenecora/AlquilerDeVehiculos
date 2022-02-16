@@ -70,6 +70,7 @@ public class VehiculoDAO {
 		listaCategorias = query.getResultList();
 		return listaCategorias;
 	}
+<<<<<<< HEAD
 	
 	public List<Vehiculo> getVehiculosPrecioMayorMenor(){
 		List<Vehiculo> listado=new ArrayList<Vehiculo>();
@@ -120,4 +121,6 @@ public class VehiculoDAO {
 		listado = query.getResultList();
 		return listado;
 	}
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 }

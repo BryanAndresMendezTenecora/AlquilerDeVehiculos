@@ -28,9 +28,8 @@ public class VehiculoBean {
 	
 	private Vehiculo vehiculo = new Vehiculo();
 	private Categoria categoria= new Categoria();
-	private List<Vehiculo> vehiculos = new ArrayList<Vehiculo>();
-	//private List<Vehiculo> vehiculos;
-	private List<Categoria> categorias = new ArrayList<Categoria>();
+	private List<Vehiculo> vehiculos;
+	private List<Categoria> categorias;
 	private int codigo;
 	private List<SelectItem> listCategorias;
 	public int getCodigo() {
@@ -61,22 +60,10 @@ public class VehiculoBean {
 		this.categorias = categorias;
 	}
 	
-	
-	
-	public Categoria getCategoria() {
-		return categoria;
-	}
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
-	}
-	public void setListCategorias(List<SelectItem> listCategorias) {
-		this.listCategorias = listCategorias;
-	}
 	@PostConstruct
 	public void init() {
-		categorias=categoriaON.getCategorias();
-		//vehiculo = new Vehiculo();
-		//vehiculo.setCategoria(new Categoria());
+		vehiculo = new Vehiculo();
+		vehiculo.setCategoria(new Categoria());
 		try {
 			vehiculos= vehiculoON.getvehiculos();
 		} catch (Exception e) {
@@ -88,18 +75,22 @@ public class VehiculoBean {
 	}
 	
 	public String guardar() {
-		
-		//System.out.println("Guardando " + this.vehiculo.getMarca());
-		System.out.println("CATEGORIA VEH: "+categoria.getId());
+
+		System.out.println("Guardando " + this.vehiculo.getMarca());
 
 		/*
 		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
 		 * p.setDireccion(this.direccion);
 		 */
 		try {
+<<<<<<< HEAD
 			categoria=categoriaON.buscarCategoria(categoria.getId());
 			this.vehiculo.setCategoria(categoria);
 			//this.vehiculo.setEstado("DISPONIBLE");
+=======
+			
+			this.vehiculo.setEstado("Activo");
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -107,7 +98,6 @@ public class VehiculoBean {
 		}
 
 		return "listarVehiculo?faces-redirect=true";
-		//return null;
 		
 	}
 	

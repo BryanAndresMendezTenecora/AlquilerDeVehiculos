@@ -14,14 +14,12 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import ups.edu.ec.AlquilerAutoServer.modelo.Categoria;
 import ups.edu.ec.AlquilerAutoServer.modelo.Detalle;
 import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.MetodoDePago;
 import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
-import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.MetodoDePagoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
@@ -47,12 +45,15 @@ public class ProcarroBean implements Serializable {
 	private MetodoDePagoONLocal metodoON;
 	
 	@Inject
+<<<<<<< HEAD
 	private CategoriaONLocal categoriaON;
 	
 	@Inject
 	private PersonaONLocal personaON;
 	
 	@Inject
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 	private LoginBean loginBean;
 	
 	private int cont=1;
@@ -63,10 +64,13 @@ public class ProcarroBean implements Serializable {
 	
 	private MetodoDePago metodo= new MetodoDePago();
 	
+<<<<<<< HEAD
 	private Categoria categoria=new Categoria();
 	
 	private Persona persona= new Persona();
 	
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 	private Detalle detalle;
 	
 	private Date fechaActual= new Date();
@@ -76,8 +80,7 @@ public class ProcarroBean implements Serializable {
 	private List<Detalle> detalles= new ArrayList<Detalle>();
 	private List<Vehiculo> vehiculos= new ArrayList<Vehiculo>();
 	private List<MetodoDePago> metodos= new ArrayList<MetodoDePago>();
-	private List<Categoria> categorias= new ArrayList<Categoria>();
-	private int listado=0;
+	
 	
 	
 	private FacesContext facesContext;
@@ -163,6 +166,7 @@ public class ProcarroBean implements Serializable {
 		this.metodos = metodos;
 	}
 
+<<<<<<< HEAD
 	
 
 	public int getListado() {
@@ -228,12 +232,13 @@ public class ProcarroBean implements Serializable {
 		this.persona = persona;
 	}
 
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 
 	@PostConstruct
 	public void init() {
 		//System.out.println("Hello");
 		try {
-			categorias=categoriaON.getCategorias();
 			vehiculos=vehiculoON.getvehiculos();
 			metodos=metodoON.getMetodoPagos();
 			System.out.println("----------------------");
@@ -457,6 +462,7 @@ public class ProcarroBean implements Serializable {
 		return "visualizacion?faces-redirect=true&id="+codigo;
 	}
 	
+<<<<<<< HEAD
 	public String paginaPedido() {
 		return "pedido?faces-redirect=true";
 	}
@@ -506,4 +512,7 @@ public class ProcarroBean implements Serializable {
 		return det;
 	}
 	
+=======
+
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 }

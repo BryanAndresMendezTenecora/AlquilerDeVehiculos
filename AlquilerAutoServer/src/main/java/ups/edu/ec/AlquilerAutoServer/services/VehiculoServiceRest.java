@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -67,6 +68,58 @@ public class VehiculoServiceRest {
 			e.printStackTrace();
 			return null;
 		}
+	}
+	
+	@POST
+	@Path("buscarC")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vehiculo> getvehiculobuscqueda(String nombre){
+		System.out.println("este es nombre q llega ------->="+nombre);
+		List<Vehiculo> listvehiculo=new ArrayList<Vehiculo>();
+		List<Vehiculo> nuevalistaobtenida=new ArrayList<Vehiculo>();
+		try {
+			listvehiculo=vehiculoON.getvehiculos();
+			for (Vehiculo vehiculo : listvehiculo) {
+				if (vehiculo.getCategoria().getNombre().equals(nombre) || vehiculo.getMarca().equals(nombre) ) {
+					nuevalistaobtenida.add(vehiculo);
+				} else {
+					System.out.println("-> ");
+				}
+				
+			}
+			return nuevalistaobtenida;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+	}
+	
+	@GET
+	@Path("buscarM")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Vehiculo> getvehiculobuscquedaM(@QueryParam("nombre") String nombre){
+		System.out.println("este es nombre q llega ------->="+nombre);
+		List<Vehiculo> listvehiculo=new ArrayList<Vehiculo>();
+		List<Vehiculo> nuevalistaobtenida=new ArrayList<Vehiculo>();
+		try {
+			listvehiculo=vehiculoON.getvehiculos();
+			for (Vehiculo vehiculo : listvehiculo) {
+				if (vehiculo.getMarca().equals(nombre)) {
+					nuevalistaobtenida.add(vehiculo);
+				} else {
+					System.out.println("-> ");
+				}
+				
+			}
+			return nuevalistaobtenida;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
 	}
 
 	

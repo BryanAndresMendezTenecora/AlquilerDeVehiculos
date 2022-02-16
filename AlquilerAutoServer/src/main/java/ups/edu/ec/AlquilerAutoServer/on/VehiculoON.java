@@ -72,8 +72,10 @@ public class VehiculoON implements VehiculoONLocal{
 		}
 	}
 	public List<Categoria> listarcategorias(){
+		
 		return VehiculoDAO.listarcategorias();
 	}
+<<<<<<< HEAD
 	
 	public List<Vehiculo> getlistadoVehiculos(int codigo){
 		if(codigo == 1) {
@@ -95,4 +97,6 @@ public class VehiculoON implements VehiculoONLocal{
 	public List<Vehiculo> getListaVehiculoEstado(String estado){
 		return VehiculoDAO.getVehiculosEstado(estado);
 	}
+=======
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 }

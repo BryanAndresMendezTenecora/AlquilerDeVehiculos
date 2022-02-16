@@ -80,11 +80,6 @@ public class DevolucionBean implements Serializable {
 		this.pedidos = pedidos;
 	}
 	
-	
-	public String paginaInicio() {
-		return "pro-carro?faces-redirect=true";
-	}
-	
 	public void listarFactura() {
 		System.out.println("Persona: "+persona.getCedula());
 		pedidos=pedidoON.getPedidosCedula(persona);

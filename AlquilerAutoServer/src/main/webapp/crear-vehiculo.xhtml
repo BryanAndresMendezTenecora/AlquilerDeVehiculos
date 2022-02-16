@@ -24,9 +24,9 @@
 				<div class="form-group">
 					<label for="txtCodigo">Codigo</label>
 					<h:inputText type="text" class="form-control" id="campoid"
-						placeholder="Cedula" value="#{vehiculoBean.vehiculo.id}"> 
+						placeholder="Cedula" value="#{vehiculoBean.vehiculo.id}">
 						<f:ajax execute="txtCodigo"
-							render="campoModelo campoMarca campoStock campoEstado campoCategoria campoPrecio"
+							render="campoModelo campoMarca campoStock campoEstado campoCategoria"
 							listener="#{vehiculoBean.loadDataEditar()}" />
 					</h:inputText>
 				</div>
@@ -40,15 +40,16 @@
 
 				<div class="form-group">
 					<label for="txtMarca">Marca</label>
-					<h:inputText type="text" class="form-control" id="campoMarca"
+					<h:inputText type="email" class="form-control" id="campoMarca"
 						placeholder="Marca" value="#{vehiculoBean.vehiculo.marca}" />
 				</div>
 
 				<div class="form-group">
 					<label for="txtStock">Stock</label>
-					<h:inputText type="text" class="form-control" id="campoStock"
+					<h:inputText type="email" class="form-control" id="campoStock"
 						placeholder="Stock" value="#{vehiculoBean.vehiculo.stock}" />
 				</div>
+<<<<<<< HEAD
 				
 				<div class="form-group">
 					<label for="txtPrecio">Precio</label>
@@ -56,6 +57,9 @@
 						placeholder="Precio" value="#{vehiculoBean.vehiculo.precio}" />
 				</div>
  
+=======
+<!--  
+>>>>>>> 7c84c3ae4d55fde831479bfb84efb35630523692
 				<div class="form-group">
 					<label for="txtEstado">Estado</label>
 					<h:inputText type="text" class="form-control" id="campoEstado"
@@ -71,9 +75,9 @@
 				</div>-->
 				<div class="form-group" >
 					<label for="itemCategorias">Categorias</label>
-					<h:selectOneMenu value="#{vehiculoBean.categoria.id}" class="form-control" >
+					<h:selectOneMenu value="#{vehiculoBean.vehiculo.categoria.id}" class="form-control" id="campoCategoria" >
 					<f:selectItem itemLabel="--Slecione--" class="btn btn-light" />
-					<f:selectItems value="#{vehiculoBean.categorias}" var="cate" itemLabel="#{cate.nombre}"  itemValue="#{cate.id}"/>
+					<f:selectItems value="#{categoriaBean.listCategorias}" />
 					</h:selectOneMenu>
 				</div>
 
