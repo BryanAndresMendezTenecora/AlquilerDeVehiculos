@@ -96,7 +96,7 @@ public class VehiculoBean {
 			//System.out.println();
 			this.vehiculo.setCategoria(categoria);
 			//this.vehiculo.setEstado("DISPONIBLE");
-			this.vehiculo.setEstado("Activo");
+			//this.vehiculo.setEstado("Activo");
 
 			vehiculoON.guardar(this.vehiculo);
 		} catch (Exception e) {
