@@ -2,6 +2,7 @@ package ups.edu.ec.AlquilerAutoServer.bean;
 
 import java.io.Serializable;
 
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,6 +48,10 @@ public class Login2Bean implements Serializable {
 			e.printStackTrace();
 			return "Login?faces-redirect=true";
 		}
+	}
+	
+	public void cerrarSesion() {
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 	}
 	
 	

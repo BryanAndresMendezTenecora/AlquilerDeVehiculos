@@ -81,7 +81,7 @@ public class CategoriaBean implements Serializable{
 		System.out.println("Categoria: "+categoria.getEstado()+" --- "+categoria.getNombre());
 		try {
 			//this.categoria.setEstado("Activo");
-			//categoriaON.guardar(this.categoria);
+			categoriaON.guardar(this.categoria);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
