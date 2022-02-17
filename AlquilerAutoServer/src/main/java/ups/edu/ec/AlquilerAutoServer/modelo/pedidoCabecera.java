@@ -26,12 +26,12 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "TBL_PedidoCabecera")
-public class pedidoCabecera implements Serializable{
+public class pedidoCabecera implements Serializable {
 	private static final long serialVersionUID = 1L; // Numero de versión
 	@Id
 	@Column(name = "ped_id")
 	@SequenceGenerator(name = "id_ped_seq", sequenceName = "ID_PED_SEQ", initialValue = 1, allocationSize = 1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_ped_seq")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_ped_seq")
 	private int id; // Llave primaria de vehiculo
 	@OneToOne
 	@JoinColumn(name = "per_cedula")
@@ -39,10 +39,10 @@ public class pedidoCabecera implements Serializable{
 	private String fecha; // fecha de emision del pedido
 	private String fechaentrega; // fecha de entrega del pedido
 	private String estado; // Estado del pedido (Emision, Finalizado)
-	@OneToMany(cascade = CascadeType.PERSIST ,fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
 	@JoinColumn(name = "ped_id")
 	private List<Detalle> detalles; // Lista de detalles del pedido
-	
+
 	/**
 	 * Devuelve el id del pedido
 	 * 
@@ -51,7 +51,7 @@ public class pedidoCabecera implements Serializable{
 	public int getId() {
 		return id;
 	}
-	
+
 	/**
 	 * Asigna el id al pedido
 	 * 
@@ -60,17 +60,16 @@ public class pedidoCabecera implements Serializable{
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	/**
 	 * Devuelve la persona que realiza el pedido
 	 * 
-	 * @return devuelve la persona 
+	 * @return devuelve la persona
 	 */
 	public Persona getPersona() {
 		return persona;
 	}
-	
-	
+
 	/**
 	 * Asigna la persona que realiza el pedido
 	 * 
@@ -79,8 +78,7 @@ public class pedidoCabecera implements Serializable{
 	public void setPersona(Persona persona) {
 		this.persona = persona;
 	}
-	
-	
+
 	/**
 	 * Devuelve la fecha de emision del pedido
 	 * 
@@ -89,8 +87,7 @@ public class pedidoCabecera implements Serializable{
 	public String getFecha() {
 		return fecha;
 	}
-	
-	
+
 	/**
 	 * Asigna la fecha de emision del pedido
 	 * 
@@ -99,8 +96,7 @@ public class pedidoCabecera implements Serializable{
 	public void setFecha(String fecha) {
 		this.fecha = fecha;
 	}
-	
-	
+
 	/**
 	 * Devuelve la fecha de entrega del pedido
 	 * 
@@ -109,7 +105,7 @@ public class pedidoCabecera implements Serializable{
 	public String getFechaentrega() {
 		return fechaentrega;
 	}
-	
+
 	/**
 	 * Asigna la fecha de entrega del pedido
 	 * 
@@ -118,8 +114,7 @@ public class pedidoCabecera implements Serializable{
 	public void setFechaentrega(String fechaentrega) {
 		this.fechaentrega = fechaentrega;
 	}
-	
-	
+
 	/**
 	 * Devuelve el estado del pedido
 	 * 
@@ -128,18 +123,16 @@ public class pedidoCabecera implements Serializable{
 	public String getEstado() {
 		return estado;
 	}
-	
-	
+
 	/**
-	 * Asigna el estado al pedido 
+	 * Asigna el estado al pedido
 	 * 
 	 * @param estado recibe el estado
 	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-	
-	
+
 	/**
 	 * Devuelve una lista de detalles del pedido
 	 * 
@@ -148,7 +141,7 @@ public class pedidoCabecera implements Serializable{
 	public List<Detalle> getDetalles() {
 		return detalles;
 	}
-	
+
 	/**
 	 * Asigna una lista de detalles al pedido
 	 * 
@@ -157,6 +150,5 @@ public class pedidoCabecera implements Serializable{
 	public void setDetalles(List<Detalle> detalles) {
 		this.detalles = detalles;
 	}
-	
-	
+
 }
