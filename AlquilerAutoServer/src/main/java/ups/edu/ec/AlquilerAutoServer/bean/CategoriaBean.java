@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -17,7 +18,7 @@ import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 
 @Named
 @RequestScoped
-public class CategoriaBean {
+public class CategoriaBean implements Serializable{
 	@Inject
 	private CategoriaONLocal categoriaON;
 	private Categoria categoria=new Categoria();
@@ -77,7 +78,7 @@ public class CategoriaBean {
 	public String guardar() {
 
 		System.out.println("Guardando " + this.categoria.getNombre());
-
+		System.out.println("Categoria: "+categoria.getEstado()+" --- "+categoria.getNombre());
 		try {
 			//this.categoria.setEstado("Activo");
 			categoriaON.guardar(this.categoria);
@@ -87,7 +88,8 @@ public class CategoriaBean {
 		}
 
 		//return "listado-personas?faces-redirect=true";
-		return "listarCategoria?faces-redirect=true";
+		//return "listarCategoria?faces-redirect=true";
+		return null;
 	}
 	
 	

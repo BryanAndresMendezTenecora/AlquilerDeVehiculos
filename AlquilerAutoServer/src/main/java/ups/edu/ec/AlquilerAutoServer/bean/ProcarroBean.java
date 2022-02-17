@@ -364,8 +364,8 @@ public class ProcarroBean implements Serializable {
 		cabecera.setDetalles(detalles);
 		//cabecera.setPersona(loginBean.getPersona());
 		cabecera.setPersona(persona);
-		cabecera.setFecha(fechaActual);
-		cabecera.setFechaentrega(fechaEntrega);
+		//cabecera.setFecha(fechaActual);
+		//cabecera.setFechaentrega(fechaEntrega);
 		//cabecera.setPersona(null);
 		try {
 			pedidoON.insertarpedidoCabecera(cabecera);
@@ -513,7 +513,7 @@ public class ProcarroBean implements Serializable {
 	}
 	
 	public String cerrarSesion() {
-		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		//FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return "Login?faces-redirect=true";
 	}
 }

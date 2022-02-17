@@ -4,7 +4,11 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+<f:metadata>
+		<f:viewAction action="#{login2Bean.cerrarSesion()}" />
+</f:metadata>
+</h:head> 
 <ui:composition template="template/loginPlantilla.xhtml">
 	<ui:define name="title">
 		Crear clientes
@@ -34,14 +38,11 @@
 						id="campoApellido" placeholder="Password"
 						value="#{login2Bean.persona.password}" />
 				</div>
-				<h:outputText id="salida" value="#{loginBean.mensajeSalida}" />
-
+				<!--<h:outputText id="salida" value="#{loginBean.mensajeSalida}" />-->
 
 				<h:commandButton type="submit"
 					class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn"
 					action="#{login2Bean.iniciarSesion()}" value="Guardar" />
-
-
 
 				<div class="text-center mt-4 font-weight-light">
 					Don't have an account? <a href="listarPersona.xhtml"
@@ -49,8 +50,6 @@
 				</div>
 			</h:form>
 		</div>
-
 	</ui:define>
-
 </ui:composition> 
 </html>

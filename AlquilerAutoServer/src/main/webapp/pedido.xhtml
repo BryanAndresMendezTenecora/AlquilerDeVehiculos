@@ -21,12 +21,12 @@
 	<h:outputLabel value="Nombre: " style="font-weight:bold"/>
 	<h:inputText value="#{procarroBean.persona.nombre}"></h:inputText>
 	<h:outputLabel value="Fecha: " style="font-weight:bold" />
-	<h:inputText value="#{procarroBean.fechaActual}" >
-		 <f:convertDateTime pattern = "dd/MM/yyyy" />
+	<h:inputText value="#{procarroBean.cabecera.fecha}" >
+		<!--<f:convertDateTime pattern = "dd/MM/yyyy" />-->
 	</h:inputText>
 	<h:outputLabel value="Fecha de Entrega: " style="font-weight:bold"/>
-	<h:inputText value="#{procarroBean.fechaEntrega}" >
-		<f:convertDateTime pattern = "dd/MM/yyyy" />
+	<h:inputText value="#{procarroBean.cabecera.fechaentrega}" >
+		<!--  <f:convertDateTime pattern = "dd/MM/yyyy" />-->
 	</h:inputText>
 	</h:panelGrid>
 	</div>
