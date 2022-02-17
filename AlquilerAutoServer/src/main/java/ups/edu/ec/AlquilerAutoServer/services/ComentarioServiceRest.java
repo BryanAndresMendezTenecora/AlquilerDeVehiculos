@@ -22,7 +22,7 @@ import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 /**
- * Servicios para Comentario Se indica el path o la ruta para el servicio
+ * Servicios para Comentario. Se indica el path o la ruta para el servicio
  * 
  * @author Bryan Mendez
  * @author Braulio Astudillo

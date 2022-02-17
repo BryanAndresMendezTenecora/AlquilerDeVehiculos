@@ -21,7 +21,7 @@ import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
 /**
- * Servicios para Pedido Se indica el path o la ruta para el servicio
+ * Servicios para Pedido. Se indica el path o la ruta para el servicio
  * 
  * @author Bryan Mendez
  * @author Braulio Astudillo
