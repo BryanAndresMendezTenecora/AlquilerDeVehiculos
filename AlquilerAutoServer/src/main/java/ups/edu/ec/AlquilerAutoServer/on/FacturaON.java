@@ -13,7 +13,7 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Factura;
 import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 
 /**
- * Interfaz local del objeto de negocio Factura
+ * Objeto de negocio de Factura
  * 
  * @author Bryan Mendez
  * @author Braulio Astudillo
