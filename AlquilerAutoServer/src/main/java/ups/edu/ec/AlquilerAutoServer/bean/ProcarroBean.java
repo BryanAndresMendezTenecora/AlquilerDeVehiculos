@@ -35,22 +35,22 @@ public class ProcarroBean implements Serializable {
 
 	
 	@Inject
-	private PedidoONLocal pedidoON; 		//Injección al servidor mediante el objeto ON Pedido.
+	private PedidoONLocal pedidoON; 		//Inyección al servidor mediante el objeto ON Pedido.
 	
 	@Inject
-	private FacturaONLocal facturaON;		//Injección al servidor mediante el objeto de negocio de factura.
+	private FacturaONLocal facturaON;		//Inyección al servidor mediante el objeto de negocio de factura.
 	
 	@Inject
-	private VehiculoONLocal vehiculoON;			//Injección al servidor mediante el objeto de negocio de vehículo.
+	private VehiculoONLocal vehiculoON;			//Inyección al servidor mediante el objeto de negocio de vehículo.
 	
 	@Inject 
-	private MetodoDePagoONLocal metodoON; 		//Injección al servidor mediante el objeto de negocio de metodo de pago.
+	private MetodoDePagoONLocal metodoON; 		//Inyección al servidor mediante el objeto de negocio de metodo de pago.
 	
 	@Inject
-	private CategoriaONLocal categoriaON;		//Injección al servidor mediante el objeto de negocio de categria.
+	private CategoriaONLocal categoriaON;		//Inyección al servidor mediante el objeto de negocio de categria.
 	
 	@Inject
-	private PersonaONLocal personaON;			//Injección al servidor mediante el objeto de negocio de persona.
+	private PersonaONLocal personaON;			//Inyección al servidor mediante el objeto de negocio de persona.
 	
 	
 	private int cont=1;				//Instancia de un dato tipo int, que servira de contador.
