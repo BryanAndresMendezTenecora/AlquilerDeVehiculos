@@ -20,7 +20,11 @@ import ups.edu.ec.AlquilerAutoServer.on.PedidoON;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
-
+/**
+ * Bean para la gestion de la devolución
+ * @author Bryan Méndez, Juan Boni, Braulio Astudillo
+ *
+ */
 @Named
 @ViewScoped
 public class DevolucionBean implements Serializable {

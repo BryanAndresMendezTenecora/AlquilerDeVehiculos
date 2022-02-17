@@ -15,6 +15,11 @@ import ups.edu.ec.AlquilerAutoServer.on.FacturaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
+/**
+ * Bean gestión de los antecedentes
+ * @author Bryan Méndez, Juan Boni, Braulio Astudillo
+ *
+ */
 @Named
 @ViewScoped
 public class AntecedentesBean implements Serializable {

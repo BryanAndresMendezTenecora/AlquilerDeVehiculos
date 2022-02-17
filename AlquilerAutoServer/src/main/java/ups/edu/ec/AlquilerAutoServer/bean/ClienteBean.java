@@ -11,8 +11,8 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
 /**
- * 
- * @author Bryan,Juan,Braulio
+ * Bean para la gestión de la persona
+ * @author Bryan Méndez,Juan Boni,Braulio Astudillo
  *
  */
 

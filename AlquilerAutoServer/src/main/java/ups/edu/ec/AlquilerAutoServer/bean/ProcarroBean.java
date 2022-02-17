@@ -28,7 +28,11 @@ import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
-
+/**
+ * Bean para la gestión del carrito,pedido,factura
+ * @author Bryan Mendez, Juan Boni, Braulio Astudillo
+ *
+ */
 @Named
 @SessionScoped
 public class ProcarroBean implements Serializable {
