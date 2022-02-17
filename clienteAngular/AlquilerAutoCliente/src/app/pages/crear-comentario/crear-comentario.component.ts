@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { Comentario } from '../../domain/comentario';
 import { ComentarioService } from '../../services/comentario.service';
 
@@ -13,7 +13,7 @@ export class CrearComentarioComponent implements OnInit {
   cedula:any;
   comentarios:any;
   comentario:Comentario=new Comentario();
-  constructor(private activatedRoute:ActivatedRoute,private ComentarioService:ComentarioService) { 
+  constructor(private activatedRoute:ActivatedRoute,private ComentarioService:ComentarioService,private router:Router) { 
     this.id=this.activatedRoute.snapshot.params['id'];
     console.log("llega===>",this.id)
     this.comentario.vehiculo.id=this.id
@@ -30,8 +30,8 @@ export class CrearComentarioComponent implements OnInit {
       console.log("Poni=>",data);
     });
     this.buscar(this.id);
-    window.location.reload();
-
+    
+    this.router.navigate(['crearComentario'])
 
   }
 

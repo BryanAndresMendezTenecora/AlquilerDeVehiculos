@@ -14,12 +14,12 @@ comentarios:Comentario;
 
 
   guardarComentario(comentario : Comentario):Observable<any>{
-    const url = environment.WS_PATH +"/comentario";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/comentario";
     return this.http.put<any>(url,comentario)
   }
 
   getComentario():Observable<any>{
-    const url = environment.WS_PATH +"/comentario";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/comentario";
     return this.http.get<any>(url)
 
   }
@@ -27,7 +27,7 @@ comentarios:Comentario;
 
 
   getAutoCoemntario(n:number):Observable<any>{
-    const url = environment.WS_PATH +"/comentario/buscarComentario";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/comentario/buscarComentario";
     return this.http.post<any>(url,n)
 
   }

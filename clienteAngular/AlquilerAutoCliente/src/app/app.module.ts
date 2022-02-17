@@ -24,6 +24,7 @@ import { ListarComentarioComponent } from './pages/listar-comentario/listar-come
 import { ConsultapedidoComponent } from './pages/consultapedido/consultapedido.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -66,7 +67,8 @@ import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     MatDatepickerModule,
     BrowserAnimationsModule,
-    NgbDatepickerModule
+    NgbDatepickerModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
