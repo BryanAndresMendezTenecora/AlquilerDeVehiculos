@@ -484,12 +484,11 @@ public class ProcarroBean implements Serializable {
 		
 	}
 	
-	/*
-	public String confitFactura(int cod) {
+	public String confirFactura() {
 		System.out.println("ENTRO A CONFIRMAR FACTURA");
 		String cedula=persona.getCedula();
 		double total=0.0;
-		for(Detalle elemento: detalles) {
+		for(Detalle elemento: cabecera.getDetalles()) {
 			double pagar=elemento.getTotal();
 			total=total+pagar;
 		}
@@ -500,7 +499,7 @@ public class ProcarroBean implements Serializable {
 			metodo.setNombrepropietario(cabecera.getPersona().getNombre());
 			metodo.setEstado("ACTIVO");
 			metodoON.guardar(metodo);
-			//pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
+			pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
 			factura.setEstado("EMISION");
 			//factura.setPedido(cabecera);
 			factura.setTarjetacredito(metodo);
@@ -518,7 +517,8 @@ public class ProcarroBean implements Serializable {
 		
 		
 	}
-	*/
+	
+	
 	/**
 	 * Se calcula el total de la lista detalles, esta lista contiene los vehículos
 	 * con sus precios respectivos.
