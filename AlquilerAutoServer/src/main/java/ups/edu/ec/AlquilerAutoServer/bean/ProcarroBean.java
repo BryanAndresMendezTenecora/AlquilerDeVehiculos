@@ -83,7 +83,7 @@ public class ProcarroBean implements Serializable {
 	
 	private FacesContext facesContext; //Para la gestion de los beans.
 	
-	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
+	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>(); // Instancia de una lista de pedidos. 
 	
 	
 	/**
@@ -483,7 +483,12 @@ public class ProcarroBean implements Serializable {
 		
 		
 	}
-	
+	/**
+	 * Metodo donde se inserta la factura, una ves insertado
+	 * el pedido cabecera y sus detalles, se puede finalizar la factura
+	 * donde se tiene que llenar el metodo de pago para la emisión de la factura.
+	 * @return Navegación a la página carrito.
+	 */
 	public String confirFactura() {
 		System.out.println("ENTRO A CONFIRMAR FACTURA");
 		String cedula=persona.getCedula();
@@ -569,11 +574,20 @@ public class ProcarroBean implements Serializable {
 		}
 	}
 	
+	/**
+	 * Navegación entre páginas
+	 * @return Navegación a la lista de pedidos
+	 */
 	public String paginaListaPedido() {
 		
 		return "lista-pedidos?faces-redirect=true";
 	}
 	
+	/**
+	 * Navegación entre páginas
+	 * @param codigo Es una llave primaria para la busqueda de la cabecera.
+	 * @return Navegación a la página factura
+	 */
 	public String paginaListaFactura(int codigo) {
 		try {
 			cabecera=pedidoON.buscarpedidoCabecera(codigo);
