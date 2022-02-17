@@ -39,7 +39,7 @@ public class ComentarioServiceRest {
 	 * responde a solicitudes HTTP PUT. Se define el tipo o medio de consumo json
 	 * 
 	 * @param comentario recibe el objeto comentario
-	 * @return un mensaje de confirmacion
+	 * @return un mensaje de confirmacion del servicio
 	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
