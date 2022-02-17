@@ -36,6 +36,10 @@
 			#{lista.estado}
 		</h:column>
 		<h:column>
+			<f:facet name="header">FECHA</f:facet>
+			#{lista.fecha}
+		</h:column>
+		<h:column>
 			<f:facet name="header">FECHA ENTREGA</f:facet>
 			#{lista.fechaentrega}
 		</h:column>
@@ -45,7 +49,7 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header">ACCIONES</f:facet>
-			<h:commandButton value="INGRESAR" action="#{procarroBean.paginaListaFactura(lista.id)}" ></h:commandButton>
+			<h:commandButton value="INGRESAR" action="#{procarroBean.paginaListaFactura(lista.id)}" class="btn btn-primary" ></h:commandButton>
 		</h:column>
 		</h:dataTable>
 		</div>

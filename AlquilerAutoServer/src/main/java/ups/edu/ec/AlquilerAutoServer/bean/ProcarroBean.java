@@ -83,7 +83,7 @@ public class ProcarroBean implements Serializable {
 	
 	private FacesContext facesContext; //Para la gestion de los beans.
 	
-	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
+	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>(); // Instancia de una lista de pedidos. 
 	
 	
 	/**
@@ -483,13 +483,17 @@ public class ProcarroBean implements Serializable {
 		
 		
 	}
-	
-	/*
-	public String confitFactura(int cod) {
+	/**
+	 * Metodo donde se inserta la factura, una ves insertado
+	 * el pedido cabecera y sus detalles, se puede finalizar la factura
+	 * donde se tiene que llenar el metodo de pago para la emisión de la factura.
+	 * @return Navegación a la página carrito.
+	 */
+	public String confirFactura() {
 		System.out.println("ENTRO A CONFIRMAR FACTURA");
 		String cedula=persona.getCedula();
 		double total=0.0;
-		for(Detalle elemento: detalles) {
+		for(Detalle elemento: cabecera.getDetalles()) {
 			double pagar=elemento.getTotal();
 			total=total+pagar;
 		}
@@ -500,7 +504,7 @@ public class ProcarroBean implements Serializable {
 			metodo.setNombrepropietario(cabecera.getPersona().getNombre());
 			metodo.setEstado("ACTIVO");
 			metodoON.guardar(metodo);
-			//pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
+			pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
 			factura.setEstado("EMISION");
 			//factura.setPedido(cabecera);
 			factura.setTarjetacredito(metodo);
@@ -518,7 +522,8 @@ public class ProcarroBean implements Serializable {
 		
 		
 	}
-	*/
+	
+	
 	/**
 	 * Se calcula el total de la lista detalles, esta lista contiene los vehículos
 	 * con sus precios respectivos.
@@ -569,14 +574,30 @@ public class ProcarroBean implements Serializable {
 		}
 	}
 	
+	/**
+	 * Navegación entre páginas
+	 * @return Navegación a la lista de pedidos
+	 */
 	public String paginaListaPedido() {
 		
 		return "lista-pedidos?faces-redirect=true";
 	}
 	
+	/**
+	 * Navegación entre páginas
+	 * @param codigo Es una llave primaria para la busqueda de la cabecera.
+	 * @return Navegación a la página factura
+	 */
 	public String paginaListaFactura(int codigo) {
 		try {
 			cabecera=pedidoON.buscarpedidoCabecera(codigo);
+			List<Detalle> det=cabecera.getDetalles();
+			for(int i=0; i<det.size();i++) {
+				double precio=det.get(i).getVehiculo().getPrecio();
+				det.get(i).setTotal(precio);
+			}
+			cabecera.setDetalles(det);
+			pedidoON.actualizarpedidoCabecera(cabecera);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
