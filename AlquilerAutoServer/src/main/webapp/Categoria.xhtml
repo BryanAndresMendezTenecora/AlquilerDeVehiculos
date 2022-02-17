@@ -17,13 +17,22 @@
 		Crear Categorias
 	</ui:define>
 	<ui:define name="content">
-
-
+	<h:form class="forms-sample">
+<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+<br></br>
+<br/>
 		<div class="card-body">
 			<h4 class="card-title">Formulario de registro</h4>
 
-		<h:form class="forms-sample">
-				  
+	
+				  <!--  
 				<div class="form-group">
 					<label for="txtid">id</label>
 					<h:inputText type="txtCedula" class="form-control"
@@ -34,9 +43,9 @@
 							listener="#{categoriaBean.loadDataEditar()}" />
 						</h:inputText>
 				</div>
-				
+				-->
 				<div class="form-group">
-					<label for="txtNombre">Nombre</label>
+					<label for="txtNombre" style="font-weight:bold">NOMBRE</label>
 					<h:inputText type="email" class="form-control"
 						id="campoNombre" placeholder="Nombre"
 						value="#{categoriaBean.categoria.nombre}" />
@@ -44,7 +53,7 @@
 				
 				  
 				<div class="form-group">
-					<label for="txtEstado">Estado</label>
+					<label for="txtEstado" style="font-weight:bold">ESTADO</label>
 					<h:selectOneMenu value="#{categoriaBean.categoria.estado}" id="txtEstado" class="btn btn-light dropdown-toggle">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 						<f:selectItem itemLabel="ACTIVO" class="btn btn-light" itemValue="ACTIVO" />
@@ -56,11 +65,11 @@
 				<h:commandButton type="submit" class="btn btn-primary mr-2"
 					action="#{categoriaBean.guardar()}" value="Guardar" />
 				<button class="btn btn-light">Cancel</button>
-			</h:form>
+			
 		</div>
 
 
-
+</h:form>
 
 	</ui:define>
 

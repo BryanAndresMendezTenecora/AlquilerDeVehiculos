@@ -17,11 +17,19 @@ public class MetodoDePagoON implements MetodoDePagoONLocal{
 	private metodoDePagoDAO tarjetacreditoDAO;
 	
 	public void insertarMetodoPago(MetodoDePago tarjetaCredito) throws Exception {
+		tarjetaCredito.setNombrepropietario(tarjetaCredito.getNombrepropietario().toUpperCase());
+		tarjetaCredito.setTipo(tarjetaCredito.getTipo().toUpperCase());
+		tarjetaCredito.setDireccion(tarjetaCredito.getDireccion().toUpperCase());
+		tarjetaCredito.setEstado(tarjetaCredito.getEstado().toUpperCase());
 		tarjetacreditoDAO.insert(tarjetaCredito);
 	}
 	
 	
 	public void actualizarMetodoPago(MetodoDePago tarjetaCredito) throws Exception {
+		tarjetaCredito.setNombrepropietario(tarjetaCredito.getNombrepropietario().toUpperCase());
+		tarjetaCredito.setTipo(tarjetaCredito.getTipo().toUpperCase());
+		tarjetaCredito.setDireccion(tarjetaCredito.getDireccion().toUpperCase());
+		tarjetaCredito.setEstado(tarjetaCredito.getEstado().toUpperCase());
 		tarjetacreditoDAO.update(tarjetaCredito);
 	}
 	
@@ -40,11 +48,16 @@ public class MetodoDePagoON implements MetodoDePagoONLocal{
 		return tarjetacreditoDAO.read(c);
 	}
 	
-	public void guardar(MetodoDePago p) throws Exception {
-		if (tarjetacreditoDAO.read(p.getId()) == null)
+	public void guardar(MetodoDePago tarjetaCredito) throws Exception {
+		tarjetaCredito.setNombrepropietario(tarjetaCredito.getNombrepropietario().toUpperCase());
+		tarjetaCredito.setTipo(tarjetaCredito.getTipo().toUpperCase());
+		tarjetaCredito.setDireccion(tarjetaCredito.getDireccion().toUpperCase());
+		tarjetaCredito.setEstado(tarjetaCredito.getEstado().toUpperCase());
+		if (tarjetacreditoDAO.read(tarjetaCredito.getId()) == null) {
 		
-			tarjetacreditoDAO.insert(p);
-		else
-			tarjetacreditoDAO.update(p);
+			tarjetacreditoDAO.insert(tarjetaCredito);
+		}else {
+			tarjetacreditoDAO.update(tarjetaCredito);
+		}
 	}
 }

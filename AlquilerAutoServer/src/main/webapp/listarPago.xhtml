@@ -11,6 +11,16 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+					<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 		<div class="row">
 		<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
@@ -19,27 +29,27 @@
 			<h:dataTable var="per" class="table table-striped"
 				value="#{metodoDePagoBean.pagos}">
 				<h:column>
-					<f:facet name="header">Codigo</f:facet>
+					<f:facet name="header">CODIGO</f:facet>
 #{per.id}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Tipo</f:facet>
+					<f:facet name="header">TIPO</f:facet>
 #{per.tipo}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Titular</f:facet>
+					<f:facet name="header">TITULAR</f:facet>
 #{per.nombrepropietario}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Numero</f:facet>
+					<f:facet name="header">NUMERO</f:facet>
 #{per.numero}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">FechaVen</f:facet>
+					<f:facet name="header">FECHAVEN</f:facet>
 #{per.fechavencimiento}
 </h:column>
 
@@ -49,25 +59,25 @@
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Estado</f:facet>
+					<f:facet name="header">ESTADO</f:facet>
 #{per.estado}
 </h:column>
 
 
 				<h:column>
-					<f:facet name="header">Direccion</f:facet>
+					<f:facet name="header">DIRECCION</f:facet>
 #{per.direccion}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">CodigoPostal</f:facet>
+					<f:facet name="header">CODIGO POSTAL</f:facet>
 #{per.codigoPostal}
 </h:column>
 
 
 
 				<h:column>
-					<f:facet name="header">Acciones</f:facet>
+					<f:facet name="header">ACCIONES</f:facet>
 					<h:commandButton action="#{metodoDePagoBean.editar(per.id)}"
 						value="Editar" immediate="true"
 						class="btn btn-success btn-rounded btn-fw" />

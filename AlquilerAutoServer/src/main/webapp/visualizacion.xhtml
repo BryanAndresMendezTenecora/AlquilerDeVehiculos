@@ -18,27 +18,37 @@
 	<ui:define name="content">
 <h:form>
 	<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
+	<div class="row">
 	<div class="col-md-6 grid-margin stretch-card">
 	<div class="card">
 	<div class="row">
 	<div class="col-md-6">
 	<h:panelGrid columns="2">
-		<h:outputLabel value="Codigo: " style="font-weight:bold" />
+		<h:outputLabel value="CODIGO: " style="font-weight:bold" />
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.id}" />
-		<h:outputLabel value="Marca: " style="font-weight:bold"/>
+		<h:outputLabel value="MARCA: " style="font-weight:bold"/>
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.marca}" /> 
-		<h:outputLabel value="Modelo: " style="font-weight:bold"/>
+		<h:outputLabel value="MODELO: " style="font-weight:bold"/>
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.modelo}" />
-		<h:outputLabel value="Precio: " style="font-weight:bold"/>
+		<h:outputLabel value="PRECIO: " style="font-weight:bold"/>
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.precio}" />
 		
 	</h:panelGrid>
 	</div>
 	<div class="col-md-6">
 	<h:panelGrid columns="2">
-		<h:outputLabel value="Estado: " style="font-weight:bold"/>
+		<h:outputLabel value="ESTADO: " style="font-weight:bold"/>
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.estado}"/>
-		<h:outputLabel value="Categoria: " style="font-weight:bold" />
+		<h:outputLabel value="CATEGORIA: " style="font-weight:bold" />
 		<h:outputLabel value="#{vehiculo2Bean.vehiculo.categoria.nombre}" style="font-weight:bold"/>
 	</h:panelGrid>
 	</div>
@@ -80,9 +90,9 @@
 	<div class="card-body">
 	<div class="form-group">
 	<h:panelGrid columns="2">
-	<h:outputLabel value="CALIFICACION" />
+	<h:outputLabel value="CALIFICACION" style="font-weight:bold"/>
 	<h:inputText value="#{vehiculo2Bean.comentario.calificacion}"  id="txtCalificacion"/>
-	<h:outputLabel value="RESEÑA" />
+	<h:outputLabel value="RESEÑA" style="font-weight:bold"/>
 	<h:inputTextarea value="#{vehiculo2Bean.comentario.descripcion}" id="txtDescripcion"  class="form-control"/>
 	</h:panelGrid>
 	</div>
@@ -96,19 +106,19 @@
 	<div class="table-responsive">
 	<h:dataTable value="#{vehiculo2Bean.comentarios}" var="lista" id="tabla-comentarios" class="table table-striped">
 		<h:column>
-			<f:facet name="header">Usuario</f:facet>
+			<f:facet name="header">USUARIO</f:facet>
 			<h:graphicImage value="images/images42x60/user.png"/>
 		</h:column>
 		<h:column>
-			<f:facet name="header">Usuario</f:facet>
+			<f:facet name="header">NOMBRE</f:facet>
 			#{lista.persona.nombre}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Calificacion</f:facet>
+			<f:facet name="header">CALIFICACION</f:facet>
 			#{lista.calificacion}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Resena</f:facet>
+			<f:facet name="header">RESEÑA</f:facet>
 			#{lista.descripcion}
 		</h:column>
 	</h:dataTable>

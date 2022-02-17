@@ -359,7 +359,7 @@ public class ProcarroBean implements Serializable {
 	
 	public String confirmarPedido() {
 		System.out.println("CABECERA ANTES:"+cabecera.getId());
-		cabecera.setEstado("En Emision");
+		cabecera.setEstado("EMISION");
 		detalles=vehiculoContratado(detalles);
 		cabecera.setDetalles(detalles);
 		//cabecera.setPersona(loginBean.getPersona());
@@ -386,6 +386,7 @@ public class ProcarroBean implements Serializable {
 	}
 	
 	public String confirmarFactura() {
+		System.out.println("ENTRO A CONFIRMAR FACTURA");
 		String cedula=persona.getCedula();
 		double total=0.0;
 		for(Detalle elemento: detalles) {
@@ -395,9 +396,12 @@ public class ProcarroBean implements Serializable {
 		
 		int codigo= metodo.getId();
 		try {
-			MetodoDePago metodo=metodoON.buscarMetodoPago(codigo);
+			//MetodoDePago metodo=metodoON.buscarMetodoPago(codigo);
+			metodo.setNombrepropietario(cabecera.getPersona().getNombre());
+			metodo.setEstado("ACTIVO");
+			metodoON.guardar(metodo);
 			pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
-			factura.setEstado("Emision");
+			factura.setEstado("EMISION");
 			//factura.setPedido(cabecera);
 			factura.setTarjetacredito(metodo);
 			factura.setPedido(cabe);

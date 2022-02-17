@@ -11,17 +11,27 @@
 	</ui:define>
 	<ui:define name="content"> 
 <h:form>
+			<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 	<div class="row">
 	<div class="col-md-8 grid-margin stretch-card">
 	<div class="card">
 	<div class="card-body"> 
 	<h:panelGrid columns="3">
-		<h:outputLabel value="Cedula: " style="font-weight:bold"/>
+		<h:outputLabel value="CEDULA: " style="font-weight:bold"/>
 		<h:inputText value="#{devolucionBean.persona.cedula}" id="text-cedula" />
 		<h:commandButton value="Buscar" type="button" class="btn btn-outline-primary btn-fw">
 			<f:ajax listener="#{devolucionBean.listarFactura()}" execute="text-cedula" render="tabla-factura" ></f:ajax>
 		</h:commandButton>
-		<h:outputLabel value="Codigo Factura: " style="font-weight:bold" />
+		<h:outputLabel value="CODIGO FACTURA: " style="font-weight:bold" />
 		<h:inputText value="#{devolucionBean.factura.id}" id="text-codigo"/>
 		<h:commandButton value="Buscar" type="button" class="btn btn-outline-primary btn-fw">
 			<f:ajax listener="#{devolucionBean.buscarFactura()}" execute="text-codigo"></f:ajax>
@@ -38,7 +48,7 @@
 		<div class="table-responsive">
 	<h:dataTable value="#{devolucionBean.facturas}" var="lista" id="tabla-factura" class="table table-striped">
 		<h:column>
-			<f:facet name="header">Codigo</f:facet>
+			<f:facet name="header">CODIGO</f:facet>
 			#{lista.id}
 		</h:column>
 		<h:column>
@@ -46,15 +56,15 @@
 			#{lista.estado}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Total</f:facet>
+			<f:facet name="header">TOTAL</f:facet>
 			#{lista.total}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Metodo de pago</f:facet>
+			<f:facet name="header">METODO DE PAGO</f:facet>
 			#{lista.tarjetacredito.tipo}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Cedula</f:facet>
+			<f:facet name="header">CEDULA</f:facet>
 			#{lista.pedido.persona.cedula}
 		</h:column>
 		<h:column>

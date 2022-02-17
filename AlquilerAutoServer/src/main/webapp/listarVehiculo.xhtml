@@ -11,6 +11,16 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+			<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 		<div class="row">
 		<div class="col-lg-12 grid-margin stretch-card">
 		<div class="card">
@@ -19,38 +29,38 @@
 			<h:dataTable var="per" class="table table-striped"
 				value="#{vehiculoBean.vehiculos}">
 				<h:column>
-					<f:facet name="header">Codigo</f:facet>
+					<f:facet name="header">CODIGO</f:facet>
 #{per.id}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Modelo</f:facet>
+					<f:facet name="header">MODELO</f:facet>
 #{per.modelo}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Marca</f:facet>
+					<f:facet name="header">MARCA</f:facet>
 #{per.marca}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Stock</f:facet>
+					<f:facet name="header">STOCK</f:facet>
 #{per.stock}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Estado</f:facet>
+					<f:facet name="header">ESTADO</f:facet>
 #{per.estado}
 </h:column>
 
 				<h:column>
-					<f:facet name="header">Categoria</f:facet>
+					<f:facet name="header">CATEGORIA</f:facet>
 #{per.categoria.nombre}
 </h:column>
 
 
 				<h:column>
-					<f:facet name="header">Acciones</f:facet>
+					<f:facet name="header">ACCIONES</f:facet>
 					<h:commandButton action="#{vehiculoBean.editar(per.id)}"
 						value="Editar" immediate="true" class="btn btn-success btn-rounded btn-fw" />
 					<h:commandButton action="#{vehiculoBean.eliminar(per.id)}"

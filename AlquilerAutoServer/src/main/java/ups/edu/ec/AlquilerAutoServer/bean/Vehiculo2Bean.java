@@ -93,7 +93,7 @@ public class Vehiculo2Bean implements Serializable {
 	@PostConstruct
 	public void init() {
 		vehiculo = new Vehiculo();
-		vehiculo.setCategoria(new Categoria());
+		//vehiculo.setCategoria(new Categoria());
 		try {
 			vehiculos= vehiculoON.getvehiculos();
 		} catch (Exception e) {

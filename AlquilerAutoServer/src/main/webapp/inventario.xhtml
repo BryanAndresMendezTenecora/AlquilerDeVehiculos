@@ -11,10 +11,20 @@
 	</ui:define>
 	<ui:define name="content"> 
 	<h:form>
+				<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 	<div class="row">
 	<div class="col-md-6">
 	<div class="dropdown">
-	<h:outputLabel value="ESTADO: " />
+	<h:outputLabel value="ESTADO: " style="font-weight:bold" />
 	<h:selectOneMenu value="#{vehiculo2Bean.vehiculo.estado}" id="txt-i" class="btn btn-light dropdown-toggle">
 	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 	<f:selectItem itemLabel="DISPONIBLE" class="btn btn-light" itemValue="DISPONIBLE" />
@@ -22,7 +32,7 @@
 	<f:selectItem itemLabel="MANTENIMIENTO" class="btn btn-light" itemValue="MANTENIMIENTO" />
 	<f:selectItem itemLabel="ELIMINADO" class="btn btn-light" itemValue="ELIMINADO" />
 	</h:selectOneMenu>
-	<h:commandButton value="FILTRAR" >
+	<h:commandButton value="FILTRAR" class="btn btn-outline-primary btn-fw">
 		<f:ajax execute="txt-i" listener="#{vehiculo2Bean.listadoEstado()}" render="tabla-inventario"></f:ajax>
 	</h:commandButton>
 	</div>
@@ -35,7 +45,7 @@
 		<div class="table-responsive">
 		<h:dataTable value="#{vehiculo2Bean.vehiculos}" var="lista" id="tabla-inventario" class="table table-striped">
 		<h:column>
-			<f:facet name="header">Imagen</f:facet>
+			<f:facet name="header">IMAGEN</f:facet>
 			<h:graphicImage value="images/images42x60/#{lista.marca}42x60.png"/>
 		</h:column>
 		<h:column>
@@ -46,19 +56,19 @@
 			</div>
 		</h:column>
 		<h:column>
-			<f:facet name="header">Marca</f:facet>
+			<f:facet name="header">MARCA</f:facet>
 			#{lista.marca}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Modelo</f:facet>
+			<f:facet name="header">MODELO</f:facet>
 			#{lista.modelo}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Modelo</f:facet>
+			<f:facet name="header">PRECIO</f:facet>
 			#{lista.precio}
 		</h:column>
 		<h:column>
-			<f:facet name="header">Categoria</f:facet>
+			<f:facet name="header">CATEGORIA</f:facet>
 			#{lista.categoria.nombre}
 		</h:column>
 		</h:dataTable>

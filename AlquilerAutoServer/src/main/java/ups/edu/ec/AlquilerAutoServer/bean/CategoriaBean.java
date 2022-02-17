@@ -88,8 +88,7 @@ public class CategoriaBean implements Serializable{
 		}
 
 		//return "listado-personas?faces-redirect=true";
-		//return "listarCategoria?faces-redirect=true";
-		return null;
+		return "listarCategoria?faces-redirect=true";
 	}
 	
 	

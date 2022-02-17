@@ -18,6 +18,16 @@
 	</ui:define>
 	<ui:define name="content">
 		<h:form>
+					<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 		
 			<h:commandButton action="#{loginBean.ComprobarSesion()}"
 				value="Comprobar" immediate="true"

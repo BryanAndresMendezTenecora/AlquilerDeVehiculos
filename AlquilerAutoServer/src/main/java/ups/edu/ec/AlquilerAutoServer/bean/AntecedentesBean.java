@@ -68,4 +68,8 @@ public class AntecedentesBean implements Serializable {
 		
 	}
 	
+	public String paginaInicio() {
+		return "pro-carro-test?faces-redirect=true";
+	}
+	
 }

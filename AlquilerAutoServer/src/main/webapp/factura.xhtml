@@ -12,28 +12,43 @@
 	<ui:define name="content">
 	<h:form>
 	<div class="row">
+	<div class="col-lg-6 grid-margin stretch-card">
 	<div class="card">
 	<div class="card-body">  
 	<h:panelGrid columns="2">
-	<h:outputLabel value="Cedula:" style="font-weight:bold"/>
-	<h:inputText value="#{procarroBean.persona.cedula}"></h:inputText>
-	<h:outputLabel value="Nombre: " style="font-weight:bold" />
-	<h:inputText value="#{procarroBean.persona.nombre}"></h:inputText>
-	<h:outputLabel value="Metodo de Pago: " style="font-weight:bold"/>
-	<h:selectOneMenu value="#{procarroBean.metodo.id}" id="txt">
-	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
-	<f:selectItems value="#{procarroBean.metodos}" var="lista" itemLabel="#{lista.tipo}" itemValue="#{lista.id}" >
-	</f:selectItems>
-</h:selectOneMenu>
-	<h:outputLabel value="Fecha: " style="font-weight:bold" />
-	<h:inputText value="#{procarroBean.cabecera.fecha}" >
-	<f:convertDateTime pattern = "dd/MM/yyyy" />
-	</h:inputText>
-	<h:outputLabel value="Fecha de Entrega: " style="font-weight:bold"/>
-	<h:inputText value="#{procarroBean.cabecera.fechaentrega}" >
-	<f:convertDateTime pattern = "dd/MM/yyyy" />
-	</h:inputText>
+	<h:outputLabel value="CEDULA:" style="font-weight:bold"/>
+	<h:outputLabel value="#{procarroBean.persona.cedula}" />
+	<h:outputLabel value="NOMBRE: " style="font-weight:bold" />
+	<h:outputLabel value="#{procarroBean.persona.nombre}" />
+	<h:outputLabel value="FECHA: " style="font-weight:bold" />
+	<h:outputLabel value="#{procarroBean.cabecera.fecha}" />
+	<h:outputLabel value="FECHA DE ENTREGA: " style="font-weight:bold"/>
+	<h:outputLabel value="#{procarroBean.cabecera.fechaentrega}" />
+	<!--<f:convertDateTime pattern = "dd/MM/yyyy" />-->
 	</h:panelGrid>
+	</div>
+	</div>
+	<div class="col-lg-6 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body">  
+	<h:panelGrid columns="2">
+	<h:outputLabel value="METODO DE PAGO: " style="font-weight:bold"/>
+	<h:selectOneMenu value="#{procarroBean.metodo.tipo}" id="txt" class="btn btn-light dropdown-toggle">
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+	<f:selectItem  itemLabel="TARJETA DE DEBITO" itemValue="TARJETA DE DEBITO" />
+	<f:selectItem itemLabel="TARJETA DE CREDITO" itemValue="TARJETA DE CREDITO"/>
+	</h:selectOneMenu>
+	<h:outputLabel value="N. TARJETA: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.numero}" />
+	<h:outputLabel value="FECHA VENCIMIENTO: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.fechavencimiento}" />
+	<h:outputLabel value="DIRECCION: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.direccion}" />
+	<h:outputLabel value="CODIGO POSTAL: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.codigoPostal}" />
+	</h:panelGrid>
+	</div>
+	</div>
 	</div>
 	</div>
 	</div>
@@ -43,19 +58,19 @@
 	<div class="table-responsive">
 	<h:dataTable value="#{procarroBean.detalles}" var="lista" class="table table-striped">
 			<h:column>
-				<f:facet name="header">Nombre</f:facet>
+				<f:facet name="header">NOMBRE</f:facet>
 			#{lista.vehiculo.marca}
 		</h:column>
 			<h:column>
-				<f:facet name="header">Valor</f:facet>
+				<f:facet name="header">VALOR</f:facet>
 			#{lista.vehiculo.modelo}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Cantidad</f:facet>
+				<f:facet name="header">CANTIDAD</f:facet>
 				#{lista.cantidad}
 			</h:column>
 			<h:column>
-				<f:facet name="header">Total</f:facet>
+				<f:facet name="header">TOTAL</f:facet>
 				#{lista.total}
 			</h:column>
 		</h:dataTable>

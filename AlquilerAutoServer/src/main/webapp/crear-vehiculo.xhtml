@@ -16,13 +16,24 @@
 		Crear Vehiculo
 	</ui:define>
 	<ui:define name="content">
+	<h:form class="forms-sample">
+				<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
 		<div class="card-body">
 			<h4 class="card-title">Registro Vehiculo</h4>
 
-			<h:form class="forms-sample">
+			
 
 				<div class="form-group">
-					<label for="txtCodigo">Codigo</label>
+					<label for="txtCodigo" style="font-weight:bold">CODIGO</label>
 					<h:inputText type="text" class="form-control" id="campoid"
 						placeholder="Cedula" value="#{vehiculoBean.vehiculo.id}">
 						<f:ajax execute="txtCodigo"
@@ -32,34 +43,34 @@
 				</div>
 
 				<div class="form-group">
-					<label for="txtModelo">Modelo</label>
+					<label for="txtModelo" style="font-weight:bold">MODELO</label>
 					<h:inputText type="text" class="form-control" id="campoModelo"
 						placeholder="Cedula" value="#{vehiculoBean.vehiculo.modelo}" />
 
 				</div>
 
 				<div class="form-group">
-					<label for="txtMarca">Marca</label>
+					<label for="txtMarca" style="font-weight:bold">MARCA</label>
 					<h:inputText type="email" class="form-control" id="campoMarca"
 						placeholder="Marca" value="#{vehiculoBean.vehiculo.marca}" />
 				</div>
 
 				<div class="form-group">
-					<label for="txtStock">Stock</label>
+					<label for="txtStock" style="font-weight:bold">STOCK</label>
 					<h:inputText type="email" class="form-control" id="campoStock"
 						placeholder="Stock" value="#{vehiculoBean.vehiculo.stock}" />
 				</div>
 
 				
 				<div class="form-group">
-					<label for="txtPrecio">Precio</label>
+					<label for="txtPrecio" style="font-weight:bold">PRECIO</label>
 					<h:inputText type="text" class="form-control" id="campoPrecio"
 						placeholder="Precio" value="#{vehiculoBean.vehiculo.precio}" />
 				</div>
  
  
 				<div class="form-group">
-					<label for="txtEstado">Estado</label>
+					<label for="txtEstado" style="font-weight:bold">ESTADO</label>
 					<h:selectOneMenu value="#{vehiculoBean.vehiculo.estado}" id="campoEstado" class="form-control">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 						<f:selectItem itemLabel="DISPONIBLE" class="btn btn-light" itemValue="DISPONIBLE" >
@@ -89,10 +100,10 @@
 				<h:commandButton type="submit" class="btn btn-primary mr-2"
 					action="#{vehiculoBean.guardar()}" value="Guardar" />
 				<button class="btn btn-light">Cancel</button>
-			</h:form>
+			
 		</div>
 
-
+</h:form>
 	</ui:define>
 
 </ui:composition>

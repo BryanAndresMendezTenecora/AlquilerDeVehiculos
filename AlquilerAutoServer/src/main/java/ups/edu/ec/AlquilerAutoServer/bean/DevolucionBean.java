@@ -27,6 +27,7 @@ public class DevolucionBean implements Serializable {
 
 	private Devolucion devolucion= new Devolucion();
 	private Factura factura= new Factura();
+	private pedidoCabecera pedido= new pedidoCabecera();
 	private List<Factura> facturas= new ArrayList<Factura>();
 	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
 	private Persona persona= new Persona();
@@ -108,13 +109,13 @@ public class DevolucionBean implements Serializable {
 		System.out.println("CF:"+codigo);
 		try {
 			factura=facturaON.buscarFactura(codigo);
-			factura.setEstado("FINALIZADO");
-			pedidoCabecera pedido= new pedidoCabecera();
-			pedido=factura.getPedido();
-			pedido.setEstado("FINALIZADO");
-			pedidoON.actualizarpedidoCabecera(pedido);
-			factura.setPedido(pedido);
-			facturaON.actualizarFactura(factura);
+			//factura.setEstado("FINALIZADO");
+			//pedidoCabecera pedido= new pedidoCabecera();
+			//pedido=factura.getPedido();
+			//pedido.setEstado("FINALIZADO");
+			//pedidoON.actualizarpedidoCabecera(pedido);
+			//factura.setPedido(pedido);
+			//facturaON.actualizarFactura(factura);
 			//factura.setPedido(factura.getPedido().setEstado("FINALIZADO"));
 			System.out.println("Pagina DET-DEVOLUCION");
 			return "det-devolucion?faces-redirect=true&id="+factura.getId();
@@ -134,15 +135,24 @@ public class DevolucionBean implements Serializable {
 		}
 	}
 	
-	public void insertarDevolucion() {
-		devolucion.setFactura(factura);
-		vehiculoDevolver();
+	public String insertarDevolucion() {
+		pedido=factura.getPedido();
+		pedido.setEstado("FINALIZADO");
+		
 		try {
+			pedidoON.actualizarpedidoCabecera(pedido);
+			factura.setEstado("FINALIZADO");
+			factura.setPedido(pedido);
+			facturaON.actualizarFactura(factura);
+			devolucion.setFactura(factura);
+			vehiculoDevolver();
 			devolucionON.insertarDevolucion(devolucion);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		return "pro-carro-test?faces-redirect=true";
 	}
 	
 	public void vehiculoDevolver() {
