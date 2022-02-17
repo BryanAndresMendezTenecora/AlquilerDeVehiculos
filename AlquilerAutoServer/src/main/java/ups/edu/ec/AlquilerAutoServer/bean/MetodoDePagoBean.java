@@ -1,5 +1,6 @@
 package ups.edu.ec.AlquilerAutoServer.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -17,20 +18,28 @@ import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
 @Named
 @RequestScoped
-public class MetodoDePagoBean {
+public class MetodoDePagoBean implements Serializable{
 	@Inject
-	private MetodoDePagoONLocal pagosON;
-	private MetodoDePago pago = new MetodoDePago();
-	private List<MetodoDePago> metodosPagos;
+	private MetodoDePagoONLocal pagosON; 		// Injección al servidor mediante los objetos ON del metodo.
+	private MetodoDePago pago = new MetodoDePago();		//Declaramiento de un objeto MetodoDePago para guardar la información de la tarjeta
+	private List<MetodoDePago> metodosPagos;		// Declaración de una lista de tipo MetodoDePago para guardar todos los metodos existentes.
 
-	private int codigo;
+	private int codigo;   //Atributo que contiene un dato tipo int para el codigo que buscara los objetos MetodoDePago
 	
-	private Date date;
+	private Date date;  // Atributo donde se le guardara la información de la fecha actual
 
+	/**
+	 * Recuperación de un objeto tipo Date para la fecha actual
+	 * @return devuelve un objeto tipo Date
+	 */
 	public Date getDate() {
 		return date;
 	}
 
+	/**
+	 * 
+	 * @param date
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
@@ -40,22 +49,6 @@ public class MetodoDePagoBean {
 		this.loadPagos();
 	}
 
-	/*
-	 * private String cedula; private String nombre; private String direccion;
-	 * 
-	 * public String getCedula() { return cedula; }
-	 * 
-	 * public void setCedula(String cedula) { this.cedula = cedula; }
-	 * 
-	 * public String getNombre() { return nombre; }
-	 * 
-	 * public void setNombre(String nombre) { this.nombre = nombre; }
-	 * 
-	 * public String getDireccion() { return direccion; }
-	 * 
-	 * public void setDireccion(String direccion) { this.direccion = direccion; }
-	 * 
-	 */
 
 	public MetodoDePago getPago() {
 		return pago;
@@ -77,10 +70,6 @@ public class MetodoDePagoBean {
 
 		System.out.println("Guardando " + this.pago.getNombrepropietario());
 
-		/*
-		 * Persona p= new Persona(); p.setCedula(this.cedula); p.setNombre(this.nombre);
-		 * p.setDireccion(this.direccion);
-		 */
 		try {
 			this.getPago().setEstado("Activo");
 			pagosON.guardar(this.pago);
@@ -149,16 +138,7 @@ public class MetodoDePagoBean {
 	//#String ced=c
 	public String eliminar(int idTar) {
 	
-		try {/*
-			this.pago.setId(idTar);
-			this.pago.setTipo(tipo);
-			this.pago.setNumero(numero);
-			this.pago.setNombrepropietario(propietario);
-			this.pago.setFechavencimiento(fechaVen);
-			this.pago.setCodigoseguridad(codSeg);
-			this.pago.setDireccion(direccion);
-			this.pago.setCodigoPostal(codPostal);
-			this.pago.setEstado("Inactivo");*/
+		try {
 			pago=pagosON.buscarMetodoPago(idTar);
 			pago.setEstado("ELIMIANDO");
 			pagosON.actualizarMetodoPago(this.pago);

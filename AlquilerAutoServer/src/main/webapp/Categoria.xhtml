@@ -32,9 +32,9 @@
 			<h4 class="card-title">Formulario de registro</h4>
 
 	
-				  <!--  
+				  
 				<div class="form-group">
-					<label for="txtid">id</label>
+					<label for="txtid">ID: </label>
 					<h:inputText type="txtCedula" class="form-control"
 						id="compoid" placeholder="Id"
 						value="#{categoriaBean.categoria.id}" >
@@ -43,9 +43,8 @@
 							listener="#{categoriaBean.loadDataEditar()}" />
 						</h:inputText>
 				</div>
-				-->
 				<div class="form-group">
-					<label for="txtNombre" style="font-weight:bold">NOMBRE</label>
+					<label for="txtNombre" style="font-weight:bold">NOMBRE: </label>
 					<h:inputText type="email" class="form-control"
 						id="campoNombre" placeholder="Nombre"
 						value="#{categoriaBean.categoria.nombre}" />
@@ -53,7 +52,7 @@
 				
 				  
 				<div class="form-group">
-					<label for="txtEstado" style="font-weight:bold">ESTADO</label>
+					<label for="txtEstado" style="font-weight:bold">ESTADO: </label>
 					<h:selectOneMenu value="#{categoriaBean.categoria.estado}" id="txtEstado" class="btn btn-light dropdown-toggle">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 						<f:selectItem itemLabel="ACTIVO" class="btn btn-light" itemValue="ACTIVO" />
