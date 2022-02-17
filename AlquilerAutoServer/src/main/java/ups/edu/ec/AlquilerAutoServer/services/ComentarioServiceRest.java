@@ -21,20 +21,34 @@ import ups.edu.ec.AlquilerAutoServer.on.ComentarioONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
+/**
+ * Servicios para Comentario. Se indica el path o la ruta para el servicio
+ * 
+ * @author Bryan Mendez
+ * @author Braulio Astudillo
+ * @author Juan Boni
+ *
+ */
 @Path("comentario")
 public class ComentarioServiceRest {
 	@Inject
-	private ComentarioONLocal comentarioON;
-	
-	
+	private ComentarioONLocal comentarioON; // Se inyecta el objeto de acceso a datos de Comentario
+
+	/**
+	 * Servicio RESTful para insertar comentarios a vehiculos El método anotado
+	 * responde a solicitudes HTTP PUT. Se define el tipo o medio de consumo json
+	 * 
+	 * @param comentario recibe el objeto comentario
+	 * @return un mensaje de confirmacion del servicio
+	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/json")
 	public Mensaje crearComentario(Comentario comentario) {
-		Mensaje msj=new Mensaje();
-		
+		Mensaje msj = new Mensaje();
+
 		try {
-			
+
 			comentarioON.insertarComentario(comentario);
 			msj.setCodigo("01");
 			msj.setMensaje("OK");
@@ -46,13 +60,16 @@ public class ComentarioServiceRest {
 			return msj;
 		}
 	}
-	//Produces:formato en cual va a devolver
-	
-	//GET:obtener algo , devuelve algo
-	// este metodo no tiene parametro no lleva ninguna anotacion
+
+	/**
+	 * Servicio RESTful para listar comentarios de vehiculos El método anotado
+	 * responde a solicitudes HTTP GET Se define el tipo o medio de consumo json
+	 * 
+	 * @return devuelve una lista de comentarios
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public  List<Comentario> getComentarios(){
+	public List<Comentario> getComentarios() {
 		try {
 			return comentarioON.getComentarios();
 		} catch (Exception e) {
@@ -61,24 +78,31 @@ public class ComentarioServiceRest {
 			return null;
 		}
 	}
-	
-	
+
+	/**
+	 * Servicio RESTful para devuelve una lista de comentarios a buscar por id El
+	 * método anotado responde a las solicitudes HTTP POST Se define el tipo o medio
+	 * de consumo json
+	 * 
+	 * @param id recibe el id del comentario
+	 * @return devuelve una lista de comentarios
+	 */
 	@POST
 	@Path("buscarComentario")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Comentario> getComentarioVehiculo( int id){
-		System.out.println("este es nombre q llega ------->="+id);
-		List<Comentario> listComentario=new ArrayList<Comentario>();
-		List<Comentario> nuevalistaobtenida=new ArrayList<Comentario>();
+	public List<Comentario> getComentarioVehiculo(int id) {
+		System.out.println("este es nombre q llega ------->=" + id);
+		List<Comentario> listComentario = new ArrayList<Comentario>();
+		List<Comentario> nuevalistaobtenida = new ArrayList<Comentario>();
 		try {
-			listComentario=comentarioON.getComentarios();
+			listComentario = comentarioON.getComentarios();
 			for (Comentario comentario : listComentario) {
-				if (comentario.getVehiculo().getId()==id ) {
+				if (comentario.getVehiculo().getId() == id) {
 					nuevalistaobtenida.add(comentario);
 				} else {
 					System.out.println("-> ");
 				}
-				
+
 			}
 			return nuevalistaobtenida;
 		} catch (Exception e) {
@@ -86,11 +110,7 @@ public class ComentarioServiceRest {
 			e.printStackTrace();
 			return null;
 		}
-		
+
 	}
-	
-
-
-	
 
 }

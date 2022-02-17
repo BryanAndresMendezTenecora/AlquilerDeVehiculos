@@ -20,18 +20,34 @@ import ups.edu.ec.AlquilerAutoServer.modelo.pedidoCabecera;
 import ups.edu.ec.AlquilerAutoServer.on.PedidoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
+/**
+ * Servicios para Pedido. Se indica el path o la ruta para el servicio
+ * 
+ * @author Bryan Mendez
+ * @author Braulio Astudillo
+ * @author Juan Boni
+ *
+ */
 @Path("pedido")
 public class PedidoServiceRest {
 	@Inject
-	private PedidoONLocal pedidoON;
+	private PedidoONLocal pedidoON; // Se inyecta el objeto de acceso a datos de Comentario
+
+	/**
+	 * Servicio RESTful para insertar pedido de vehiculos El método anotado responde
+	 * a solicitudes HTTP PUT. Se define el tipo o medio de consumo json
+	 * 
+	 * @param pedido recibe el objeto pedido
+	 * @return un mensaje de confirmacion del servicio
+	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/json")
 	public Mensaje crearPedido(pedidoCabecera pedido) {
-		Mensaje msj=new Mensaje();
-		
+		Mensaje msj = new Mensaje();
+
 		try {
-			
+
 			pedidoON.insertarpedidoCabecera(pedido);
 			msj.setCodigo("01");
 			msj.setMensaje("OK");
@@ -43,15 +59,17 @@ public class PedidoServiceRest {
 			return msj;
 		}
 	}
-	
-	//Produces:formato en cual va a devolver
-	
-	//GET:obtener algo , devuelve algo
-	// este metodo no tiene parametro no lleva ninguna anotacion
+
+	/**
+	 * Servicio RESTful para listar pedidos de vehiculos. El método anotado responde
+	 * a solicitudes HTTP GET. Se define el tipo o medio de consumo json
+	 * 
+	 * @return devuelve una lista de pedidos
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("pedidos")
-	public  List<pedidoCabecera> getPedidos(){
+	public List<pedidoCabecera> getPedidos() {
 		try {
 			return pedidoON.getpedidoCabeceras();
 		} catch (Exception e) {
@@ -60,34 +78,38 @@ public class PedidoServiceRest {
 			return null;
 		}
 	}
-	
-	
+
+	/**
+	 * Servicio RESTful para devuelve una lista de pedidos a buscar por la cedula y
+	 * el nombre. El método anotado responde a las solicitudes HTTP POST. Se define
+	 * el tipo o medio de consumo json
+	 * 
+	 * @param nombre recibe la cedula o el nombre de la persona
+	 * @return devuelve una lista de pedidos
+	 */
 	@POST
 	@Path("buscarP")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<pedidoCabecera> getPedidosRealizados(String nombre){
-		System.out.println("este es nombre q llega ------->="+nombre);
-		List<pedidoCabecera> listPedido=new ArrayList<pedidoCabecera>();
-		List<pedidoCabecera> nuevalistaobtenida=new ArrayList<pedidoCabecera>();
+	public List<pedidoCabecera> getPedidosRealizados(String nombre) {
+		System.out.println("este es nombre q llega ------->=" + nombre);
+		List<pedidoCabecera> listPedido = new ArrayList<pedidoCabecera>();
+		List<pedidoCabecera> nuevalistaobtenida = new ArrayList<pedidoCabecera>();
 		try {
-			listPedido=pedidoON.getpedidoCabeceras();
+			listPedido = pedidoON.getpedidoCabeceras();
 			for (pedidoCabecera pedido : listPedido) {
-				if (pedido.getPersona().getNombre().equals(nombre) || pedido.getPersona().getCedula().equals(nombre) ) {
+				if (pedido.getPersona().getNombre().equals(nombre) || pedido.getPersona().getCedula().equals(nombre)) {
 					nuevalistaobtenida.add(pedido);
 				} else {
 					System.out.println("-> ");
 				}
-				
+
 			}
 			return nuevalistaobtenida;
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
-		
-	}
 
-	
+	}
 
 }
