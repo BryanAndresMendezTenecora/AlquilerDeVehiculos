@@ -32,6 +32,9 @@ export class PedidoService {
     return this.http.put<any>(url,pedido)
   }
 
+  limpiarDetalle(){
+    this.detalles=[];
+  }
   //guardamos detalles e
   adicionarDetalle(detalle:any){
     let encontrado=false;
