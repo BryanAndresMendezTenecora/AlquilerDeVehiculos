@@ -12,18 +12,18 @@ export class ServicepersonaService {
 
   constructor(private http:HttpClient) { }
   guardarPersonas(persona : Persona):Observable<any>{
-    const url = environment.WS_PATH +"/personas";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/personas";
     return this.http.put<any>(url,persona)
   }
 
   getPersonas():Observable<any>{
-    const url = environment.WS_PATH +"/personas";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/personas";
     return this.http.get<any>(url)
 
   }
 
   getPersonasall():Observable<Persona>{
-    const url = environment.WS_PATH +"/personas";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/personas";
     return this.http.get<Persona>(url)
 
   }
@@ -31,7 +31,7 @@ export class ServicepersonaService {
   loginByEmail(email:string,password:string):Observable<ResponseI>{
       console.log("serves->",email)
     //const url = environment.WS_PATH +"/personas/login";
-    const url = environment.WS_PATH +"/personas/loginP?email="+email+"&password="+password;
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/personas/loginP?email="+email+"&password="+password;
     return this.http.get<ResponseI>(url);
   }
 }

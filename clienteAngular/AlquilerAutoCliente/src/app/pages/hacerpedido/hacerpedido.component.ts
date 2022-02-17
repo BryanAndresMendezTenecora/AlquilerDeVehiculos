@@ -49,6 +49,11 @@ export class HacerpedidoComponent implements OnInit {
     this.pedidoService.guardarPedidos(this.pedido).subscribe(data=>{
       console.log(data);
     });
+
+    this.detalle=[]
+    this.items=[];
+    this.pedidoService.limpiarDetalle();
+    this.pedidoService.LimpiarCarrito();
   }
 
   //para guardar dettales

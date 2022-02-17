@@ -12,18 +12,18 @@ export class VehiculoService {
   constructor(private http:HttpClient) { }
 
   guardarVehiculo(vehiculo : Vehiculo):Observable<any>{
-    const url = environment.WS_PATH +"/vehiculos";
+    const url ="http://localhost:8080/AlquilerAutoServer/ws/vehiculos";
     return this.http.put<any>(url,vehiculo)
   }
 
   getVehiculo():Observable<any>{
-    const url = environment.WS_PATH +"/vehiculos";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/vehiculos";
     return this.http.get<any>(url)
 
   }
   buscarvehiculo(nombre:string):Observable<any>{
     console.log("service->",nombre)
-    const url = environment.WS_PATH +"/vehiculos/buscarC";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/vehiculos/buscarC";
     return this.http.post<any>(url,nombre)
 
   }

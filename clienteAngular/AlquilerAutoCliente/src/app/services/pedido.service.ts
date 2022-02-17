@@ -28,10 +28,13 @@ export class PedidoService {
   }
   //para guardar pedidos
   guardarPedidos(pedido : Pedido):Observable<any>{
-    const url = environment.WS_PATH +"/pedido";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/pedido";
     return this.http.put<any>(url,pedido)
   }
 
+  limpiarDetalle(){
+    this.detalles=[];
+  }
   //guardamos detalles e
   adicionarDetalle(detalle:any){
     let encontrado=false;
@@ -54,7 +57,7 @@ export class PedidoService {
 
   buscarpedido(nombre:string):Observable<any>{
     console.log("service->",nombre)
-    const url = environment.WS_PATH +"/pedido/buscarP";
+    const url = "http://localhost:8080/AlquilerAutoServer/ws/pedido/buscarP";
     return this.http.post<any>(url,nombre)
 
   }
