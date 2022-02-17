@@ -349,6 +349,8 @@ public class VehiculoBean implements Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//comentario.setCalificacion(0);
+		//comentario.setDescripcion("");
 	}
 	
 	/**
