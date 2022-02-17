@@ -47,7 +47,7 @@ public class PedidoServiceRest {
 		Mensaje msj = new Mensaje();
 
 		try {
-
+			pedido.setEstado("EMISION");
 			pedidoON.insertarpedidoCabecera(pedido);
 			msj.setCodigo("01");
 			msj.setMensaje("OK");
