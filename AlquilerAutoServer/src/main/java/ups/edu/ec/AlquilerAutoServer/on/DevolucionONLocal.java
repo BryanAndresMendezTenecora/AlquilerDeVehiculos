@@ -58,8 +58,8 @@ public interface DevolucionONLocal {
 	public List<Devolucion> getDevolucions();
 
 	/**
-	 * Declaracion del Metodo que devuelve una lista de devoluciones por cedula de
-	 * la persona
+	 * Declaracion del Metodo que devuelve una lista de antecedentes de devoluciones
+	 * por cedula de la persona
 	 * 
 	 * @param cedula recibe el objeto
 	 * @return devuelve una lista
