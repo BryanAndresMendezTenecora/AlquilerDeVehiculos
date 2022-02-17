@@ -55,7 +55,7 @@ public class ProcarroBean implements Serializable {
 	
 	@Inject
 	private PersonaONLocal personaON;			//Inyección al servidor mediante el objeto de negocio de persona.
-	
+		
 	
 	private int cont=1;				//Instancia de un dato tipo int, que servira de contador.
 	
@@ -82,6 +82,8 @@ public class ProcarroBean implements Serializable {
 	private int listado=0; //Instancia de un dato tipo int para los tipos de listados que puede tener el catálogo.
 	
 	private FacesContext facesContext; //Para la gestion de los beans.
+	
+	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
 	
 	
 	/**
@@ -280,6 +282,8 @@ public class ProcarroBean implements Serializable {
 	 *  Se consulta a la base de datos, y se agregan los registros existentes
 	 *  en cada respectiva lista, vehículos, metodos y catégorias. 
 	 */
+	
+	
 	@PostConstruct
 	public void init() {
 		//System.out.println("Hello");
@@ -287,6 +291,7 @@ public class ProcarroBean implements Serializable {
 			vehiculos=vehiculoON.getvehiculos();
 			metodos=metodoON.getMetodoPagos();
 			categorias=categoriaON.getCategorias();
+			pedidos=pedidoON.getpedidoCabeceras();
 			System.out.println("----------------------");
 			System.out.println(factura.getId());
 		} catch (Exception e) {
@@ -296,6 +301,14 @@ public class ProcarroBean implements Serializable {
 		
 	}
 	
+	public List<pedidoCabecera> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<pedidoCabecera> pedidos) {
+		this.pedidos = pedidos;
+	}
+
 	/**
 	 * Metodo que se encarga de recuperar un registro de persona
 	 * mediante una llave primaria.
@@ -471,6 +484,41 @@ public class ProcarroBean implements Serializable {
 		
 	}
 	
+	/*
+	public String confitFactura(int cod) {
+		System.out.println("ENTRO A CONFIRMAR FACTURA");
+		String cedula=persona.getCedula();
+		double total=0.0;
+		for(Detalle elemento: detalles) {
+			double pagar=elemento.getTotal();
+			total=total+pagar;
+		}
+		
+		int codigo= metodo.getId();
+		try {
+
+			metodo.setNombrepropietario(cabecera.getPersona().getNombre());
+			metodo.setEstado("ACTIVO");
+			metodoON.guardar(metodo);
+			//pedidoCabecera cabe=pedidoON.buscarpedidoCabecera(cabecera.getId());
+			factura.setEstado("EMISION");
+			//factura.setPedido(cabecera);
+			factura.setTarjetacredito(metodo);
+			factura.setPedido(cabe);
+			factura.setTotal(total);
+			facturaON.insertarFactura(factura);
+			FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+		    return "pro-carro-test?faces-redirect=true&id="+cedula;
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
+	*/
 	/**
 	 * Se calcula el total de la lista detalles, esta lista contiene los vehículos
 	 * con sus precios respectivos.
@@ -519,6 +567,21 @@ public class ProcarroBean implements Serializable {
 		for(Vehiculo elemento: vehiculos) {
 			System.out.println("CV: "+elemento.getId()+" PRECIO: "+elemento.getPrecio()+" MODELO: "+elemento.getModelo());
 		}
+	}
+	
+	public String paginaListaPedido() {
+		
+		return "lista-pedidos?faces-redirect=true";
+	}
+	
+	public String paginaListaFactura(int codigo) {
+		try {
+			cabecera=pedidoON.buscarpedidoCabecera(codigo);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "Fact-cliente?faces-redirect=true";
 	}
 	
 	/**

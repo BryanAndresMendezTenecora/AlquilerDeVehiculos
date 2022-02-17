@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+ <ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		Factura
+	</ui:define>
+	<ui:define name="content">
+	<h:form>
+	<div class="row">
+	<div class="col-lg-6 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body">  
+	<h:panelGrid columns="2">
+	<h:outputLabel value="CEDULA:" style="font-weight:bold"/>
+	<h:outputLabel value="#{procarroBean.cabecera.persona.cedula}" />
+	<h:outputLabel value="NOMBRE: " style="font-weight:bold" />
+	<h:outputLabel value="#{procarroBean.cabecera.persona.nombre}" />
+	<h:outputLabel value="FECHA: " style="font-weight:bold" />
+	<h:outputLabel value="#{procarroBean.cabecera.fecha}" />
+	<h:outputLabel value="FECHA DE ENTREGA: " style="font-weight:bold"/>
+	<h:outputLabel value="#{procarroBean.cabecera.fechaentrega}" />
+	<!--<f:convertDateTime pattern = "dd/MM/yyyy" />-->
+	</h:panelGrid>
+	</div>
+	</div>
+	<div class="col-lg-6 grid-margin stretch-card">
+	<div class="card">
+	<div class="card-body">  
+	<h:panelGrid columns="2">
+	<h:outputLabel value="METODO DE PAGO: " style="font-weight:bold"/>
+	<h:selectOneMenu value="#{procarroBean.metodo.tipo}" id="txt" class="btn btn-light dropdown-toggle">
+	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
+	<f:selectItem  itemLabel="TARJETA DE DEBITO" itemValue="TARJETA DE DEBITO" />
+	<f:selectItem itemLabel="TARJETA DE CREDITO" itemValue="TARJETA DE CREDITO"/>
+	</h:selectOneMenu>
+	<h:outputLabel value="N. TARJETA: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.numero}" />
+	<h:outputLabel value="FECHA VENCIMIENTO: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.fechavencimiento}" />
+	<h:outputLabel value="DIRECCION: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.direccion}" />
+	<h:outputLabel value="CODIGO POSTAL: " style="font-weight:bold"/>
+	<h:inputText value="#{procarroBean.metodo.codigoPostal}" />
+	</h:panelGrid>
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-12 grid-margin stretch-card">
+	<div class="card">
+	<div class="table-responsive">
+	<h:dataTable value="#{procarroBean.cabecera.detalles}" var="lista" class="table table-striped">
+			<h:column>
+				<f:facet name="header">NOMBRE</f:facet>
+			#{lista.vehiculo.marca}
+		</h:column>
+			<h:column>
+				<f:facet name="header">VALOR</f:facet>
+			#{lista.vehiculo.modelo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">CANTIDAD</f:facet>
+				#{lista.cantidad}
+			</h:column>
+			<h:column>
+				<f:facet name="header">TOTAL</f:facet>
+				#{lista.total}
+			</h:column>
+		</h:dataTable>
+		</div>
+
+		</div>
+		</div>
+		</div>
+		<div class="row">
+	<div class="card-body">
+	<div class="template-demo mt-2">
+		<h:commandButton action="#{procarroBean.confirmarFactura()}" value="Confirmar Factura" class="btn btn-primary"/>
+		<h:commandButton action="#{procarroBean.paginaPedido()}" value="Regresar Pedido" class="btn btn-info"/>
+		<h:commandButton action="#{procarroBean.paginaInicio()}" value="Regresar INICIO" class="btn btn-info"/>
+		</div>
+		</div>
+		</div>
+
+</h:form>
+</ui:define>
+</ui:composition> 
+</html>

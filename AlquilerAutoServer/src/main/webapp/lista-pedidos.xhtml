@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<ui:composition template="template/plantilla.xhtml">
+	<ui:define name="title">
+		LISTA PEDIDOS
+	</ui:define>
+	<ui:define name="content"> 
+	<h:form>
+				<div class="row">
+	<div class="col-md-10">
+		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
+	</div>
+	<div class="col-md-2">
+		<h:commandButton action="#{procarroBean.cerrarSesion()}" value="Cerrar Sesion" class="btn btn-primary btn-sm"/>
+	</div>
+	</div>
+	<br></br>
+	<br></br>
+	<div class="row">
+		<div class="col-lg-12 grid-margin stretch-card">
+		<div class="card">
+		<div class="card-body">
+		<div class="table-responsive">
+		<h:dataTable value="#{procarroBean.pedidos}" var="lista" id="tabla-inventario" class="table table-striped">
+		<h:column>
+			<f:facet name="header">CODIGO</f:facet>
+			#{lista.id}
+		</h:column>
+		<h:column>
+			<f:facet name="header">ESTADO</f:facet>
+			#{lista.estado}
+		</h:column>
+		<h:column>
+			<f:facet name="header">FECHA ENTREGA</f:facet>
+			#{lista.fechaentrega}
+		</h:column>
+		<h:column>
+			<f:facet name="header">NOMBRE</f:facet>
+			#{lista.persona.nombre}
+		</h:column>
+		<h:column>
+			<f:facet name="header">ACCIONES</f:facet>
+			<h:commandButton value="INGRESAR" action="#{procarroBean.paginaListaFactura(lista.id)}" ></h:commandButton>
+		</h:column>
+		</h:dataTable>
+		</div>
+		</div>
+		</div>
+		
+		</div>
+	</div>
+	</h:form>
+	</ui:define>
+	</ui:composition>
+</html>
