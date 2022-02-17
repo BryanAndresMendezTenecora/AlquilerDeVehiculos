@@ -6,9 +6,9 @@
 
 <h:head>
 <f:metadata>
-	<f:viewParam name="id" value="#{vehiculo2Bean.vehiculo.id}"></f:viewParam>
-	<f:viewAction action="#{vehiculo2Bean.cargarVehiculo()}" />
-	<f:viewAction action="#{vehiculo2Bean.listadoComentarios()}" />
+	<f:viewParam name="id" value="#{vehiculoBean.vehiculo.id}"></f:viewParam>
+	<f:viewAction action="#{vehiculoBean.cargarVehiculo()}" />
+	<f:viewAction action="#{vehiculoBean.listadoComentarios()}" />
 </f:metadata>
 </h:head> 
 <ui:composition template="template/plantilla.xhtml">
@@ -34,22 +34,22 @@
 	<div class="col-md-6">
 	<h:panelGrid columns="2">
 		<h:outputLabel value="CODIGO: " style="font-weight:bold" />
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.id}" />
+		<h:outputLabel value="#{vehiculoBean.vehiculo.id}" />
 		<h:outputLabel value="MARCA: " style="font-weight:bold"/>
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.marca}" /> 
+		<h:outputLabel value="#{vehiculoBean.vehiculo.marca}" /> 
 		<h:outputLabel value="MODELO: " style="font-weight:bold"/>
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.modelo}" />
+		<h:outputLabel value="#{vehiculoBean.vehiculo.modelo}" />
 		<h:outputLabel value="PRECIO: " style="font-weight:bold"/>
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.precio}" />
+		<h:outputLabel value="#{vehiculoBean.vehiculo.precio}" />
 		
 	</h:panelGrid>
 	</div>
 	<div class="col-md-6">
 	<h:panelGrid columns="2">
 		<h:outputLabel value="ESTADO: " style="font-weight:bold"/>
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.estado}"/>
+		<h:outputLabel value="#{vehiculoBean.vehiculo.estado}"/>
 		<h:outputLabel value="CATEGORIA: " style="font-weight:bold" />
-		<h:outputLabel value="#{vehiculo2Bean.vehiculo.categoria.nombre}" style="font-weight:bold"/>
+		<h:outputLabel value="#{vehiculoBean.vehiculo.categoria.nombre}" style="font-weight:bold"/>
 	</h:panelGrid>
 	</div>
 	</div>
@@ -91,20 +91,20 @@
 	<div class="form-group">
 	<h:panelGrid columns="2">
 	<h:outputLabel value="CALIFICACION" style="font-weight:bold"/>
-	<h:inputText value="#{vehiculo2Bean.comentario.calificacion}"  id="txtCalificacion"/>
+	<h:inputText value="#{vehiculoBean.comentario.calificacion}"  id="txtCalificacion"/>
 	<h:outputLabel value="RESEÑA" style="font-weight:bold"/>
-	<h:inputTextarea value="#{vehiculo2Bean.comentario.descripcion}" id="txtDescripcion"  class="form-control"/>
+	<h:inputTextarea value="#{vehiculoBean.comentario.descripcion}" id="txtDescripcion"  class="form-control"/>
 	</h:panelGrid>
 	</div>
 	<h:commandButton  value="INSERTAR COMENTARIO" type="button" class="btn btn-primary mr-2">
-		<f:ajax listener="#{vehiculo2Bean.insertarComentario(procarroBean.persona)}" execute="txtCalificacion txtDescripcion" render="tabla-comentarios"></f:ajax>
+		<f:ajax listener="#{vehiculoBean.insertarComentario(procarroBean.persona)}" execute="txtCalificacion txtDescripcion" render="tabla-comentarios"></f:ajax>
 	</h:commandButton>
 	</div>
 	</div>	
 	</div>
 	</div>
 	<div class="table-responsive">
-	<h:dataTable value="#{vehiculo2Bean.comentarios}" var="lista" id="tabla-comentarios" class="table table-striped">
+	<h:dataTable value="#{vehiculoBean.comentarios}" var="lista" id="tabla-comentarios" class="table table-striped">
 		<h:column>
 			<f:facet name="header">USUARIO</f:facet>
 			<h:graphicImage value="images/images42x60/user.png"/>

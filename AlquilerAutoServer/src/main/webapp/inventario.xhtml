@@ -25,7 +25,7 @@
 	<div class="col-md-6">
 	<div class="dropdown">
 	<h:outputLabel value="ESTADO: " style="font-weight:bold" />
-	<h:selectOneMenu value="#{vehiculo2Bean.vehiculo.estado}" id="txt-i" class="btn btn-light dropdown-toggle">
+	<h:selectOneMenu value="#{vehiculoBean.vehiculo.estado}" id="txt-i" class="btn btn-light dropdown-toggle">
 	<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 	<f:selectItem itemLabel="DISPONIBLE" class="btn btn-light" itemValue="DISPONIBLE" />
 	<f:selectItem itemLabel="ALQUILADO" class="btn btn-light"  itemValue="ALQUILADO"/>
@@ -33,7 +33,7 @@
 	<f:selectItem itemLabel="ELIMINADO" class="btn btn-light" itemValue="ELIMINADO" />
 	</h:selectOneMenu>
 	<h:commandButton value="FILTRAR" class="btn btn-outline-primary btn-fw">
-		<f:ajax execute="txt-i" listener="#{vehiculo2Bean.listadoEstado()}" render="tabla-inventario"></f:ajax>
+		<f:ajax execute="txt-i" listener="#{vehiculoBean.listadoEstado()}" render="tabla-inventario"></f:ajax>
 	</h:commandButton>
 	</div>
 	</div>
@@ -43,7 +43,7 @@
 		<div class="card">
 		<div class="card-body">
 		<div class="table-responsive">
-		<h:dataTable value="#{vehiculo2Bean.vehiculos}" var="lista" id="tabla-inventario" class="table table-striped">
+		<h:dataTable value="#{vehiculoBean.vehiculos}" var="lista" id="tabla-inventario" class="table table-striped">
 		<h:column>
 			<f:facet name="header">IMAGEN</f:facet>
 			<h:graphicImage value="images/images42x60/#{lista.marca}42x60.png"/>

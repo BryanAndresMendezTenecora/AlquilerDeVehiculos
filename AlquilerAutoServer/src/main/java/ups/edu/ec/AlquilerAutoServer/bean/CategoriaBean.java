@@ -20,61 +20,88 @@ import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 @RequestScoped
 public class CategoriaBean implements Serializable{
 	@Inject
-	private CategoriaONLocal categoriaON;
-	private Categoria categoria=new Categoria();
-	private List<Categoria> categorias;
-	private int id;
-	private  String nombre;
-	private List<SelectItem> listCategorias;
+	private CategoriaONLocal categoriaON; 			//Inyección al servidor mediante los onjetos de negocio de Categoria.
+	private Categoria categoria=new Categoria();	//Instancia de un objeto tipo Categoria
+	private List<Categoria> categorias;				//Declaración de una lista de tipo Categoria
+	private int id;									//Declaración de un dato entero para guardar las llaves primarias
+	private  String nombre;							//Declaración de un dato string
+	private List<SelectItem> listCategorias; 		//Declaración de una lista, para recorrer las categorias
 	
-	public CategoriaBean() {
-		
-	}
-	public CategoriaBean(int id, String nombre) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-	}
 
+	/**
+	 * Al iniciar la página JSF, se activara este método
+	 * que trae todas las categorias en una lista
+	 */
 	@PostConstruct
 	public void init() {
 		this.loadcategorias();
 	}
-	
+	/**
+	 * Recuperación de un Objeto Categoria
+	 * @return devuelve un objeto
+	 */
 	public Categoria getCategoria() {
 		return categoria;
 	}
+	
+	/**
+	 * Asigna un Objeto Categoria
+	 * @param categoria, se asignara a un objeto
+	 */
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	
 	
-	
-	
+	/**
+	 * Recuperación de un dato entero
+	 * @return devuelve un dato entero.
+	 */
 	public int getId() {
 		return id;
 	}
-
+	/**
+	 * Asigna un dato entero
+	 * @param id, se asignara un dato entero.
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	/**
+	 * Recuperación de un dato string
+	 * @return devuelve un dato relacionado al nombre de la categoria
+	 */
 	public String getNombre() {
 		return nombre;
 	}
-
+	/**
+	 * Asigna un dato string
+	 * @param nombre, se asignara a un dato tipo caracter
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 *  Recuperación de una lista tipo categoria
+	 * @return devuelve una lista que contiene datos de el objeto categoria
+	 */
 	public List<Categoria> getCategorias() {
 		return categorias;
 	}
 
+	/**
+	 * Asigna una lista tipo Categoria
+	 * @param categorias, se asignara a un objeto
+	 */
 	public void setCategorias(List<Categoria> categorias) {
 		this.categorias = categorias;
 	}
 
+	/**
+	 * Hace la insercción del objeto categoria a la base de datos
+	 * @return Navegación a la página listar categoria.
+	 */
 	public String guardar() {
 
 		System.out.println("Guardando " + this.categoria.getNombre());
@@ -92,15 +119,26 @@ public class CategoriaBean implements Serializable{
 	}
 	
 	
+	/**
+	 * Recupera todos los registros de categorias
+	 */
 	public void loadcategorias() {
 		this.categorias = categoriaON.getCategorias();
 	}
+	/**
+	 * Metodo para la actualización del objeto seleccionado,
+	 * la selección de le hace por una llave primaria.
+	 * @param id es la llave primaria.
+	 * @return Navegación a la página Categoria
+	 */
 	public String editar(int id) {
 		System.out.println(id);
 		return "Categoria?faces-redirect=true&id=" + id;
 	}
 	
-	
+	/**
+	 * Metodo para recuperar una categoría mediante una llave primaria
+	 */
 	public void loadData() {
 		if(id==0)
 			return;
@@ -116,6 +154,10 @@ public class CategoriaBean implements Serializable{
 		
 	}
 	
+	/**
+	 * Metodo para la actualización de la categoria, se necesita
+	 * primero la recuperación de la categoría.
+	 */
 	
 	public void loadDataEditar() {
 		Categoria p;
@@ -130,6 +172,10 @@ public class CategoriaBean implements Serializable{
 		
 	}
 
+	/**
+	 * Metodo para recorre la lista de categorias
+	 * @return devuelve una lista tipo categorias
+	 */
 	public List<SelectItem> getListCategorias() {
 		this.listCategorias =new  ArrayList<SelectItem>();
 		List<Categoria> c =categoriaON.listarcategorias();
@@ -140,10 +186,15 @@ public class CategoriaBean implements Serializable{
 		}
 		return listCategorias;
 	}
+	
+	/**
+	 * Metodo que elimina una categoria, esta funcionalidad
+	 * funciona con la actualización, el atributo a cambiar sera el
+	 * estado.
+	 * @param id
+	 * @return Navegación a la página listar categoria.
+	 */
 	public String eliminarcategoria(int id) {
-		//this.categoria.setId(id);
-		//this.categoria.setNombre(nombre);
-		//this.categoria.setEstado("inactivo");
 		
 		try {
 			categoria=categoriaON.buscarCategoria(id);
