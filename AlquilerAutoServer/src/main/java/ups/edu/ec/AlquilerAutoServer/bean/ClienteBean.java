@@ -27,22 +27,6 @@ public class ClienteBean {
 		this.loadClientes();
 	}
 
-	/*
-	 * private String cedula; private String nombre; private String direccion;
-	 * 
-	 * public String getCedula() { return cedula; }
-	 * 
-	 * public void setCedula(String cedula) { this.cedula = cedula; }
-	 * 
-	 * public String getNombre() { return nombre; }
-	 * 
-	 * public void setNombre(String nombre) { this.nombre = nombre; }
-	 * 
-	 * public String getDireccion() { return direccion; }
-	 * 
-	 * public void setDireccion(String direccion) { this.direccion = direccion; }
-	 * 
-	 */
 
 	public Persona getPersona() {
 		return persona;
@@ -131,21 +115,10 @@ public class ClienteBean {
 		
 	}
 	
-	//#String ced=c
+
 	public String eliminar(String cedula) {
 	
 		try {
-			/*
-			this.persona.setCedula(cedula);
-			this.persona.setNombre(nombre);
-			this.persona.setApellido(apellido);
-			this.persona.setDireccion(direccion);
-			this.persona.setEmail(email);
-			this.persona.setPassword(password);
-			this.persona.setRol(rol);
-			this.persona.setTelefono(telefono);
-			this.persona.setEstado("Inactivo");
-			*/
 			persona=clientesON.buscarPersona(cedula);
 			persona.setEstado("ELIMINADO");
 			clientesON.actualizarPersona(this.persona);
