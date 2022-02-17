@@ -22,25 +22,32 @@ import ups.edu.ec.AlquilerAutoServer.on.ComentarioONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
+/**
+ * Servicio Rest pedido
+ * 
+ * @author Bryan Mendez
+ * @author Braulio Astudillo
+ * @author Juan Boni
+ *
+ */
 @Path("vehiculos")
 public class VehiculoServiceRest {
-	
-	@Inject
-	private VehiculoONLocal vehiculoON;
-	
 
-	
-	//los q se pegan a un crud , crear actualizar eliminar no se manjea un path 
-	
-	//enviar tranferiri algo
-	// en el caso de q en el paraemtro sea un objeto entonce se debe afirmar en q formato se va consumir
-	
+	@Inject
+	private VehiculoONLocal vehiculoON; // Se inyecta Objeto negocio local de vehiculo
+
+	/**
+	 * Servicio Rest para crear paciente
+	 * 
+	 * @param recibe parametro objeto contacto
+	 * @return objeto mensaje de confirmacion
+	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/json")
 	public Mensaje crearPaciente(Vehiculo contacto) {
-		Mensaje msj=new Mensaje();
-		
+		Mensaje msj = new Mensaje();
+
 		try {
 			contacto.setEstado("Activo");
 			vehiculoON.insertarVehiculo(contacto);
@@ -54,13 +61,15 @@ public class VehiculoServiceRest {
 			return msj;
 		}
 	}
-	//Produces:formato en cual va a devolver
-	
-	//GET:obtener algo , devuelve algo
-	// este metodo no tiene parametro no lleva ninguna anotacion
+
+	/**
+	 * Servicio Rest para listar vehiculos
+	 * 
+	 * @return Devuelve una lista de vehiculos o null
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public  List<Vehiculo> getVehiculos(){
+	public List<Vehiculo> getVehiculos() {
 		try {
 			return vehiculoON.getvehiculos();
 		} catch (Exception e) {
@@ -69,23 +78,29 @@ public class VehiculoServiceRest {
 			return null;
 		}
 	}
-	
+
+	/**
+	 * Servicio Rest para buscar vehiculos pos categoria o marca
+	 * 
+	 * @param recibe nombre que puede ser nombre de la categoria o marca de vehiculo
+	 * @return devuelve una lista de vehiculos por el parametro ingresado
+	 */
 	@POST
 	@Path("buscarC")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vehiculo> getvehiculobuscqueda(String nombre){
-		System.out.println("este es nombre q llega ------->="+nombre);
-		List<Vehiculo> listvehiculo=new ArrayList<Vehiculo>();
-		List<Vehiculo> nuevalistaobtenida=new ArrayList<Vehiculo>();
+	public List<Vehiculo> getvehiculobuscqueda(String nombre) {
+		System.out.println("este es nombre q llega ------->=" + nombre);
+		List<Vehiculo> listvehiculo = new ArrayList<Vehiculo>();
+		List<Vehiculo> nuevalistaobtenida = new ArrayList<Vehiculo>();
 		try {
-			listvehiculo=vehiculoON.getvehiculos();
+			listvehiculo = vehiculoON.getvehiculos();
 			for (Vehiculo vehiculo : listvehiculo) {
-				if (vehiculo.getCategoria().getNombre().equals(nombre) || vehiculo.getMarca().equals(nombre) ) {
+				if (vehiculo.getCategoria().getNombre().equals(nombre) || vehiculo.getMarca().equals(nombre)) {
 					nuevalistaobtenida.add(vehiculo);
 				} else {
 					System.out.println("-> ");
 				}
-				
+
 			}
 			return nuevalistaobtenida;
 		} catch (Exception e) {
@@ -93,40 +108,27 @@ public class VehiculoServiceRest {
 			e.printStackTrace();
 			return null;
 		}
-		
-	}
-	
-	
-	
-	
-	
-	
-	@GET
-	@Path("buscarM")
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Vehiculo> getvehiculobuscquedaM(@QueryParam("nombre") String nombre){
-		System.out.println("este es nombre q llega ------->="+nombre);
-		List<Vehiculo> listvehiculo=new ArrayList<Vehiculo>();
-		List<Vehiculo> nuevalistaobtenida=new ArrayList<Vehiculo>();
-		try {
-			listvehiculo=vehiculoON.getvehiculos();
-			for (Vehiculo vehiculo : listvehiculo) {
-				if (vehiculo.getMarca().equals(nombre)) {
-					nuevalistaobtenida.add(vehiculo);
-				} else {
-					System.out.println("-> ");
-				}
-				
-			}
-			return nuevalistaobtenida;
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return null;
-		}
-		
+
 	}
 
-	
+	/*
+	 * 
+	 * @GET
+	 * 
+	 * @Path("buscarM")
+	 * 
+	 * @Produces(MediaType.APPLICATION_JSON) public List<Vehiculo>
+	 * getvehiculobuscquedaM(@QueryParam("nombre") String nombre){
+	 * System.out.println("este es nombre q llega ------->="+nombre); List<Vehiculo>
+	 * listvehiculo=new ArrayList<Vehiculo>(); List<Vehiculo> nuevalistaobtenida=new
+	 * ArrayList<Vehiculo>(); try { listvehiculo=vehiculoON.getvehiculos(); for
+	 * (Vehiculo vehiculo : listvehiculo) { if (vehiculo.getMarca().equals(nombre))
+	 * { nuevalistaobtenida.add(vehiculo); } else { System.out.println("-> "); }
+	 * 
+	 * } return nuevalistaobtenida; } catch (Exception e) { // TODO Auto-generated
+	 * catch block e.printStackTrace(); return null; }
+	 * 
+	 * }
+	 */
 
 }
