@@ -577,6 +577,13 @@ public class ProcarroBean implements Serializable {
 	public String paginaListaFactura(int codigo) {
 		try {
 			cabecera=pedidoON.buscarpedidoCabecera(codigo);
+			List<Detalle> det=cabecera.getDetalles();
+			for(int i=0; i<det.size();i++) {
+				double precio=det.get(i).getVehiculo().getPrecio();
+				det.get(i).setTotal(precio);
+			}
+			cabecera.setDetalles(det);
+			pedidoON.actualizarpedidoCabecera(cabecera);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
