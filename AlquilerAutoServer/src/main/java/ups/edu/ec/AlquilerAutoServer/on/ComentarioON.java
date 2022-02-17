@@ -24,7 +24,7 @@ public class ComentarioON implements ComentarioONLocal {
 	private ComentarioDAO comentarioDAO;
 
 	/**
-	 * Declaracion del metodo Insertar comentario
+	 *Metodo Insertar comentario
 	 * 
 	 * @param comentario recibe el objeto
 	 * @throws Exception
@@ -34,7 +34,7 @@ public class ComentarioON implements ComentarioONLocal {
 	}
 
 	/**
-	 * Declaracion del metodo actualizar comentario
+	 * Metodo actualizar comentario
 	 * 
 	 * @param comentario recibe el objeto
 	 * @throws Exception para capturar excepciones
@@ -44,7 +44,7 @@ public class ComentarioON implements ComentarioONLocal {
 	}
 
 	/**
-	 * Declaracion del metodo buscar comentario
+	 * Metodo buscar comentario
 	 * 
 	 * @param id recibe el id
 	 * @return devuelve el objeto comentario encontrado
@@ -55,7 +55,7 @@ public class ComentarioON implements ComentarioONLocal {
 	}
 
 	/**
-	 * Declaracion del metodo eliminar comentario
+	 * Metodo eliminar comentario
 	 * 
 	 * @param id recibe el id
 	 * @throws Exception para capturar excepciones
@@ -65,7 +65,7 @@ public class ComentarioON implements ComentarioONLocal {
 	}
 
 	/**
-	 * Declaracion del metodo que devuelve una lista de comentario
+	 * Metodo que devuelve una lista de comentario
 	 * 
 	 * @return devuelve la lista
 	 */
@@ -74,7 +74,7 @@ public class ComentarioON implements ComentarioONLocal {
 	}
 
 	/**
-	 * Declaracion del metodo que devuelve una lista de comentarios por vehiculo
+	 * Metodo que devuelve una lista de comentarios por vehiculo
 	 * 
 	 * @param vehiculo recibe el objeto
 	 * @return devuelve la lista
