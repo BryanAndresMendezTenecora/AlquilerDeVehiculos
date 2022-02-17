@@ -19,51 +19,31 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.modelo.Vehiculo;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
+/**
+ * Servicio Rest personas
+ * 
+ * @author Bryan Mendez
+ * @author Braulio Astudillo
+ * @author Juan Boni
+ *
+ */
 @Path("personas")
 public class PersonaServiceRest {
 	@Inject
-	private PersonaONLocal personaON;
-	//@QueryParam=parametros en la web
-	@GET
-	@Path("suma")
-	@Produces(MediaType.APPLICATION_JSON)
-	public double suma(@QueryParam("a") double a ,@QueryParam("b") double b) {
-		
-		return a+b;
-	}
-	
-	
-	@POST
-	@Path("autorizar")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String autorizarfactura(@QueryParam("xml") String facturaxml) {
-		//autorizacion
-		return "Felicidades";
-	}
-	
-	
-	//formparam se utiliza en post put
-	//query param se utiliza en get
-	@POST
-	@Path("tranferir")
-	@Produces(MediaType.APPLICATION_JSON)
-	public String tranferir(@FormParam("cuenta") String numerocuenta, @FormParam("banco") String banco) {
-		//logica
-		
-		return null;
-	}
-	
-	//los q se pegan a un crud , crear actualizar eliminar no se manjea un path 
-	
-	//enviar tranferiri algo
-	// en el caso de q en el paraemtro sea un objeto entonce se debe afirmar en q formato se va consumir
-	
+	private PersonaONLocal personaON; // Se inyecta Objeto negocio local de personas
+
+	/**
+	 * Servicio Rest para crear persona
+	 * 
+	 * @param recive contacto como objeto Persona
+	 * @return devuelve mensaje de confirmacion
+	 */
 	@PUT
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes("application/json")
 	public Mensaje crearPaciente(Persona contacto) {
-		Mensaje msj=new Mensaje();
-		
+		Mensaje msj = new Mensaje();
+
 		try {
 			contacto.setEstado("Activo");
 			personaON.insertarPersona(contacto);
@@ -77,13 +57,15 @@ public class PersonaServiceRest {
 			return msj;
 		}
 	}
-	//Produces:formato en cual va a devolver
-	
-	//GET:obtener algo , devuelve algo
-	// este metodo no tiene parametro no lleva ninguna anotacion
+
+	/**
+	 * Servicio Rest Listar personas
+	 * 
+	 * @return vevuelve lista de personas o null
+	 */
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public  List<Persona> getPersonas(){
+	public List<Persona> getPersonas() {
 		try {
 			return personaON.getPersonas();
 		} catch (Exception e) {
@@ -92,93 +74,100 @@ public class PersonaServiceRest {
 			return null;
 		}
 	}
-	
-	
+
+	/**
+	 * Servicio Rest login
+	 * 
+	 * @param recibe nombre como email de la persona
+	 * @return devuelve status como confirmacion
+	 */
 	@POST
 	@Path("login")
 	@Produces(MediaType.APPLICATION_JSON)
-	public status login(String nombre){
-		System.out.println("este es nombre q llega ------->="+nombre);
-		List<Persona> listadopersonas=new ArrayList<Persona>();
-		
-		status st=new status();
+	public status login(String nombre) {
+		System.out.println("este es nombre q llega ------->=" + nombre);
+		List<Persona> listadopersonas = new ArrayList<Persona>();
+
+		status st = new status();
 		try {
-			listadopersonas=personaON.getPersonas();
+			listadopersonas = personaON.getPersonas();
 			for (Persona persona : listadopersonas) {
 				if (persona.getEmail().equals(nombre)) {
-					//nuevalistaobtenida.add(vehiculo);
+					// nuevalistaobtenida.add(vehiculo);
 					System.out.println("persona encontrada");
 					st.setStatus("oK");
-					result re=new result();
+					result re = new result();
 					re.setToken("2345dgsd221342134sfashuy");
 					st.setResult(re);
-					
+
 					return st;
 				} else {
 					System.out.println("-> ");
 					st.setStatus("error");
-					result re=new result();
+					result re = new result();
 					re.setError_id("200");
 					re.setError_msg("El password es invalido");
 					st.setResult(re);
 					return st;
 				}
-				
+
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 		return null;
-		
+
 	}
-	
-	
+
+	/**
+	 * Servicio Rest loginP
+	 * 
+	 * @param recibe email de la persona
+	 * @param recibe password de la persona
+	 * @return devuelve objeto status como confirmacion
+	 */
 	@GET
 	@Path("loginP")
 	@Produces(MediaType.APPLICATION_JSON)
-	public status loginP(@QueryParam("email") String email,@QueryParam("password") String password){
-		System.out.println("este es nombre q llega ------->="+password);
-		List<Persona> listadopersonas=new ArrayList<Persona>();
-		
-		status st=new status();
+	public status loginP(@QueryParam("email") String email, @QueryParam("password") String password) {
+		System.out.println("este es nombre q llega ------->=" + password);
+		List<Persona> listadopersonas = new ArrayList<Persona>();
+
+		status st = new status();
 		try {
-			listadopersonas=personaON.getPersonas();
+			listadopersonas = personaON.getPersonas();
 			for (Persona persona : listadopersonas) {
 				if (persona.getEmail().equals(email) && persona.getPassword().equals(password)) {
-					//nuevalistaobtenida.add(vehiculo);
+					// nuevalistaobtenida.add(vehiculo);
 					System.out.println("persona encontrada");
 					st.setStatus("oK");
-					result re=new result();
+					result re = new result();
 					re.setToken("2345dgsd221342134sfashuy");
 					st.setResult(re);
-					
+
 					return st;
 				} else {
 					System.out.println("-> ");
 					st.setStatus("error");
-					result re=new result();
+					result re = new result();
 					re.setError_id("200");
 					re.setError_msg("El password es invalido");
 					st.setResult(re);
 					return st;
 				}
-				
+
 			}
-			
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
+
 		}
 		return null;
-		
+
 	}
-
-
-
-	
 
 }
