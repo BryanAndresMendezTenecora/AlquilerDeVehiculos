@@ -10,7 +10,7 @@
 	<f:metadata>
 		<f:viewParam name="id" value="#{clienteBean.cedula}"></f:viewParam>
 		<f:viewAction action="#{clienteBean.loadData()}" />
-		<f:viewAction action="#{loginBean.verificarSesion()}" />
+		<!--<f:viewAction action="#{loginBean.verificarSesion()}" />-->
 	</f:metadata>
 </h:head>
 
@@ -19,7 +19,7 @@
 		Crear clientes
 	</ui:define>
 	<ui:define name="content">
-	<h:form>
+	<h:form class="forms-sample">
 	<div class="row">
 	<div class="col-md-10">
 		<h:outputLabel value="Bienvenido #{procarroBean.persona.nombre}" />
@@ -33,7 +33,7 @@
 
 			
 				<div class="form-group">
-					<label for="txtCedula" style="font-weight:bold">CEDULA</label>
+					<label for="txtCedula" style="font-weight:bold">CEDULA: </label>
 					<h:inputText type="text" class="form-control" id="campoCedula"
 						placeholder="Cedula" value="#{clienteBean.persona.cedula}">
 						<f:ajax execute="txtCedula"
@@ -43,26 +43,26 @@
 
 				</div>
 				<div class="form-group">
-					<label for="txtNombre" style="font-weight:bold">NOMBRE</label>
+					<label for="txtNombre" style="font-weight:bold">NOMBRE: </label>
 					<h:inputText type="email" class="form-control" id="campoNombre"
 						placeholder="Nombre" value="#{clienteBean.persona.nombre}" />
 				</div>
 
 				<div class="form-group">
-					<label for="txtApellido" style="font-weight:bold">APELLIDO</label>
+					<label for="txtApellido" style="font-weight:bold">APELLIDO: </label>
 					<h:inputText type="email" class="form-control" id="campoApellido"
 						placeholder="Apellido" value="#{clienteBean.persona.apellido}" />
 				</div>
 
 				<div class="form-group">
-					<label for="txtDireccion" style="font-weight:bold">DIRECCION</label>
+					<label for="txtDireccion" style="font-weight:bold">DIRECCION: </label>
 					<h:inputText type="password" class="form-control"
 						id="campoDireccion" placeholder="Direccion"
 						value="#{clienteBean.persona.direccion}" />
 				</div>
 
 				<div class="form-group">
-					<label for="txtTelefono" style="font-weight:bold">TELEFONO</label>
+					<label for="txtTelefono" style="font-weight:bold">TELEFONO: </label>
 					<h:inputText type="password" class="form-control"
 						id="campoTelefono" placeholder="Direccion"
 						value="#{clienteBean.persona.telefono}" />
@@ -104,13 +104,13 @@
 
 
 				<div class="form-group">
-					<label for="txtEmail" style="font-weight:bold">EMAIL</label>
+					<label for="txtEmail" style="font-weight:bold">EMAIL: </label>
 					<h:inputText type="text" class="form-control" id="campoEmail"
 						placeholder="Direccion" value="#{clienteBean.persona.email}" />
 				</div>
 
 				<div class="form-group">
-					<label for="txtPassword" style="font-weight:bold">PASSWORD</label>
+					<label for="txtPassword" style="font-weight:bold">PASSWORD: </label>
 					<h:inputText type="password" class="form-control"
 						id="campoPassword" placeholder="Direccion"
 						value="#{clienteBean.persona.password}" />
@@ -124,7 +124,7 @@
 				</div>
 				-->
 				<div class="form-group">
-					<label for="txtEstado" style="font-weight:bold">ESTADO</label>
+					<label for="txtEstado" style="font-weight:bold">ESTADO: </label>
 					<h:selectOneMenu value="#{clienteBean.persona.estado}" id="txtEstado" class="btn btn-light dropdown-toggle">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />
 						<f:selectItem itemLabel="ACTIVO" class="btn btn-light" itemValue="ACTIVO" />
@@ -132,7 +132,7 @@
 					</h:selectOneMenu>
 				</div>
 				<div class="form-group">
-					<label for="itemRoles" style="font-weight:bold">Rol</label>
+					<label for="itemRoles" style="font-weight:bold">ROL: </label>
 					<h:selectOneMenu value="#{clienteBean.persona.rol}"
 						class="form-control" id="campoRol">
 						<f:selectItem itemLabel="--Seleccione--" class="btn btn-light" />

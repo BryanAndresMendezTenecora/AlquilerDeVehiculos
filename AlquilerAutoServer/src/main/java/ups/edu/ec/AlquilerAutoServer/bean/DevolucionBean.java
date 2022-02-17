@@ -25,12 +25,12 @@ import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 @ViewScoped
 public class DevolucionBean implements Serializable {
 
-	private Devolucion devolucion= new Devolucion();
-	private Factura factura= new Factura();
-	private pedidoCabecera pedido= new pedidoCabecera();
-	private List<Factura> facturas= new ArrayList<Factura>();
-	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>();
-	private Persona persona= new Persona();
+	private Devolucion devolucion= new Devolucion();		//Instancia del objeto Devolución para insertar en la base de datos. 
+	private Factura factura= new Factura();					//Instancia del objeto Factura para hacer la devolucion por su id.
+	private pedidoCabecera pedido= new pedidoCabecera();	//Instancia del objeto PedidoCabecera para guardar la información que contiene la factura mediante un atributo.
+	private List<Factura> facturas= new ArrayList<Factura>();	//Instancia de una lista de Facturas que seran de un cliente específico.
+	private List<pedidoCabecera> pedidos= new ArrayList<pedidoCabecera>(); // Instancia de una lista de PedidoCabecera de un cliente específico.
+	private Persona persona= new Persona();					//Insyancia un objeto Persona para guardar la información del cliente.
 	
 	@Inject
 	private FacturaONLocal facturaON;
