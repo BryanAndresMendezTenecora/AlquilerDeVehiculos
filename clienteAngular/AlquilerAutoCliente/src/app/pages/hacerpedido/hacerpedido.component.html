@@ -10,13 +10,15 @@
 <div class="container">
   <div class="form-control">
     <form>
+      
+      <!--
       <div class="form-group row">
         <label for="inputID" class="col-sm-2 col-form-label">ID Pedido</label>
         <div class="col-sm-5">
           <input type="number" class="form-control" name="inputid" placeholder="id" [(ngModel)]="pedido.id">
         </div>
-
       </div>
+      -->
 
       <div class="form-group row">
         <label for="inputPersona" class="col-sm-2 col-form-label">Cedula</label>
@@ -93,13 +95,14 @@
     </div>
 
 
+    <!--
     <div class="form-group row">
       <label for="inputtotal" class="col-sm-2 col-form-label">Total</label>
       <div class="col-sm-5">
         <input type="number" class="form-control" name="inputtotal" placeholder="total" [(ngModel)]="detalles.total">
       </div>
-
     </div>
+    -->
     <!--
     <div class="form-group row">
         <label for="inputvehiculo" class="col-sm-2 col-form-label">Vehiculo</label>
@@ -131,7 +134,7 @@
         <tr>
           <th scope="col">det id</th>
           <th scope="col">cantidad</th>
-          <th scope="col">total</th>
+      
           <th scope="col">vehiculo</th>
         </tr>
       </thead>
@@ -140,7 +143,7 @@
         <tr *ngFor="let item of detalle">
           <th>{{item.id}}</th>
           <td>{{item.cantidad}}</td>
-          <td>{{item.total}}</td>
+          
           <td>{{item.vehiculo.id}}</td>
 
 
