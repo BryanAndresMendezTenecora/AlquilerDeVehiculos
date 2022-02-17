@@ -20,7 +20,7 @@ import ups.edu.ec.AlquilerAutoServer.on.VehiculoON;
 import ups.edu.ec.AlquilerAutoServer.on.VehiculoONLocal;
 
 /**
- * 
+ * Bean para la gestion del Vehículo
  * @author Bryan,Braulio,Juan
  *
  */

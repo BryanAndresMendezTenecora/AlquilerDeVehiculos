@@ -16,6 +16,11 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaON;
 import ups.edu.ec.AlquilerAutoServer.on.CategoriaONLocal;
 
+/**
+ * Bean gestión de Categoria
+ * @author Bryan Méndez, Juan Boni, Braulio Astudillo
+ *
+ */
 @Named
 @RequestScoped
 public class CategoriaBean implements Serializable{

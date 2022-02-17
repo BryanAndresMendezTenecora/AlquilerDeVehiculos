@@ -14,7 +14,11 @@ import ups.edu.ec.AlquilerAutoServer.modelo.Persona;
 import ups.edu.ec.AlquilerAutoServer.on.MetodoDePagoONLocal;
 import ups.edu.ec.AlquilerAutoServer.on.PersonaONLocal;
 
-
+/**
+ * Bean para la gestión del metodo del pago
+ * @author Bryan Mendez, Juan Boni, Braulio Astudillo
+ *
+ */
 
 @Named
 @RequestScoped
